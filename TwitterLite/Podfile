@@ -2,18 +2,18 @@
 platform :ios, '14.0'
 
 target 'TwitterLite' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+    # Comment the next line if you don't want to use dynamic frameworks
+    use_frameworks!
 
-  # Pods for TwitterLite
+    # Pods for TwitterLite
+    pod 'ReachabilitySwift'
 
-  target 'TwitterLiteTests' do
-    inherit! :search_paths
+    target 'TwitterLiteTests' do
+        inherit! :search_paths
+        # Pods for testing
+    end
+
+    target 'TwitterLiteUITests' do
     # Pods for testing
-  end
-
-  target 'TwitterLiteUITests' do
-    # Pods for testing
-  end
-
+    end
 end
