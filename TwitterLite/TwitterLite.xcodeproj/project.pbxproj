@@ -11,6 +11,11 @@
 		1FB928752864E0A1005967E3 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB928742864E0A1005967E3 /* ReachabilityManager.swift */; };
 		1FB9287A2864E71E005967E3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB928792864E71E005967E3 /* BaseViewController.swift */; };
 		1FB9287C2864E7F1005967E3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9287B2864E7F1005967E3 /* Constants.swift */; };
+		1FB9287F2864F4B7005967E3 /* UIStoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9287E2864F4B7005967E3 /* UIStoryboardExtension.swift */; };
+		1FB928812864F678005967E3 /* LoadableNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB928802864F678005967E3 /* LoadableNib.swift */; };
+		1FB928842864F764005967E3 /* NetworkStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB928832864F764005967E3 /* NetworkStatusView.swift */; };
+		1FB928862864F76A005967E3 /* NetworkStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB928852864F76A005967E3 /* NetworkStatusView.xib */; };
+		1FB928892864F7A2005967E3 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB928882864F7A2005967E3 /* BaseView.swift */; };
 		1FECC9B12864CF220056CCE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECC9B02864CF220056CCE7 /* ViewController.swift */; };
 		1FECC9C42864CF250056CCE7 /* TwitterLiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECC9C32864CF250056CCE7 /* TwitterLiteTests.swift */; };
 		1FECC9CE2864CF250056CCE7 /* TwitterLiteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECC9CD2864CF250056CCE7 /* TwitterLiteUITests.swift */; };
@@ -48,6 +53,11 @@
 		1FB928742864E0A1005967E3 /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		1FB928792864E71E005967E3 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1FB9287B2864E7F1005967E3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1FB9287E2864F4B7005967E3 /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtension.swift; sourceTree = "<group>"; };
+		1FB928802864F678005967E3 /* LoadableNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableNib.swift; sourceTree = "<group>"; };
+		1FB928832864F764005967E3 /* NetworkStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusView.swift; sourceTree = "<group>"; };
+		1FB928852864F76A005967E3 /* NetworkStatusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkStatusView.xib; sourceTree = "<group>"; };
+		1FB928882864F7A2005967E3 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		1FECC9A92864CF220056CCE7 /* TwitterLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FECC9B02864CF220056CCE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1FECC9BF2864CF250056CCE7 /* TwitterLiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterLiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,7 +110,7 @@
 		1FB928722864E05B005967E3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				1FB928782864E71E005967E3 /* ViewControllers */,
+				1FB928822864F750005967E3 /* Views */,
 				1FB928732864E06E005967E3 /* Models */,
 			);
 			path = Common;
@@ -109,8 +119,9 @@
 		1FB928732864E06E005967E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1FB928742864E0A1005967E3 /* ReachabilityManager.swift */,
 				1FB9287B2864E7F1005967E3 /* Constants.swift */,
+				1FB928802864F678005967E3 /* LoadableNib.swift */,
+				1FB928742864E0A1005967E3 /* ReachabilityManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,8 +132,42 @@
 				1FB928792864E71E005967E3 /* BaseViewController.swift */,
 			);
 			name = ViewControllers;
-			path = TwitterLite/Common/ViewControllers;
+			path = TwitterLite/BaseClass/ViewControllers;
 			sourceTree = SOURCE_ROOT;
+		};
+		1FB9287D2864F49D005967E3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1FB9287E2864F4B7005967E3 /* UIStoryboardExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1FB928822864F750005967E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1FB928832864F764005967E3 /* NetworkStatusView.swift */,
+				1FB928852864F76A005967E3 /* NetworkStatusView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1FB928872864F78D005967E3 /* BaseClass */ = {
+			isa = PBXGroup;
+			children = (
+				1FB928782864E71E005967E3 /* ViewControllers */,
+				1FB9288A2864F7B1005967E3 /* Views */,
+			);
+			path = BaseClass;
+			sourceTree = "<group>";
+		};
+		1FB9288A2864F7B1005967E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1FB928882864F7A2005967E3 /* BaseView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
 		};
 		1FECC9A02864CF220056CCE7 = {
 			isa = PBXGroup;
@@ -152,7 +197,9 @@
 				1FECC9E32864D1210056CCE7 /* AppDelegate */,
 				1FB928722864E05B005967E3 /* Common */,
 				1FECC9DC2864D1210056CCE7 /* Resources */,
+				1FB9287D2864F49D005967E3 /* Extensions */,
 				1FECC9B02864CF220056CCE7 /* ViewController.swift */,
+				1FB928872864F78D005967E3 /* BaseClass */,
 			);
 			path = TwitterLite;
 			sourceTree = "<group>";
@@ -326,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FB928862864F76A005967E3 /* NetworkStatusView.xib in Resources */,
 				1FECC9E72864D1210056CCE7 /* LaunchScreen.storyboard in Resources */,
 				1FECC9E62864D1210056CCE7 /* Assets.xcassets in Resources */,
 				1FECC9E82864D1210056CCE7 /* Main.storyboard in Resources */,
@@ -457,11 +505,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FB9287A2864E71E005967E3 /* BaseViewController.swift in Sources */,
+				1FB928812864F678005967E3 /* LoadableNib.swift in Sources */,
 				1FB928752864E0A1005967E3 /* ReachabilityManager.swift in Sources */,
 				1FECC9EA2864D1210056CCE7 /* AppDelegate.swift in Sources */,
 				1FECC9B12864CF220056CCE7 /* ViewController.swift in Sources */,
+				1FB928842864F764005967E3 /* NetworkStatusView.swift in Sources */,
 				1FECC9EB2864D1210056CCE7 /* SceneDelegate.swift in Sources */,
+				1FB928892864F7A2005967E3 /* BaseView.swift in Sources */,
 				1FB9287C2864E7F1005967E3 /* Constants.swift in Sources */,
+				1FB9287F2864F4B7005967E3 /* UIStoryboardExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
