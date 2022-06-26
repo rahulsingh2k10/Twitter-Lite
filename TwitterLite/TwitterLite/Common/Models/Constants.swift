@@ -23,3 +23,12 @@ public enum ConnectionStatus: CustomStringConvertible {
         }
     }
 }
+
+
+public enum LoginError: Error {
+    case missingClientID
+    case invalidTokenID
+}
+
+
+typealias SignInCallBack = ((LoggedInUserModel?, Error?) -> ())

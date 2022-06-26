@@ -8,8 +8,9 @@
 import UIKit
 
 
-class BaseViewController: UIViewController {
+class BaseViewController<T: BaseViewModel>: UIViewController {
     public var isNetworkAvailable = false
+    public var viewModel: T?
 
     private var networkStatusView: NetworkStatusView?
 
@@ -17,6 +18,12 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         ReachabilityManager.shared.add(delegate: self)
+
+        if viewModel === .none {
+            viewModel = T()
+        }
+
+        title = viewModel?.title
     }
 
     override func viewWillAppear(_ animated: Bool) {

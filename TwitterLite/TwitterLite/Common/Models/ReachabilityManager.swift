@@ -21,6 +21,7 @@ class ReachabilityManager {
     private let reachability: Reachability!
     private var listeners = [ConnectionStatusListener]()
 
+    // MARK: - Public Methods -
     public func startMonitoring() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(reachabilityChanged),
@@ -51,6 +52,7 @@ class ReachabilityManager {
         listeners.removeAll { $0 === listener }
     }
 
+    // MARK: - Private Methods -
     private init() {
         reachability = try! Reachability()
     }
