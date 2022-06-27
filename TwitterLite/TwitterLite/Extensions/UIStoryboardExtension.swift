@@ -10,8 +10,9 @@ import UIKit
 
 extension UIStoryboard {
     public enum StoryBoardName: String {
-        case LaunchScreen
+        case Login
         case Main
+        case LaunchScreen
     }
 
     public convenience init(name: StoryBoardName) {

@@ -9,8 +9,10 @@ import Foundation
 
 
 struct LoggedInUserModel: Codable {
-    var userName: String?
-    var displayName: String?
+    var userID: String?
     var photoURL: URL?
-    var phoneNumber: String?
+    var displayName: String?
+    var emailAddress: String?
+    var userName: String?
+    var password: String?
 }

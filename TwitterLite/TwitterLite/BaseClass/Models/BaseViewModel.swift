@@ -17,15 +17,15 @@ protocol ViewModelProtocol {
 class BaseViewModel: ViewModelProtocol {
     public var title: String {
         get {
-            return "Base View Model"
+            return String()
         }
     }
 
     required init() {
-        print("Init Called: \(self)")
+        print("***** Init Called: \(self) *****")
     }
 
     deinit {
-        print("***** Deinit Called: \(self) *****")
+        print("***** De-Init Called: \(self) *****")
     }
 }

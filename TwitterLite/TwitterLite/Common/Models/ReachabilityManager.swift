@@ -16,8 +16,8 @@ public protocol ConnectionStatusListener: AnyObject {
 
 class ReachabilityManager {
     public static let shared = ReachabilityManager()
+    public var connectionStatus: ConnectionStatus = .unavailable
 
-    private var reachabilityStatus: Reachability.Connection = .unavailable
     private let reachability: Reachability!
     private var listeners = [ConnectionStatusListener]()
 
@@ -61,11 +61,10 @@ class ReachabilityManager {
     private func reachabilityChanged(notification: Notification) {
         let reachability = notification.object as! Reachability
 
-        var connectionStatus: ConnectionStatus = .none
-
         switch reachability.connection {
         case .none:
             print("Network Unknown")
+            connectionStatus = .none
         case .unavailable:
             print("Network became unreachable")
             connectionStatus = .unavailable

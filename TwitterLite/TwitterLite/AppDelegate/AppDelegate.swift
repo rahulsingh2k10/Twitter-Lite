@@ -7,9 +7,6 @@
 
 import UIKit
 
-import GoogleSignIn
-import Firebase
-
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,15 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // This is just to add delay to show splash screen for more time.
         Thread.sleep(forTimeInterval: 1.0)
-        FirebaseApp.configure()
-
-        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-            if error != nil || user == nil {
-
-            } else {
-
-            }
-        }
 
           return true
     }
@@ -33,12 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        let handled = GIDSignIn.sharedInstance.handle(url)
-        if handled {
-            return true
-        }
-
-        return false
+        return GoogleSignInManager.shared.handle(url: url)
     }
 
     // MARK: UISceneSession Lifecycle
