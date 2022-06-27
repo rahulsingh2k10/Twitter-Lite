@@ -21,14 +21,12 @@ class LoginViewController: BaseViewController<LoginViewModel> {
     // MARK: - Button Action Methods -
     @IBAction func loginButtonClicked(_ sender: Any) {
         let signinVC = UIStoryboard(name: .Login).viewController(type: SigninViewController.self) as! SigninViewController
-        signinVC.modalPresentationStyle = .fullScreen
 
         present(signinVC, animated: true)
     }
 
     @IBAction func createAccountClicked(_ sender: Any) {
         let createAccountVC = UIStoryboard(name: .Login).viewController(type: CreateAccountViewController.self) as! CreateAccountViewController
-        createAccountVC.modalPresentationStyle = .fullScreen
 
         present(createAccountVC, animated: true)
     }

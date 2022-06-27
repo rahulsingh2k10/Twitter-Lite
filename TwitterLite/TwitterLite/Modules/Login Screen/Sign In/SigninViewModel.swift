@@ -9,13 +9,13 @@ import Foundation
 
 
 class SigninViewModel: BaseViewModel {
-    public var model: LoggedInUserModel = LoggedInUserModel()
+    public var userModel: UserModel = UserModel()
 
     // MARK: - Public Methods -
     public func isModelValid() -> Bool {
-        guard let emailAddress = model.emailAddress,
+        guard let emailAddress = userModel.emailAddress,
               emailAddress.isValidEmail() else { return false }
-        guard let password = model.password?.trimmingCharacters(in: .whitespacesAndNewlines),
+        guard let password = userModel.password?.trimmingCharacters(in: .whitespacesAndNewlines),
               !password.isEmpty else { return false }
 
         /*
@@ -33,6 +33,6 @@ class SigninViewModel: BaseViewModel {
     }
 
     public func signInUser(callBackHandler: @escaping SignInCallBack) {
-        FirebaseManager.shared.signin(userDetail: model, callBackHandler: callBackHandler)
+        FirebaseManager.shared.signin(userDetail: userModel, callBackHandler: callBackHandler)
     }
 }

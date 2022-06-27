@@ -1,5 +1,5 @@
 //
-//  LoggedInUserModel.swift
+//  UserModel.swift
 //  TwitterLite
 //
 //  Created by Rahul Singh on 26/06/22.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct LoggedInUserModel: Codable {
+struct UserModel: Codable {
     var userID: String?
     var photoURL: URL?
     var displayName: String?

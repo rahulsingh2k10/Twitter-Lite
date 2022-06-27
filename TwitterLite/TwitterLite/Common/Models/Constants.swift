@@ -43,7 +43,7 @@ public enum LoginError: Error {
 }
 
 
-typealias SignInCallBack = ((LoggedInUserModel?, Error?) -> ())
+typealias SignInCallBack = ((UserModel?, Error?) -> ())
 typealias CallBack = ((Error?) -> ())
 
 

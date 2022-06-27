@@ -87,13 +87,13 @@
                                                     <constraint firstAttribute="height" constant="50" id="GeY-Lv-d61"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="Create account"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="Create Account"/>
                                                 <connections>
                                                     <action selector="createAccountClicked:" destination="8dk-cu-ayF" eventType="touchUpInside" id="U25-ha-PGH"/>
                                                 </connections>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Exp-6C-k7u">
-                                                <rect key="frame" x="20.5" y="551" width="259.5" height="31"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Exp-6C-k7u">
+                                                <rect key="frame" x="20.5" y="551" width="263.5" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have an acoount already?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYY-Jh-eQy">
                                                         <rect key="frame" x="0.0" y="0.0" width="196" height="31"/>
@@ -101,10 +101,11 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vV5-Ta-ZCk">
-                                                        <rect key="frame" x="196" y="0.0" width="63.5" height="31"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Log in"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vV5-Ta-ZCk">
+                                                        <rect key="frame" x="204" y="0.0" width="59.5" height="31"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Login"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Login"/>
                                                         <connections>
                                                             <action selector="loginButtonClicked:" destination="8dk-cu-ayF" eventType="touchUpInside" id="XkN-XG-KOU"/>
                                                         </connections>
@@ -302,7 +303,10 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KH9-uP-eqH">
-                                                <rect key="frame" x="32" y="684.5" width="350" height="31"/>
+                                                <rect key="frame" x="32" y="684.5" width="350" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="ZhF-Ux-52W"/>
+                                                </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="tinted" title="Create Account"/>
                                                 <connections>
@@ -394,12 +398,13 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PdW-0c-DGp">
                                                         <rect key="frame" x="0.0" y="0.0" width="350" height="28.5"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SQD-KW-mmx">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fML-9e-1mS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="18.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                                                 <connections>
-                                                                    <action selector="textFieldChanged:" destination="xws-aU-f85" eventType="editingChanged" id="yB0-U1-Aqe"/>
+                                                                    <action selector="textFieldChanged:" destination="xws-aU-f85" eventType="editingChanged" id="4BL-mm-QEH"/>
+                                                                    <outlet property="delegate" destination="xws-aU-f85" id="Cco-2H-gtK"/>
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxp-kY-HLj">
@@ -423,6 +428,7 @@
                                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                                                 <connections>
                                                                     <action selector="textFieldChanged:" destination="xws-aU-f85" eventType="editingChanged" id="7Ho-ci-zWl"/>
+                                                                    <outlet property="delegate" destination="xws-aU-f85" id="vu8-jk-gGl"/>
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBU-HQ-Kcv">
@@ -443,7 +449,10 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOY-Q5-zWT">
-                                                <rect key="frame" x="32" y="399" width="350" height="31"/>
+                                                <rect key="frame" x="32" y="399" width="350" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="E1E-R5-2ZD"/>
+                                                </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="tinted" title="Sign In"/>
                                                 <connections>
@@ -489,7 +498,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailAddressTextField" destination="SQD-KW-mmx" id="xlg-3q-idK"/>
+                        <outlet property="emailAddressTextField" destination="fML-9e-1mS" id="vd3-Ox-nJd"/>
                         <outlet property="scrollViewContentHeightConstraint" destination="nPg-DE-Gwd" id="r4W-UE-eHm"/>
                         <outlet property="signinButton" destination="OOY-Q5-zWT" id="75y-mC-agd"/>
                         <outlet property="theScrollView" destination="eGw-hk-y01" id="frf-Aw-RJV"/>

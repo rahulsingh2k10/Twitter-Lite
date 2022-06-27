@@ -12,5 +12,5 @@ struct Utils {
     static var shared: Utils = Utils()
     private init() {}
 
-    public var loggedInUser: LoggedInUserModel?
+    public var loggedInUser: UserModel?
 }

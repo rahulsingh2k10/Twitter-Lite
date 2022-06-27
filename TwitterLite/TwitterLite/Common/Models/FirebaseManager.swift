@@ -8,7 +8,6 @@
 import Foundation
 import FirebaseCore
 import FirebaseAuth
-import FirebaseDatabase
 
 
 struct FirebaseManager {
@@ -23,7 +22,7 @@ struct FirebaseManager {
         return FirebaseApp.app()?.options.clientID
     }
 
-    public func signin(userDetail: LoggedInUserModel, callBackHandler: @escaping SignInCallBack) {
+    public func signin(userDetail: UserModel, callBackHandler: @escaping SignInCallBack) {
         guard let emailAddress = userDetail.emailAddress,
               let password = userDetail.password else {
             callBackHandler(.none, LoginError.missingParameters)
@@ -48,7 +47,7 @@ struct FirebaseManager {
         }
     }
 
-    public func createAccount(userDetail: LoggedInUserModel, callBackHandler: @escaping SignInCallBack) {
+    public func createAccount(userDetail: UserModel, callBackHandler: @escaping SignInCallBack) {
         guard let emailAddress = userDetail.emailAddress,
               let password = userDetail.password else {
             callBackHandler(.none, LoginError.missingParameters)
@@ -70,8 +69,8 @@ struct FirebaseManager {
     }
 
     // MARK: - Private Methods -
-    private func update(user: LoggedInUserModel, callBackHandler: @escaping SignInCallBack) {
-        updateUser(user: user) { error in
+    private func update(user: UserModel, callBackHandler: @escaping SignInCallBack) {
+        FirebaseDatabaseManager.shared.updateUser(user: user) { error in
             if let error = error {
                 callBackHandler(.none, error)
             } else {
@@ -87,31 +86,19 @@ struct FirebaseManager {
             callBackHandler(.none, error)
         } else if let authResult = authResult {
             let user = authResult.user
-            let loggedInUser = LoggedInUserModel(userID: user.uid,
+            var username = user.email ?? String()
+            if let dotRange = username.range(of: "@") {
+                username.removeSubrange(dotRange.lowerBound..<username.endIndex)
+            }
+
+            let loggedInUser = UserModel(userID: user.uid,
                                                  photoURL: user.photoURL as URL?,
                                                  displayName: user.displayName,
                                                  emailAddress: user.email,
-                                                 userName: user.email,
+                                                 userName: username,
                                                  password: .none)
 
             update(user: loggedInUser, callBackHandler: callBackHandler)
-        }
-    }
-
-    private func databaseReference() -> DatabaseReference {
-        return Database.database().reference()
-    }
-
-    private func updateUser(user: LoggedInUserModel, callBackHandler: @escaping CallBack) {
-        let ref = databaseReference().child(FirebaseDatabaseName.users.rawValue).child(user.userID!)
-
-        if let data = try? JSONEncoder().encode(user),
-           var jsonDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-            jsonDict.removeValue(forKey: "userID")
-
-            ref.updateChildValues(jsonDict) { error, ref in
-                callBackHandler(error)
-            }
         }
     }
 }

@@ -19,7 +19,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        signinButton.isEnabled = false
+        enableDisableSignInButton()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -28,25 +28,23 @@ class SigninViewController: BaseViewController<SigninViewModel> {
         emailAddressTextField.becomeFirstResponder()
     }
 
-    // MARK - Action Methods -
+    // MARK: - Action Methods -
     @IBAction func textFieldChanged(_ sender: UITextField) {
         switch sender.tag {
         case 0:
-            viewModel?.model.emailAddress = sender.text
+            viewModel?.userModel.emailAddress = sender.text
         case 1:
-            viewModel?.model.password = sender.text
+            viewModel?.userModel.password = sender.text
         default: break
         }
 
-        if let vm = viewModel, vm.isModelValid() {
-            signinButton.isEnabled = true
-        } else {
-            signinButton.isEnabled = false
-        }
+        enableDisableSignInButton()
     }
 
-    @IBAction func signinButtonClicked(_ sender: Any) {
+    @IBAction func signinButtonClicked(_ sender: UIButton?) {
+        view.endEditing(true)
         activityView.startAnimating()
+
         viewModel?.signInUser() { [weak self]user, error in
             guard let strongSelf = self else { return }
 
@@ -62,6 +60,44 @@ class SigninViewController: BaseViewController<SigninViewModel> {
                 Utils.shared.loggedInUser = user
                 strongSelf.presentingViewController?.presentingViewController?.dismiss(animated: true)
             }
+        }
+    }
+
+    //MARK: - Private Methods -
+    @discardableResult
+    private func enableDisableSignInButton()  -> Bool {
+        var shouldEnable = false
+
+        if let vm = viewModel, vm.isModelValid() {
+            shouldEnable = true
+        } else {
+            shouldEnable = false
+        }
+
+        signinButton.isEnabled = shouldEnable
+
+        return shouldEnable
+    }
+}
+
+
+extension SigninViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let textFieldTag = textField.tag
+
+        if textField.tag <= 0 {
+            let textFields: [UITextField] = getAllSubviews(fromView: view)
+            if let nextTextField = textFields.filter({ $0.tag == (textFieldTag + 1)}).first {
+                nextTextField.becomeFirstResponder()
+            }
+
+            return true
+        } else {
+            if enableDisableSignInButton() {
+                signinButtonClicked(.none)
+            }
+
+            return enableDisableSignInButton()
         }
     }
 }

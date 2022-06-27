@@ -36,29 +36,27 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
         nameTextField.becomeFirstResponder()
     }
 
-    // MARK - Action Methods -
+    // MARK: - Action Methods -
     @IBAction func textFieldChanged(_ sender: UITextField) {
         switch sender.tag {
         case 0:
-            viewModel?.model.displayName = sender.text
+            viewModel?.userModel.displayName = sender.text
         case 1:
-            viewModel?.model.emailAddress = sender.text
+            viewModel?.userModel.emailAddress = sender.text
         case 2:
-            viewModel?.model.userName = sender.text
+            viewModel?.userModel.userName = sender.text
         case 3:
-            viewModel?.model.password = sender.text
+            viewModel?.userModel.password = sender.text
         default: break
         }
 
-        if let vm = viewModel, vm.isModelValid() {
-            createAccountButton.isEnabled = true
-        } else {
-            createAccountButton.isEnabled = false
-        }
+        enableDisableCreateButton()
     }
 
     @IBAction func createAccountClicked(_ sender: Any?) {
+        view.endEditing(true)
         activityView.startAnimating()
+
         viewModel?.createUser() { [weak self] (user, error) in
             guard let strongSelf = self else { return }
 
@@ -77,7 +75,22 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
         }
     }
 
-    // MARK - Private Methods -
+    // MARK: - Private Methods -
+    @discardableResult
+    private func enableDisableCreateButton()  -> Bool {
+        var shouldEnable = false
+
+        if let vm = viewModel, vm.isModelValid() {
+            shouldEnable = true
+        } else {
+            shouldEnable = false
+        }
+
+        createAccountButton.isEnabled = shouldEnable
+
+        return shouldEnable
+    }
+
     private func imageButtonClicked() {
         view.endEditing(true)
 
@@ -136,8 +149,9 @@ extension CreateAccountViewController: UIImagePickerControllerDelegate, UINaviga
             return
         }
 
-        viewModel?.model.photoURL = imageURL
+        viewModel?.userModel.photoURL = imageURL
         profileView.load(image: image)
+        enableDisableCreateButton()
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -150,16 +164,20 @@ extension CreateAccountViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let textFieldTag = textField.tag
 
-        if textField.tag <= 3 {
+        if textField.tag <= 2 {
             let textFields: [UITextField] = getAllSubviews(fromView: view)
             if let nextTextField = textFields.filter({ $0.tag == (textFieldTag + 1)}).first {
                 // TODO: Scroll View above Keyboard
                 nextTextField.becomeFirstResponder()
             }
-        } else {
-            createAccountClicked(.none)
-        }
 
-        return true
+            return true
+        } else {
+            if enableDisableCreateButton() {
+                createAccountClicked(.none)
+            }
+
+            return enableDisableCreateButton()
+        }
     }
 }

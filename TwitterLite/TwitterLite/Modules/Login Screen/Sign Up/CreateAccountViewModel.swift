@@ -9,17 +9,18 @@ import Foundation
 
 
 class CreateAccountViewModel: BaseViewModel {
-    public var model: LoggedInUserModel = LoggedInUserModel()
+    public var userModel: UserModel = UserModel()
 
     // MARK: - Public Methods -
     public func isModelValid() -> Bool {
-        guard let name = model.displayName?.trimmingCharacters(in: .whitespacesAndNewlines),
+        guard let _ = userModel.photoURL else { return false }
+        guard let name = userModel.displayName?.trimmingCharacters(in: .whitespacesAndNewlines),
               !name.isEmpty else { return false }
-        guard let emailAddress = model.emailAddress,
+        guard let emailAddress = userModel.emailAddress,
               emailAddress.isValidEmail() else { return false }
-        guard let userName = model.userName?.trimmingCharacters(in: .whitespacesAndNewlines),
+        guard let userName = userModel.userName?.trimmingCharacters(in: .whitespacesAndNewlines),
               !userName.isEmpty else { return false }
-        guard let password = model.password?.trimmingCharacters(in: .whitespacesAndNewlines),
+        guard let password = userModel.password?.trimmingCharacters(in: .whitespacesAndNewlines),
               !password.isEmpty else { return false }
 
         /*
@@ -37,6 +38,6 @@ class CreateAccountViewModel: BaseViewModel {
     }
 
     public func createUser(callBackHandler: @escaping SignInCallBack) {
-        FirebaseManager.shared.createAccount(userDetail: model, callBackHandler: callBackHandler)
+        FirebaseManager.shared.createAccount(userDetail: userModel, callBackHandler: callBackHandler)
     }
 }
