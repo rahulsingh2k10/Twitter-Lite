@@ -43,7 +43,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
 
     @IBAction func signinButtonClicked(_ sender: UIButton?) {
         view.endEditing(true)
-        activityView.startAnimating()
+        activityView.startAnimating(title: StringValue.signingIn.rawValue)
 
         viewModel?.signInUser() { [weak self]user, error in
             guard let strongSelf = self else { return }
@@ -63,7 +63,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
         }
     }
 
-    //MARK: - Private Methods -
+    // MARK: - Private Methods -
     @discardableResult
     private func enableDisableSignInButton()  -> Bool {
         var shouldEnable = false

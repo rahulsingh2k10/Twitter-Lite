@@ -10,7 +10,7 @@ import UIKit
 
 
 class LoginViewModel: BaseViewModel {
-    //MARK: - Public Methods - 
+    // MARK: - Public Methods - 
     public func signInToGoogle(viewController: UIViewController,
                                didStartAuthCallback: @escaping CallBack,
                                callBackHandler: @escaping SignInCallBack) {

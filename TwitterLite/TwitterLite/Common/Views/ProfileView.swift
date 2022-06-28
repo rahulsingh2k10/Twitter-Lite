@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 
 @IBDesignable
@@ -37,6 +38,10 @@ class ProfileView: BaseView {
 
     public func load(image: UIImage?) {
         theImageView.image = image
+    }
+
+    public func loadImage(url: URL?) {
+        theImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "Placeholder"))
     }
 
     // MARK: - Gesture Recognizer Methods -

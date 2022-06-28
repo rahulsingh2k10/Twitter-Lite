@@ -36,7 +36,7 @@ class LoginViewController: BaseViewController<LoginViewModel> {
                                   didStartAuthCallback: {[weak self] _ in
             guard let strongSelf = self else { return }
 
-            strongSelf.activityView.startAnimating()
+            strongSelf.activityView.startAnimating(title: StringValue.loggingIn.rawValue)
         }) { [weak self] (user, error) in
             guard let strongSelf = self else { return }
 

@@ -16,7 +16,7 @@ public protocol ConnectionStatusListener: AnyObject {
 
 class ReachabilityManager {
     public static let shared = ReachabilityManager()
-    public var connectionStatus: ConnectionStatus = .unavailable
+    public var connectionStatus: ConnectionStatus = .none
 
     private let reachability: Reachability!
     private var listeners = [ConnectionStatusListener]()

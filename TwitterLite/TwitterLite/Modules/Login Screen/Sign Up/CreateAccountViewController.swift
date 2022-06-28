@@ -25,6 +25,7 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
         createAccountButton.isEnabled = false
 
         profileView.mode = .add
+        profileView.load(image: UIImage(systemName: "plus.circle"))
         profileView.didTapProfileView = {[unowned self] in
             self.imageButtonClicked()
         }
@@ -55,7 +56,7 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
 
     @IBAction func createAccountClicked(_ sender: Any?) {
         view.endEditing(true)
-        activityView.startAnimating()
+        activityView.startAnimating(title: StringValue.signingIn.rawValue)
 
         viewModel?.createUser() { [weak self] (user, error) in
             guard let strongSelf = self else { return }

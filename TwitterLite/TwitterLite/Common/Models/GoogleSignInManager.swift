@@ -50,7 +50,7 @@ struct GoogleSignInManager {
         }
     }
 
-    //MARK: - Private Methods -
+    // MARK: - Private Methods -
     private func authenticate(user: GIDGoogleUser, callBackHandler: @escaping SignInCallBack) {
         let authentication = user.authentication
 

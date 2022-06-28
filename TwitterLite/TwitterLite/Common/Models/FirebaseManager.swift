@@ -18,6 +18,20 @@ struct FirebaseManager {
     }
 
     // MARK: - Public Methods -
+    public func signOut(callBack: CallBack) {
+        do {
+            try Auth.auth().signOut()
+
+            callBack(.none)
+        } catch {
+            callBack(error)
+        }
+    }
+
+    public func currentUser() -> User? {
+        return Auth.auth().currentUser
+    }
+
     public func getClientID() -> String? {
         return FirebaseApp.app()?.options.clientID
     }

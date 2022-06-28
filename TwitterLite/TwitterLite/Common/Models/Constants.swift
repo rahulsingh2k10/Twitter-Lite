@@ -45,7 +45,9 @@ public enum LoginError: Error {
 
 typealias SignInCallBack = ((UserModel?, Error?) -> ())
 typealias CallBack = ((Error?) -> ())
+typealias URLCallBack = ((URL?, Error?) -> ())
 
+typealias JSONDict = [String: AnyObject]
 
 public enum StringValue: String {
     case pickPhoto = "Pick a Photo"
@@ -56,6 +58,12 @@ public enum StringValue: String {
     case cancelTitle = "Cancel"
     case library = "Library"
     case camera = "Camera"
+    case yesTitle = "Yes"
+    case signOutConfirmation = "Are you sure you want to Sign Out?"
+    case loading = "Loading..."
+    case signingIn = "Signing In..."
+    case signingOut = "Signing Out..."
+    case loggingIn = "Logging In..."
 }
 
 
@@ -68,4 +76,5 @@ public enum Mode {
 
 public enum FirebaseDatabaseName: String {
     case users = "Users"
+    case profileImages = "Profile_Images"
 }

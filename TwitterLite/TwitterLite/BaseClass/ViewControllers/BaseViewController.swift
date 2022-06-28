@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
 
 class BaseViewController<T: BaseViewModel>: UIViewController {
@@ -19,9 +18,7 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
 
     public var isNetworkAvailable = false
     public var viewModel: T?
-    public var activityView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 45, height: 45),
-                                                      type: .lineScale,
-                                                      color: .systemBlue)
+    public var activityView = ActivityIndicatorView(frame: .zero)
 
     private var networkStatusView: NetworkStatusView?
     private var isExpanded: Bool = false
@@ -57,7 +54,6 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
         super.viewWillAppear(animated)
 
         ReachabilityManager.shared.add(delegate: self)
-        networkStatusDidChange(status: ReachabilityManager.shared.connectionStatus)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -132,12 +128,6 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
     public func networkStatusChanged(isNetworkAvailable: Bool) {
         self.isNetworkAvailable = isNetworkAvailable
         addRemoveNetworkView(isNetworkAvailable: isNetworkAvailable)
-
-        if isNetworkAvailable == true {
-            print("Network Reachable")
-        } else {
-            print("Network Un-Reachable")
-        }
     }
 
     // MARK - Private Methods -
@@ -146,23 +136,29 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
 
         activityView.translatesAutoresizingMaskIntoConstraints = false
 
-        let centerYAnchorConstraint = activityView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         let centerXAnchorConstraint = activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let centerYAnchorConstraint = activityView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        let widthAnchorConstraint = activityView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        let heightAnchorConstraint = activityView.heightAnchor.constraint(equalTo: view.heightAnchor)
 
-        view.addConstraints([centerYAnchorConstraint, centerXAnchorConstraint])
+        view.addConstraints([centerXAnchorConstraint,
+                             centerYAnchorConstraint,
+                             widthAnchorConstraint,
+                             heightAnchorConstraint])
+
+        activityView.stopAnimating()
     }
 
     private func addRemoveNetworkView(isNetworkAvailable: Bool) {
         if isNetworkAvailable {
-            if networkStatusView != .none {
-                networkStatusView?.removeFromSuperview()
-                networkStatusView = nil
-            }
+            networkStatusView?.removeFromSuperview()
+            networkStatusView = .none
         } else {
             networkStatusView = NetworkStatusView(frame: .zero)
             view.addSubview(networkStatusView!)
 
             networkStatusView?.translatesAutoresizingMaskIntoConstraints = false
+
             let leadingAnchorConstraint = networkStatusView!.leadingAnchor.constraint(equalTo: view.leadingAnchor)
             let trailingAnchorConstraint = networkStatusView!.trailingAnchor.constraint(equalTo: view.trailingAnchor)
             let bottomAnchorConstraint = networkStatusView!.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -178,8 +174,12 @@ extension BaseViewController: ConnectionStatusListener {
         switch status {
         case .none, .unavailable:
             networkStatusChanged(isNetworkAvailable: false)
+
+            print("Network Un-Reachable")
         case .wifi, .cellular:
             networkStatusChanged(isNetworkAvailable: true)
+
+            print("Network Reachable")
         }
     }
 }

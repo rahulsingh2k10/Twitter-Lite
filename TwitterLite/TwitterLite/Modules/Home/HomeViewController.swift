@@ -9,23 +9,61 @@ import UIKit
 
 
 class HomeViewController: BaseViewController<BaseViewModel> {
+    @IBOutlet weak private var profileView: ProfileView!
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        GoogleSignInManager.shared.restoreuser { [weak self] (user, error) in
+        activityView.startAnimating()
+
+        if FirebaseManager.shared.currentUser() == .none {
+            activityView.stopAnimating()
+
+            openLoginViewController()
+        } else {
+            FirebaseDatabaseManager.shared.fetchUserDetails() { [weak self] error in
+                guard let strongSelf = self else { return }
+
+                strongSelf.activityView.stopAnimating()
+                strongSelf.profileView.loadImage(url: Utils.shared.loggedInUser?.photoURL)
+            }
+        }
+    }
+
+    // MARK: - Action Methods -
+    @IBAction func signOutButtonClicked(_ sender: Any) {
+        let yesAction = UIAlertAction(title: StringValue.yesTitle.rawValue,
+                                      style: .default) { [weak self] _ in
             guard let strongSelf = self else { return }
 
-            if let error = error, (error as NSError).code != -4 {
-                strongSelf.presentAlert(message: error.localizedDescription, alertAction: [])
-            } else if let user = user {
-                Utils.shared.loggedInUser = user
-            } else {
-                let loginVC = UIStoryboard(name: .Login).viewController(type: LoginViewController.self) as! LoginViewController
-                loginVC.modalPresentationStyle = .fullScreen
+            strongSelf.activityView.startAnimating(title: StringValue.signingOut.rawValue)
 
-                strongSelf.present(loginVC, animated: false)
+            FirebaseManager.shared.signOut() { [weak self] error in
+                guard let strongSelf = self else { return }
+
+                strongSelf.activityView.stopAnimating()
+
+                strongSelf.openLoginViewController(true)
             }
+        }
+
+        let cancelAction = UIAlertAction(title: StringValue.cancelTitle.rawValue,
+                                         style: .default,
+                                         handler: .none)
+
+        presentAlert(message: StringValue.signOutConfirmation.rawValue,
+                     alertAction: [yesAction, cancelAction])
+    }
+
+    // MARK: - Private Methods -
+    private func openLoginViewController(_ animated: Bool = false) {
+        DispatchQueue.main.async() {[weak self] in
+            guard let strongSelf = self else { return }
+
+            let loginVC = UIStoryboard(name: .Login).viewController(type: LoginViewController.self) as! LoginViewController
+            loginVC.modalPresentationStyle = .fullScreen
+
+            strongSelf.present(loginVC, animated: animated)
         }
     }
 }

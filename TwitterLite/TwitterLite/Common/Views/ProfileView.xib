@@ -16,8 +16,8 @@
             <rect key="frame" x="0.0" y="0.0" width="256" height="256"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jHH-93-gvl">
-                    <rect key="frame" x="0.0" y="-2.5" width="256" height="261"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="jHH-93-gvl">
+                    <rect key="frame" x="0.0" y="0.0" width="256" height="256"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="jHH-93-gvl" secondAttribute="height" multiplier="1:1" id="Fds-xf-8an"/>
                     </constraints>
@@ -38,6 +38,6 @@
         </view>
     </objects>
     <resources>
-        <image name="plus.circle" catalog="system" width="128" height="121"/>
+        <image name="Placeholder" width="512" height="512"/>
     </resources>
 </document>

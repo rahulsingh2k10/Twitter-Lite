@@ -16,9 +16,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rahul Singh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um3-TI-abu">
-                                <rect key="frame" x="125" y="456" width="164" height="38.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59K-B0-OgC" customClass="ProfileView" customModule="TwitterLite" customModuleProvider="target">
+                                <rect key="frame" x="20" y="45" width="40" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="59K-B0-OgC" secondAttribute="height" multiplier="1:1" id="7yK-lw-lJc"/>
+                                    <constraint firstAttribute="width" constant="40" id="Pvc-ZY-DYE"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter_Logo_Light" translatesAutoresizingMaskIntoConstraints="NO" id="4lL-SS-yIC">
+                                <rect key="frame" x="187" y="45" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="aWD-MH-cQI"/>
+                                    <constraint firstAttribute="width" secondItem="4lL-SS-yIC" secondAttribute="height" multiplier="1:1" id="vBd-Bc-w7a"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" role="destructive" translatesAutoresizingMaskIntoConstraints="NO" id="1Gy-BS-iel">
+                                <rect key="frame" x="354" y="45" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1Gy-BS-iel" secondAttribute="height" id="KVV-He-T40"/>
+                                    <constraint firstAttribute="width" constant="40" id="VGH-JY-AGt"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="Exit">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOutButtonClicked:" destination="wxO-cT-vRW" eventType="touchUpInside" id="zl8-QI-zbr"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5T9-DI-0fI">
+                                <rect key="frame" x="26" y="136" width="368" height="726"/>
+                                <string key="text">Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label </string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -26,23 +56,33 @@
                         <viewLayoutGuide key="safeArea" id="w3S-lc-Mlr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Um3-TI-abu" firstAttribute="centerY" secondItem="w3S-lc-Mlr" secondAttribute="centerY" id="Pum-MY-3uO"/>
-                            <constraint firstItem="Um3-TI-abu" firstAttribute="centerX" secondItem="w3S-lc-Mlr" secondAttribute="centerX" id="aGV-jb-AQs"/>
+                            <constraint firstItem="59K-B0-OgC" firstAttribute="leading" secondItem="w3S-lc-Mlr" secondAttribute="leading" constant="20" id="1K9-0N-7mZ"/>
+                            <constraint firstItem="4lL-SS-yIC" firstAttribute="top" secondItem="w3S-lc-Mlr" secondAttribute="top" constant="1" id="8de-ae-B4x"/>
+                            <constraint firstItem="5T9-DI-0fI" firstAttribute="leading" secondItem="w3S-lc-Mlr" secondAttribute="leading" constant="26" id="AnI-jM-bmq"/>
+                            <constraint firstItem="59K-B0-OgC" firstAttribute="top" secondItem="w3S-lc-Mlr" secondAttribute="top" constant="1" id="BWG-kS-mQB"/>
+                            <constraint firstItem="4lL-SS-yIC" firstAttribute="centerX" secondItem="w3S-lc-Mlr" secondAttribute="centerX" id="RVD-ye-GnF"/>
+                            <constraint firstItem="1Gy-BS-iel" firstAttribute="top" secondItem="w3S-lc-Mlr" secondAttribute="top" constant="1" id="YfI-5O-VZR"/>
+                            <constraint firstItem="w3S-lc-Mlr" firstAttribute="trailing" secondItem="1Gy-BS-iel" secondAttribute="trailing" constant="20" id="Yfm-yN-OsK"/>
+                            <constraint firstItem="5T9-DI-0fI" firstAttribute="top" secondItem="w3S-lc-Mlr" secondAttribute="top" constant="92" id="eQ9-u9-vdC"/>
+                            <constraint firstItem="w3S-lc-Mlr" firstAttribute="trailing" secondItem="5T9-DI-0fI" secondAttribute="trailing" constant="20" id="fRQ-Wq-UCn"/>
+                            <constraint firstItem="w3S-lc-Mlr" firstAttribute="bottom" secondItem="5T9-DI-0fI" secondAttribute="bottom" id="mxR-Cl-WhQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Re-dN-m0J"/>
+                    <connections>
+                        <outlet property="profileView" destination="59K-B0-OgC" id="pFb-ci-25I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfk-yK-6MA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="164" y="78"/>
+            <point key="canvasLocation" x="163.768115942029" y="77.678571428571431"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fmT-LY-NTy">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rro-19-KhI" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Rro-19-KhI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="m0G-kZ-5q3">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -56,6 +96,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Exit" width="30" height="30"/>
+        <image name="Twitter_Logo_Light" width="320" height="260"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
