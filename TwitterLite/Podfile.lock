@@ -5,11 +5,18 @@ PODS:
   - AppAuth/Core (1.5.0)
   - AppAuth/ExternalUserAgent (1.5.0):
     - AppAuth/Core
+  - Firebase/CoreOnly (9.2.0):
+    - FirebaseCore (= 9.2.0)
+  - Firebase/Storage (9.2.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 9.2.0)
+  - FirebaseAppCheckInterop (9.2.0)
   - FirebaseAuth (9.2.0):
     - FirebaseCore (~> 9.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
     - GoogleUtilities/Environment (~> 7.7)
     - GTMSessionFetcher/Core (< 3.0, >= 1.7)
+  - FirebaseAuthInterop (9.2.0)
   - FirebaseCore (9.2.0):
     - FirebaseCoreDiagnostics (~> 9.0)
     - FirebaseCoreInternal (~> 9.0)
@@ -20,11 +27,22 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - FirebaseCoreExtension (9.2.0):
+    - FirebaseCore (~> 9.0)
   - FirebaseCoreInternal (9.2.0):
     - "GoogleUtilities/NSData+zlib (~> 7.7)"
   - FirebaseDatabase (9.2.0):
     - FirebaseCore (~> 9.0)
     - leveldb-library (~> 1.22)
+  - FirebaseStorage (9.2.0):
+    - FirebaseAppCheckInterop (~> 9.0)
+    - FirebaseAuthInterop (~> 9.0)
+    - FirebaseCore (~> 9.0)
+    - FirebaseCoreExtension (~> 9.0)
+    - FirebaseStorageInternal (~> 9.0)
+  - FirebaseStorageInternal (9.2.0):
+    - FirebaseCore (~> 9.0)
+    - GTMSessionFetcher/Core (< 3.0, >= 1.7)
   - GoogleDataTransport (9.1.4):
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30910.0, >= 2.30908.0)
@@ -63,22 +81,33 @@ PODS:
   - NVActivityIndicatorView/Base (5.1.1)
   - PromisesObjC (2.1.1)
   - ReachabilitySwift (5.0.0)
+  - SDWebImage (5.13.0):
+    - SDWebImage/Core (= 5.13.0)
+  - SDWebImage/Core (5.13.0)
 
 DEPENDENCIES:
+  - Firebase/Storage
   - FirebaseAuth
   - FirebaseDatabase
   - GoogleSignIn
   - NVActivityIndicatorView
   - ReachabilitySwift
+  - SDWebImage
 
 SPEC REPOS:
   trunk:
     - AppAuth
+    - Firebase
+    - FirebaseAppCheckInterop
     - FirebaseAuth
+    - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCoreExtension
     - FirebaseCoreInternal
     - FirebaseDatabase
+    - FirebaseStorage
+    - FirebaseStorageInternal
     - GoogleDataTransport
     - GoogleSignIn
     - GoogleUtilities
@@ -89,14 +118,21 @@ SPEC REPOS:
     - NVActivityIndicatorView
     - PromisesObjC
     - ReachabilitySwift
+    - SDWebImage
 
 SPEC CHECKSUMS:
   AppAuth: 80317d99ac7ff2801a2f18ff86b48cd315ed465d
+  Firebase: 4ba896cb8e5105d4b9e247e1c1b6222b548df55a
+  FirebaseAppCheckInterop: 003b4882460c2827d1e2a1a81b65e88440eb01fa
   FirebaseAuth: 1c574ab64a051dd86dbe7fd5a3f86b58155b3482
+  FirebaseAuthInterop: aa9cf4d66b00e9f1e48a1aaa2aefa821fc741127
   FirebaseCore: 0e27f2a15d8f7b7ef11e7d93e23b1cbab55d748c
   FirebaseCoreDiagnostics: ad3f6c68b7c5b63b7cf15b0785d7137f05f32268
+  FirebaseCoreExtension: 20a42c79703ec89f0dd578c28659eaf9fe62eade
   FirebaseCoreInternal: cb966328b6985dbd6f535e1461291063e1c4a00f
   FirebaseDatabase: 0a888e4bcaa8edc43701597daab336201fb47cc9
+  FirebaseStorage: b47b4a04062ab07911063571241c103a8a2a2332
+  FirebaseStorageInternal: 50c963664bc73739b68eb2d8427c91de5168dbcf
   GoogleDataTransport: 5fffe35792f8b96ec8d6775f5eccd83c998d5a3b
   GoogleSignIn: 3c68388ac221f379676e8f1cb115df3aaf73b93f
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
@@ -107,7 +143,8 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  SDWebImage: 0327043dbb9533e75f2eff8445b3df0f2ceca6ac
 
-PODFILE CHECKSUM: d819d63baf326957fb5f76fe4b4b1493a972a898
+PODFILE CHECKSUM: de018c07429f1a7c8f42697e6ed48ef9fc930fe3
 
 COCOAPODS: 1.11.2

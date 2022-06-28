@@ -7,11 +7,13 @@ target 'TwitterLite' do
 
     # Pods for TwitterLite
     pod 'ReachabilitySwift'
-    pod 'FirebaseAuth'
     pod 'GoogleSignIn'
+    pod 'FirebaseAuth'
     pod 'FirebaseDatabase'
+    pod 'Firebase/Storage'
     pod 'NVActivityIndicatorView'
-
+    pod 'SDWebImage'
+    
     target 'TwitterLiteTests' do
         inherit! :search_paths
         # Pods for testing
