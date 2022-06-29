@@ -9,29 +9,43 @@ import UIKit
 import GoogleSignIn
 
 
+protocol LoginDelegate: AnyObject {
+    func loginDidComplete()
+}
+
+
 class LoginViewController: BaseViewController<LoginViewModel> {
-    @IBOutlet weak var googleSignInView: GIDSignInButton!
+    @IBOutlet weak private var loginButton: UIButton!
+    @IBOutlet weak private var createAccountButton: UIButton!
+    @IBOutlet weak private var googleSignInView: GIDSignInButton!
+
+    public weak var loginDelegate: LoginDelegate?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
+        createAccountButton.tintColor = .systemBlue
+        loginButton.tintColor = .systemBlue
 
         googleSignInView.style = .wide
     }
 
     // MARK: - Button Action Methods -
-    @IBAction func loginButtonClicked(_ sender: Any) {
+    @IBAction private func loginButtonClicked(_ sender: Any) {
         let signinVC = UIStoryboard(name: .Login).viewController(type: SigninViewController.self) as! SigninViewController
+        signinVC.loginDelegate = self
 
         present(signinVC, animated: true)
     }
 
-    @IBAction func createAccountClicked(_ sender: Any) {
+    @IBAction private func createAccountClicked(_ sender: Any) {
         let createAccountVC = UIStoryboard(name: .Login).viewController(type: CreateAccountViewController.self) as! CreateAccountViewController
+        createAccountVC.loginDelegate = self
 
         present(createAccountVC, animated: true)
     }
 
-    @IBAction func googleSignInViewClicked(_ sender: Any) {
+    @IBAction private func googleSignInViewClicked(_ sender: Any) {
         viewModel?.signInToGoogle(viewController: self,
                                   didStartAuthCallback: {[weak self] _ in
             guard let strongSelf = self else { return }
@@ -51,8 +65,16 @@ class LoginViewController: BaseViewController<LoginViewModel> {
             } else if let user = user {
                 Utils.shared.loggedInUser = user
 
+                strongSelf.loginDelegate?.loginDidComplete()
                 strongSelf.dismiss(animated: true)
             }
         }
+    }
+}
+
+
+extension LoginViewController: LoginDelegate {
+    func loginDidComplete() {
+        loginDelegate?.loginDidComplete()
     }
 }

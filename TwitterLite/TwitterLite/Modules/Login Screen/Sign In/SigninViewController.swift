@@ -16,6 +16,8 @@ class SigninViewController: BaseViewController<SigninViewModel> {
     @IBOutlet weak private var signinButton: UIButton!
     @IBOutlet weak private var emailAddressTextField: UITextField!
 
+    public weak var loginDelegate: LoginDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +31,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
     }
 
     // MARK: - Action Methods -
-    @IBAction func textFieldChanged(_ sender: UITextField) {
+    @IBAction private func textFieldChanged(_ sender: UITextField) {
         switch sender.tag {
         case 0:
             viewModel?.userModel.emailAddress = sender.text
@@ -41,7 +43,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
         enableDisableSignInButton()
     }
 
-    @IBAction func signinButtonClicked(_ sender: UIButton?) {
+    @IBAction private func signinButtonClicked(_ sender: UIButton?) {
         view.endEditing(true)
         activityView.startAnimating(title: StringValue.signingIn.rawValue)
 
@@ -58,6 +60,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
                 strongSelf.presentAlert(message: error.localizedDescription, alertAction: [okAction])
             } else if let user = user {
                 Utils.shared.loggedInUser = user
+                strongSelf.loginDelegate?.loginDidComplete()
                 strongSelf.presentingViewController?.presentingViewController?.dismiss(animated: true)
             }
         }

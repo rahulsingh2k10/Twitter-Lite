@@ -17,6 +17,8 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
     @IBOutlet weak private var profileView: ProfileView!
     @IBOutlet weak private var createAccountButton: UIButton!
 
+    public weak var loginDelegate: LoginDelegate?
+
     lazy private var imagePicker = UIImagePickerController()
 
     override func viewDidLoad() {
@@ -25,7 +27,7 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
         createAccountButton.isEnabled = false
 
         profileView.mode = .add
-        profileView.load(image: UIImage(systemName: "plus.circle"))
+        profileView.load(image: UIImage(systemName: "plus"))
         profileView.didTapProfileView = {[unowned self] in
             self.imageButtonClicked()
         }
@@ -38,7 +40,7 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
     }
 
     // MARK: - Action Methods -
-    @IBAction func textFieldChanged(_ sender: UITextField) {
+    @IBAction private func textFieldChanged(_ sender: UITextField) {
         switch sender.tag {
         case 0:
             viewModel?.userModel.displayName = sender.text
@@ -54,7 +56,7 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
         enableDisableCreateButton()
     }
 
-    @IBAction func createAccountClicked(_ sender: Any?) {
+    @IBAction private func createAccountClicked(_ sender: Any?) {
         view.endEditing(true)
         activityView.startAnimating(title: StringValue.signingIn.rawValue)
 
@@ -71,6 +73,7 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
                 strongSelf.presentAlert(message: error.localizedDescription, alertAction: [okAction])
             } else if let user = user {
                 Utils.shared.loggedInUser = user
+                strongSelf.loginDelegate?.loginDidComplete()
                 strongSelf.presentingViewController?.presentingViewController?.dismiss(animated: true)
             }
         }

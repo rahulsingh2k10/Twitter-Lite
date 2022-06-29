@@ -87,25 +87,29 @@
                                                     <constraint firstAttribute="height" constant="50" id="GeY-Lv-d61"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="Create Account"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="Create Account">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="createAccountClicked:" destination="8dk-cu-ayF" eventType="touchUpInside" id="U25-ha-PGH"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Exp-6C-k7u">
-                                                <rect key="frame" x="20.5" y="551" width="263.5" height="31"/>
+                                                <rect key="frame" x="20.5" y="551" width="269" height="33.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have an acoount already?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYY-Jh-eQy">
-                                                        <rect key="frame" x="0.0" y="0.0" width="196" height="31"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="196" height="33.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vV5-Ta-ZCk">
-                                                        <rect key="frame" x="204" y="0.0" width="59.5" height="31"/>
+                                                        <rect key="frame" x="204" y="0.0" width="65" height="33.5"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="Login"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Login"/>
+                                                        <buttonConfiguration key="configuration" style="tinted" title="Login">
+                                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
+                                                        </buttonConfiguration>
                                                         <connections>
                                                             <action selector="loginButtonClicked:" destination="8dk-cu-ayF" eventType="touchUpInside" id="XkN-XG-KOU"/>
                                                         </connections>
@@ -156,7 +160,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="createAccountButton" destination="sxa-4d-nSW" id="dFc-09-WuK"/>
                         <outlet property="googleSignInView" destination="wV1-4s-6a5" id="0O4-Vn-V8N"/>
+                        <outlet property="loginButton" destination="vV5-Ta-ZCk" id="sTA-2I-cO4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZJu-aB-hM9" sceneMemberID="firstResponder"/>

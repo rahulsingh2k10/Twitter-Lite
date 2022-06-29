@@ -9,6 +9,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileView" customModule="TwitterLite" customModuleProvider="target">
             <connections>
                 <outlet property="theImageView" destination="jHH-93-gvl" id="rGW-hv-Wsw"/>
+                <outletCollection property="imageViewConstraint" destination="gWG-II-9vO" collectionClass="NSMutableArray" id="w23-L9-i6E"/>
+                <outletCollection property="imageViewConstraint" destination="sgv-bX-bSd" collectionClass="NSMutableArray" id="H40-0d-uoQ"/>
+                <outletCollection property="imageViewConstraint" destination="u8V-sT-R8N" collectionClass="NSMutableArray" id="4i7-s0-eQN"/>
+                <outletCollection property="imageViewConstraint" destination="z0s-QZ-9ei" collectionClass="NSMutableArray" id="ySm-at-w9s"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
