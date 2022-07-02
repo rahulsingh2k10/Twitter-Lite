@@ -17,6 +17,8 @@ class HomeViewController: BaseViewController<BaseViewModel> {
 
         newTweetButton.isHidden = true
 
+        profileView.setupUI()
+
         activityView.startAnimating()
         if FirebaseManager.shared.currentUser() == .none {
             activityView.stopAnimating()

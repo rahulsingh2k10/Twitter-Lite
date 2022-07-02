@@ -10,9 +10,10 @@ import UIKit
 
 @IBDesignable
 class RoundedButton: UIButton {
-    @IBInspectable var cornerRadius: CGFloat = 0 {
-        didSet {
-            self.layer.cornerRadius = cornerRadius
-        }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        layer.cornerRadius = layer.frame.height / 2
+        clipsToBounds = true
     }
 }

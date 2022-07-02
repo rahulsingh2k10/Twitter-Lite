@@ -19,6 +19,8 @@ class ProfileView: BaseView {
     @IBOutlet weak private var theImageView: UIImageView!
     @IBOutlet private var imageViewConstraint: [NSLayoutConstraint]!
 
+    private var mode: Mode = .view
+
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
@@ -26,42 +28,44 @@ class ProfileView: BaseView {
         layer.masksToBounds = true
         layer.borderWidth = borderWidth
         layer.borderColor = borderColor.cgColor
-
-        imageViewConstraint.forEach { constraint in
-            constraint.constant = bounds.width/4
-        }
-    }
-
-    public var mode: Mode = .view {
-        didSet {
-            if mode == .add {
-                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(gesture:)))
-                addGestureRecognizer(tapGesture)
-            }
-        }
     }
 
     // MARK: - Public Methods -
+    public func setupUI(mode: Mode = .view) {
+        self.mode = mode
+
+        setImageViewConstraints(constant: bounds.width/4)
+
+        if mode == .add {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(gesture:)))
+            addGestureRecognizer(tapGesture)
+        }
+    }
+
     public func getImage() -> UIImage? {
         return theImageView.image
     }
 
     public func load(image: UIImage?) {
-        imageViewConstraint.forEach { constraint in
-            constraint.constant = 0
-        }
         theImageView.image = image
     }
 
     public func loadImage(url: URL?) {
+        setImageViewConstraints(constant: bounds.width/4)
+
         theImageView.sd_setImage(with: url,
-                                 placeholderImage: UIImage(named: "Placeholder"),
+                                 placeholderImage: UIImage(systemName: "photo"),
                                  options: .highPriority) {[weak self] (image, error, cacheType, url) in
             guard let strongSelf = self else { return }
 
-            strongSelf.imageViewConstraint.forEach { constraint in
-                constraint.constant = 0
-            }
+            strongSelf.setImageViewConstraints()
+        }
+    }
+
+    // MARK: - Private Methods -
+    private func setImageViewConstraints(constant: CGFloat = 0.0) {
+        imageViewConstraint.forEach { constraint in
+            constraint.constant = constant
         }
     }
 

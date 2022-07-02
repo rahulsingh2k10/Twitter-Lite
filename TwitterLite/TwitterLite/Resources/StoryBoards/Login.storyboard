@@ -17,14 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter_Logo_Light" translatesAutoresizingMaskIntoConstraints="NO" id="dAJ-xB-NTA">
-                                <rect key="frame" x="187" y="45" width="40" height="40"/>
+                                <rect key="frame" x="187" y="52" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dAJ-xB-NTA" secondAttribute="height" multiplier="1:1" id="bd6-n9-aRk"/>
-                                    <constraint firstAttribute="width" constant="40" id="xbs-KT-LRp"/>
+                                    <constraint firstAttribute="width" constant="40" id="xbs-KT-LRp">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                    </constraint>
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="354-vH-bZN">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4nA-Uh-Qep" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="650"/>
@@ -152,7 +154,7 @@
                         <constraints>
                             <constraint firstItem="354-vH-bZN" firstAttribute="trailing" secondItem="p3z-Fy-LEx" secondAttribute="trailing" id="CsX-Sf-cPp"/>
                             <constraint firstItem="354-vH-bZN" firstAttribute="bottom" secondItem="p3z-Fy-LEx" secondAttribute="bottom" id="LU5-sx-04j"/>
-                            <constraint firstItem="dAJ-xB-NTA" firstAttribute="top" secondItem="p3z-Fy-LEx" secondAttribute="top" constant="1" id="MWY-69-EfH"/>
+                            <constraint firstItem="dAJ-xB-NTA" firstAttribute="top" secondItem="p3z-Fy-LEx" secondAttribute="top" constant="8" id="MWY-69-EfH"/>
                             <constraint firstItem="354-vH-bZN" firstAttribute="top" secondItem="dAJ-xB-NTA" secondAttribute="bottom" constant="3" id="Z49-0M-pkK"/>
                             <constraint firstItem="dAJ-xB-NTA" firstAttribute="centerX" secondItem="p3z-Fy-LEx" secondAttribute="centerX" id="ZtZ-Lm-AXb"/>
                             <constraint firstItem="354-vH-bZN" firstAttribute="leading" secondItem="p3z-Fy-LEx" secondAttribute="leading" id="bov-7V-boD"/>
@@ -178,14 +180,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter_Logo_Light" translatesAutoresizingMaskIntoConstraints="NO" id="LcK-pk-53J">
-                                <rect key="frame" x="187" y="45" width="40" height="40"/>
+                                <rect key="frame" x="187" y="52" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LcK-pk-53J" secondAttribute="height" multiplier="1:1" id="AwO-LP-lwV"/>
-                                    <constraint firstAttribute="width" constant="40" id="qVZ-ww-GMS"/>
+                                    <constraint firstAttribute="width" constant="40" id="qVZ-ww-GMS">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                    </constraint>
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHI-Lc-K0S">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YYY-fz-deo" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
@@ -203,6 +207,11 @@
                                                     <constraint firstAttribute="width" constant="150" id="7Ox-k4-NFH"/>
                                                     <constraint firstAttribute="height" constant="150" id="t0Y-LA-87X"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="42b-P9-F32">
                                                 <rect key="frame" x="32" y="322" width="350" height="262.5"/>
@@ -353,7 +362,7 @@
                             <constraint firstItem="eHI-Lc-K0S" firstAttribute="trailing" secondItem="RLh-xs-5OI" secondAttribute="trailing" id="DQQ-Kg-etz"/>
                             <constraint firstItem="LcK-pk-53J" firstAttribute="centerX" secondItem="RLh-xs-5OI" secondAttribute="centerX" id="HQP-0e-Xmk"/>
                             <constraint firstItem="YYY-fz-deo" firstAttribute="width" secondItem="RLh-xs-5OI" secondAttribute="width" id="Lkc-F5-d56"/>
-                            <constraint firstItem="LcK-pk-53J" firstAttribute="top" secondItem="RLh-xs-5OI" secondAttribute="top" constant="1" id="Oqc-EO-SHU"/>
+                            <constraint firstItem="LcK-pk-53J" firstAttribute="top" secondItem="RLh-xs-5OI" secondAttribute="top" constant="8" id="Oqc-EO-SHU"/>
                             <constraint firstItem="eHI-Lc-K0S" firstAttribute="leading" secondItem="RLh-xs-5OI" secondAttribute="leading" id="Yd1-Ls-Ddn"/>
                             <constraint firstItem="eHI-Lc-K0S" firstAttribute="bottom" secondItem="RLh-xs-5OI" secondAttribute="bottom" id="dcD-92-WCu"/>
                             <constraint firstItem="eHI-Lc-K0S" firstAttribute="top" secondItem="LcK-pk-53J" secondAttribute="bottom" constant="3" id="m6e-Hx-fiT"/>
@@ -380,14 +389,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter_Logo_Light" translatesAutoresizingMaskIntoConstraints="NO" id="RAa-gl-xSl">
-                                <rect key="frame" x="187" y="45" width="40" height="40"/>
+                                <rect key="frame" x="187" y="52" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="GiW-QZ-PRx"/>
+                                    <constraint firstAttribute="width" constant="40" id="GiW-QZ-PRx">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                    </constraint>
                                     <constraint firstAttribute="width" secondItem="RAa-gl-xSl" secondAttribute="height" multiplier="1:1" id="vSb-cP-2iP"/>
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGw-hk-y01">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0TC-AQ-AWS" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
@@ -497,7 +508,7 @@
                             <constraint firstItem="0TC-AQ-AWS" firstAttribute="width" secondItem="Sc6-WE-sdh" secondAttribute="width" id="6uN-pl-IGX"/>
                             <constraint firstItem="RAa-gl-xSl" firstAttribute="centerX" secondItem="Sc6-WE-sdh" secondAttribute="centerX" id="TpI-eF-bme"/>
                             <constraint firstItem="eGw-hk-y01" firstAttribute="bottom" secondItem="Sc6-WE-sdh" secondAttribute="bottom" id="VYC-Jq-dbc"/>
-                            <constraint firstItem="RAa-gl-xSl" firstAttribute="top" secondItem="Sc6-WE-sdh" secondAttribute="top" constant="1" id="cET-Yu-kcU"/>
+                            <constraint firstItem="RAa-gl-xSl" firstAttribute="top" secondItem="Sc6-WE-sdh" secondAttribute="top" constant="8" id="cET-Yu-kcU"/>
                             <constraint firstItem="eGw-hk-y01" firstAttribute="trailing" secondItem="Sc6-WE-sdh" secondAttribute="trailing" id="cGQ-UF-YXQ"/>
                             <constraint firstItem="eGw-hk-y01" firstAttribute="top" secondItem="RAa-gl-xSl" secondAttribute="bottom" constant="3" id="jAU-mK-IOD"/>
                             <constraint firstItem="eGw-hk-y01" firstAttribute="leading" secondItem="Sc6-WE-sdh" secondAttribute="leading" id="jNq-CA-Opw"/>

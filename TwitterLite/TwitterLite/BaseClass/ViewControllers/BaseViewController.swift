@@ -40,14 +40,9 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(gesture:)))
         theScrollView?.addGestureRecognizer(tapGesture)
 
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillAppear),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: .none)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillDisappear),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: .none)
+        if desiredHeight > 0.0 {
+            addObserver()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -65,12 +60,9 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
     deinit {
         activityView.removeFromSuperview()
 
-        NotificationCenter.default.removeObserver(self,
-                                                  name: UIResponder.keyboardWillShowNotification,
-                                                  object: .none)
-        NotificationCenter.default.removeObserver(self,
-                                                  name: UIResponder.keyboardWillHideNotification,
-                                                  object: .none)
+        if desiredHeight > 0.0 {
+            removeObserver()
+        }
 
         print("***** De-Init Called: \(self) *****")
     }
@@ -83,6 +75,12 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
 
     @objc
     private func keyboardWillAppear(_ notification: Notification) {
+        guard desiredHeight > 0.0 else {
+            print("Please make sure to set 'desiredHeight' before using it.")
+
+            return
+        }
+
         var keyboardHeight: CGFloat = 0.0
 
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -102,6 +100,12 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
 
     @objc
     private func keyboardWillDisappear(_ notification: Notification) {
+        guard desiredHeight > 0.0 else {
+            print("Please make sure to set 'desiredHeight' before using it.")
+
+            return
+        }
+
         if isExpanded {
             theScrollView?.contentSize = CGSize(width: view.frame.width, height: desiredHeight)
             scrollViewContentHeightConstraint?.constant = desiredHeight
@@ -131,6 +135,26 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
     }
 
     // MARK - Private Methods -
+    private func removeObserver() {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: .none)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: .none)
+    }
+
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillAppear),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: .none)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillDisappear),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: .none)
+    }
+
     private func centerActivityView() {
         view.addSubview(activityView)
 

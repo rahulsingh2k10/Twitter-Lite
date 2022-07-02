@@ -27,7 +27,7 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
 
         createAccountButton.isEnabled = false
 
-        profileView.mode = .add
+        profileView.setupUI(mode: .add)
         profileView.load(image: UIImage(systemName: "plus"))
         profileView.didTapProfileView = {[unowned self] in
             self.imageButtonClicked()

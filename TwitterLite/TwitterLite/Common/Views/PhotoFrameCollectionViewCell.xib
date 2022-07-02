@@ -27,11 +27,6 @@
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" image="x.circle.fill" catalog="system"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="10.5"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="deleteButtonClicked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="kuw-1E-d4D"/>
                         </connections>
@@ -55,6 +50,11 @@
             <point key="canvasLocation" x="173.91304347826087" y="110.15625"/>
         </collectionViewCell>
     </objects>
+    <designables>
+        <designable name="GMC-L1-4hg">
+            <size key="intrinsicContentSize" width="21" height="21"/>
+        </designable>
+    </designables>
     <resources>
         <image name="x.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">

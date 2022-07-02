@@ -21,9 +21,7 @@ class BaseViewModel: ViewModelProtocol {
         }
     }
 
-    required init() {
-        print("***** Init Called: \(self) *****")
-    }
+    required init() { }
 
     deinit {
         print("***** De-Init Called: \(self) *****")
