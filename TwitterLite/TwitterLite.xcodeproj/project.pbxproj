@@ -50,6 +50,7 @@
 		1FBC74DE286783700086604B /* GoogleSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBC74DD286783700086604B /* GoogleSignInManager.swift */; };
 		1FBE39B62869D9F800E2E233 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE39B52869D9F800E2E233 /* SigninViewController.swift */; };
 		1FBE39B82869DA1000E2E233 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE39B72869DA1000E2E233 /* SigninViewModel.swift */; };
+		1FDD542328709AFD0001ABCD /* EncodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD542228709AFD0001ABCD /* EncodableExtensions.swift */; };
 		1FECC9B12864CF220056CCE7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECC9B02864CF220056CCE7 /* LoginViewController.swift */; };
 		1FECC9C42864CF250056CCE7 /* TwitterLiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECC9C32864CF250056CCE7 /* TwitterLiteTests.swift */; };
 		1FECC9CE2864CF250056CCE7 /* TwitterLiteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECC9CD2864CF250056CCE7 /* TwitterLiteUITests.swift */; };
@@ -126,6 +127,7 @@
 		1FBC74DD286783700086604B /* GoogleSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInManager.swift; sourceTree = "<group>"; };
 		1FBE39B52869D9F800E2E233 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		1FBE39B72869DA1000E2E233 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
+		1FDD542228709AFD0001ABCD /* EncodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtensions.swift; sourceTree = "<group>"; };
 		1FECC9A92864CF220056CCE7 /* TwitterLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FECC9B02864CF220056CCE7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1FECC9BF2864CF250056CCE7 /* TwitterLiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterLiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -273,6 +275,7 @@
 				1F45E9EE2868F93300F20C2D /* StringExtension.swift */,
 				1F447C94286B60130017EA9C /* DictionaryExtension.swift */,
 				1F447C96286B604C0017EA9C /* ArrayExtension.swift */,
+				1FDD542228709AFD0001ABCD /* EncodableExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -712,6 +715,7 @@
 				1F45E9E92868E4DF00F20C2D /* ProfileView.swift in Sources */,
 				1F447C95286B60130017EA9C /* DictionaryExtension.swift in Sources */,
 				1FECC9EB2864D1210056CCE7 /* SceneDelegate.swift in Sources */,
+				1FDD542328709AFD0001ABCD /* EncodableExtensions.swift in Sources */,
 				1FBC74DE286783700086604B /* GoogleSignInManager.swift in Sources */,
 				1F669E4E2868C7DC00BED673 /* CreateAccountViewModel.swift in Sources */,
 				1F447C97286B604C0017EA9C /* ArrayExtension.swift in Sources */,

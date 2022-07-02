@@ -117,7 +117,7 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
     // MARK - Public Methods -
     public func presentAlert(title: String = "Alert",
                              message: String,
-                             alertAction: [UIAlertAction]) {
+                             alertAction: [UIAlertAction] = BaseViewController.defaultAction()) {
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
@@ -135,6 +135,14 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
     }
 
     // MARK - Private Methods -
+    private static func defaultAction() -> [UIAlertAction] {
+        let okAction = UIAlertAction(title: StringValue.okTitle.rawValue,
+                                      style: .default,
+                                      handler: .none)
+
+        return [okAction]
+    }
+
     private func removeObserver() {
         NotificationCenter.default.removeObserver(self,
                                                   name: UIResponder.keyboardWillShowNotification,

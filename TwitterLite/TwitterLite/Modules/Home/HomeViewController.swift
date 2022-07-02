@@ -32,6 +32,7 @@ class HomeViewController: BaseViewController<BaseViewModel> {
     // MARK: - Action Methods -
     @IBAction func newTweetClicked(_ sender: Any) {
         let newTweetVC = UIStoryboard(name: .Main).viewController(type: NewTweetViewController.self) as! NewTweetViewController
+        newTweetVC.newTweetDelegate = self
         newTweetVC.modalPresentationStyle = .fullScreen
 
         present(newTweetVC, animated: true)
@@ -90,5 +91,12 @@ extension HomeViewController: LoginDelegate {
         activityView.startAnimating()
 
         fetchUserDetails()
+    }
+}
+
+
+extension HomeViewController:  NewTweetDelegate {
+    func didFinishTweet() {
+        // TO DO Reload Post
     }
 }

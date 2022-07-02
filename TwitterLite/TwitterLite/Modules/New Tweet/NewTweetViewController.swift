@@ -9,10 +9,17 @@ import UIKit
 import YPImagePicker
 
 
+protocol NewTweetDelegate: AnyObject {
+    func didFinishTweet()
+}
+
+
 class NewTweetViewController: BaseViewController<NewTweetViewModel> {
     override var desiredHeight: CGFloat {
         return 450.0
     }
+
+    public weak var newTweetDelegate: NewTweetDelegate?
 
     @IBOutlet weak private var placeholderTextView: PlaceholderTextView!
     @IBOutlet weak private var ringProgressView: RingProgressView!
@@ -68,10 +75,18 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
 
     // MARK: - Action Methods -
     @IBAction func tweetButtonClicked(_ sender: Any) {
-        let data = try? JSONEncoder().encode(viewModel?.tweetModel)
-        let jsonDict = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any]
+        activityView.startAnimating(title: StringValue.posting.rawValue)
 
-        print(jsonDict)
+        FirebaseDatabaseManager.shared.save(tweet: viewModel!.tweetModel) {[weak self] error in
+            guard let strongSelf = self else { return }
+
+            if let error = error {
+                strongSelf.presentAlert(message: error.localizedDescription)
+            } else {
+                strongSelf.newTweetDelegate?.didFinishTweet()
+                strongSelf.dismiss(animated: true)
+            }
+        }
     }
 
     @IBAction func cancelButtonClicked(_ sender: Any) {
@@ -120,7 +135,7 @@ extension NewTweetViewController: PlaceholderTextViewDelegate {
     
     func placeholderTextViewShouldReplace(_ text: String) -> Bool {
         if(text.count > 0 &&
-           ( text == "\n" || placeholderTextView.text.count > Constants.maxCharacter)) {
+           ( text == "\n" || placeholderTextView.text.count > Constants.maxCharacter - 2)) {
             return false
         } else {
             return true
