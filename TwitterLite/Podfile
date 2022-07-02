@@ -13,7 +13,8 @@ target 'TwitterLite' do
     pod 'Firebase/Storage'
     pod 'NVActivityIndicatorView'
     pod 'SDWebImage'
-    
+    pod 'YPImagePicker'
+
     target 'TwitterLiteTests' do
         inherit! :search_paths
         # Pods for testing

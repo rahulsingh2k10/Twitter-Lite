@@ -19,6 +19,7 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
 
     public weak var loginDelegate: LoginDelegate?
 
+    // TODO: Replace UIImagePickerController To YPImagePicker
     lazy private var imagePicker = UIImagePickerController()
 
     override func viewDidLoad() {
@@ -145,16 +146,12 @@ extension CreateAccountViewController: UIImagePickerControllerDelegate, UINaviga
             picker.dismiss(animated: true)
         }
 
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-            return
-        }
-
         guard let imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL else {
             return
         }
 
         viewModel?.userModel.photoURL = imageURL
-        profileView.load(image: image)
+        profileView.loadImage(url: imageURL)
         enableDisableCreateButton()
     }
 

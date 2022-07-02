@@ -25,6 +25,12 @@ public enum ConnectionStatus: CustomStringConvertible {
 }
 
 
+public enum EncodingeError: Error {
+    case encodingFailed
+    case decodingFailed
+}
+
+
 public enum LoginError: Error {
     case missingClientID
     case invalidTokenID
@@ -77,4 +83,9 @@ public enum Mode {
 public enum FirebaseDatabaseName: String {
     case users = "Users"
     case profileImages = "Profile_Images"
+}
+
+
+struct Constants {
+    static let maxCharacter = 280
 }

@@ -80,10 +80,15 @@ PODS:
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
   - PromisesObjC (2.1.1)
+  - PryntTrimmerView (4.0.2)
   - ReachabilitySwift (5.0.0)
   - SDWebImage (5.13.0):
     - SDWebImage/Core (= 5.13.0)
   - SDWebImage/Core (5.13.0)
+  - SteviaLayout (4.7.3)
+  - YPImagePicker (5.2.1):
+    - PryntTrimmerView (= 4.0.2)
+    - SteviaLayout (= 4.7.3)
 
 DEPENDENCIES:
   - Firebase/Storage
@@ -93,6 +98,7 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - ReachabilitySwift
   - SDWebImage
+  - YPImagePicker
 
 SPEC REPOS:
   trunk:
@@ -117,8 +123,11 @@ SPEC REPOS:
     - nanopb
     - NVActivityIndicatorView
     - PromisesObjC
+    - PryntTrimmerView
     - ReachabilitySwift
     - SDWebImage
+    - SteviaLayout
+    - YPImagePicker
 
 SPEC CHECKSUMS:
   AppAuth: 80317d99ac7ff2801a2f18ff86b48cd315ed465d
@@ -142,9 +151,12 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
+  PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: 0327043dbb9533e75f2eff8445b3df0f2ceca6ac
+  SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
+  YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: de018c07429f1a7c8f42697e6ed48ef9fc930fe3
+PODFILE CHECKSUM: 6b3562ec24eaababa15f916e4bacbb1b7332af55
 
 COCOAPODS: 1.11.2

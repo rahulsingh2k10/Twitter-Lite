@@ -28,6 +28,13 @@ class HomeViewController: BaseViewController<BaseViewModel> {
     }
 
     // MARK: - Action Methods -
+    @IBAction func newTweetClicked(_ sender: Any) {
+        let newTweetVC = UIStoryboard(name: .Main).viewController(type: NewTweetViewController.self) as! NewTweetViewController
+        newTweetVC.modalPresentationStyle = .fullScreen
+
+        present(newTweetVC, animated: true)
+    }
+
     @IBAction private func signOutButtonClicked(_ sender: Any) {
         let yesAction = UIAlertAction(title: StringValue.yesTitle.rawValue,
                                       style: .default) { [weak self] _ in
