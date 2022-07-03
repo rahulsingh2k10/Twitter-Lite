@@ -37,7 +37,7 @@ class CreateAccountViewModel: BaseViewModel {
         return validPassword
     }
 
-    public func createUser(callBackHandler: @escaping SignInCallBack) {
+    public func createUser(callBackHandler: @escaping UserCallBack) {
         FirebaseManager.shared.createAccount(userDetail: userModel, callBackHandler: callBackHandler)
     }
 }

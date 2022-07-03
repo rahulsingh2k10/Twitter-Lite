@@ -49,9 +49,11 @@ public enum LoginError: Error {
 }
 
 
-typealias SignInCallBack = ((UserModel?, Error?) -> ())
+typealias UserCallBack = ((UserModel?, Error?) -> ())
 typealias CallBack = ((Error?) -> ())
 typealias URLCallBack = (([URL]?, Error?) -> ())
+typealias TweetsCallBack = (([ViewTweetModel]?, Error?) -> ())
+
 
 typealias JSONDict = [String: AnyObject]
 

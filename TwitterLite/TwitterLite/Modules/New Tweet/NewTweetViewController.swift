@@ -75,9 +75,11 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
 
     // MARK: - Action Methods -
     @IBAction func tweetButtonClicked(_ sender: Any) {
+        view.endEditing(true)
+
         activityView.startAnimating(title: StringValue.posting.rawValue)
 
-        FirebaseDatabaseManager.shared.save(tweet: viewModel!.tweetModel) {[weak self] error in
+        viewModel?.addTweet() {[weak self] error in
             guard let strongSelf = self else { return }
 
             if let error = error {
@@ -113,6 +115,8 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
         placeholderTextView.textViewDelegate = self
 
         ringProgressView.animateCircle(toValue: 0)
+
+        photoGalaryView.viewSize = (UIDevice.current.userInterfaceIdiom == .phone) ? 100 : 200
 
         photoGalaryView.didRemoveItem = {[unowned self] item in
             if let index = self.viewModel?.tweetModel.photos?.firstIndex (where: { $0.image == (item as! ImageWrapper).image }) {

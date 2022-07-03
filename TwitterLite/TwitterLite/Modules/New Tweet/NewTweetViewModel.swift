@@ -9,7 +9,12 @@ import Foundation
 
 
 class NewTweetViewModel: BaseViewModel {
-    // MARK: - Public Methods -
+    public var tweetModel = PostTweetModel(jsonDict: JSONDict())
 
-    public var tweetModel = TweetModel()
+    // MARK: - Public Methods -
+    public func addTweet(callBackHandler: @escaping CallBack) {
+        FirebaseDatabaseManager.shared.save(tweet: tweetModel) { error in
+            callBackHandler(error)
+        }
+    }
 }

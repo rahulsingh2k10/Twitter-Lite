@@ -32,7 +32,7 @@ class SigninViewModel: BaseViewModel {
         return validPassword
     }
 
-    public func signInUser(callBackHandler: @escaping SignInCallBack) {
+    public func signInUser(callBackHandler: @escaping UserCallBack) {
         FirebaseManager.shared.signin(userDetail: userModel, callBackHandler: callBackHandler)
     }
 }

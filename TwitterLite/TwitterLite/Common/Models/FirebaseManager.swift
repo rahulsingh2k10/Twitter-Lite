@@ -36,7 +36,7 @@ struct FirebaseManager {
         return FirebaseApp.app()?.options.clientID
     }
 
-    public func signin(userDetail: UserModel, callBackHandler: @escaping SignInCallBack) {
+    public func signin(userDetail: UserModel, callBackHandler: @escaping UserCallBack) {
         guard let emailAddress = userDetail.emailAddress,
               let password = userDetail.password else {
             callBackHandler(.none, LoginError.missingParameters)
@@ -52,7 +52,7 @@ struct FirebaseManager {
 
     public func authenticateUser(withIDToken idToken: String,
                                  accessToken: String,
-                                 callBackHandler: @escaping SignInCallBack) {
+                                 callBackHandler: @escaping UserCallBack) {
         let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                        accessToken: accessToken)
 
@@ -61,7 +61,7 @@ struct FirebaseManager {
         }
     }
 
-    public func createAccount(userDetail: UserModel, callBackHandler: @escaping SignInCallBack) {
+    public func createAccount(userDetail: UserModel, callBackHandler: @escaping UserCallBack) {
         guard let emailAddress = userDetail.emailAddress,
               let password = userDetail.password else {
             callBackHandler(.none, LoginError.missingParameters)
@@ -83,7 +83,7 @@ struct FirebaseManager {
     }
 
     // MARK: - Private Methods -
-    private func update(user: UserModel, callBackHandler: @escaping SignInCallBack) {
+    private func update(user: UserModel, callBackHandler: @escaping UserCallBack) {
         FirebaseDatabaseManager.shared.updateUser(user: user) { error in
             if let error = error {
                 callBackHandler(.none, error)
@@ -95,7 +95,7 @@ struct FirebaseManager {
 
     private func authenticationDidComplete(authResult: AuthDataResult?,
                                            error: Error?,
-                                           callBackHandler: @escaping SignInCallBack) {
+                                           callBackHandler: @escaping UserCallBack) {
         if let error = error {
             callBackHandler(.none, error)
         } else if let authResult = authResult {

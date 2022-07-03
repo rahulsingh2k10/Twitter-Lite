@@ -38,29 +38,63 @@ struct FirebaseDatabaseManager {
         }
     }
 
-    public func fetchUserDetails(callBackHandler: @escaping CallBack) {
+    public func fetchUserDetails(userID: String,
+                                 callBackHandler: @escaping UserCallBack) {
+        databaseRef.child(FirebaseDatabaseName.users.rawValue)
+            .child(userID).observeSingleEvent(of: .value) { snapshot in
+                guard let dictionary = snapshot.value as? JSONDict else { return }
+
+                var userModel = dictionary.decode(UserModel.self)
+                userModel?.userID = userID
+
+                callBackHandler(userModel, .none)
+            }
+    }
+
+    public func fetchLoggedInUserDetails(callBackHandler: @escaping CallBack) {
         guard let userID = FirebaseManager.shared.currentUser()?.uid else { return }
 
-        databaseRef.child(FirebaseDatabaseName.users.rawValue).child(userID).observeSingleEvent(of: .value) { snapshot in
-            guard let dictionary = snapshot.value as? JSONDict else { return }
+        databaseRef.child(FirebaseDatabaseName.users.rawValue)
+            .child(userID).observeSingleEvent(of: .value) { snapshot in
+                guard let dictionary = snapshot.value as? JSONDict else { return }
 
-            var loggedInModel = dictionary.decode(UserModel.self)
-            loggedInModel?.userID = userID
-            Utils.shared.loggedInUser = loggedInModel
+                var loggedInModel = dictionary.decode(UserModel.self)
+                loggedInModel?.userID = userID
+                Utils.shared.loggedInUser = loggedInModel
 
-            callBackHandler(.none)
+                callBackHandler(.none)
+            }
+    }
+
+    public func fetchTweets(startPoint: Double?,
+                            pageSize: UInt,
+                            callbackHandler: @escaping TweetsCallBack) {
+        let ref = databaseRef.child(FirebaseDatabaseName.tweets.rawValue).queryOrdered(byChild: "createdTimeStamp")
+
+        if startPoint == .none {
+            ref.queryLimited(toLast: pageSize)
+                .observeSingleEvent(of: .value) { snapshot in
+                    fetchTweetsComplete(snapshot: snapshot,
+                                        shouldRemoveLast: false,
+                                        callbackHandler: callbackHandler)
+                }
+        } else {
+            ref.queryEnding(atValue: startPoint).queryLimited(toLast: (pageSize + 1))
+                .observeSingleEvent(of: .value) { snapshot in
+                    fetchTweetsComplete(snapshot: snapshot, callbackHandler: callbackHandler)
+                }
         }
     }
 
-    public func save(tweet: TweetModel, callBackHandler: @escaping CallBack) {
-        var tempTweetModel = tweet
+    public func save(tweet: PostTweetModel, callBackHandler: @escaping CallBack) {
+        let tempTweetModel = tweet
 
         let ref = databaseRef.child(FirebaseDatabaseName.tweets.rawValue).childByAutoId()
 
         if let photos = tempTweetModel.photos {
             uploadTweetPhotos(tweetID: ref.key!,
                               photos: photos) { urls, error in
-                tempTweetModel.createdTimeStamp = Int(Date().timeIntervalSince1970)
+                tempTweetModel.createdTimeStamp = Double(Date().timeIntervalSince1970)
 
                 var jsonDict = tempTweetModel.JSONDictionary
                 jsonDict!["photoURL"] = urls?.compactMap { ($0 as URL).absoluteString } as? AnyObject
@@ -72,7 +106,7 @@ struct FirebaseDatabaseManager {
                 }
             }
         } else {
-            tempTweetModel.createdTimeStamp = Int(Date().timeIntervalSince1970)
+            tempTweetModel.createdTimeStamp = Double(Date().timeIntervalSince1970)
             tempTweetModel.photos = .none
 
             continueSave(databaseRef: ref,
@@ -83,11 +117,46 @@ struct FirebaseDatabaseManager {
     }
 
     // MARK: - Private Methods -
+    private func fetchTweetsComplete(snapshot: DataSnapshot,
+                                     shouldRemoveLast: Bool = true,
+                                     callbackHandler: @escaping TweetsCallBack) {
+        var tweets: [ViewTweetModel] = []
+
+        for s in snapshot.children.allObjects as! [DataSnapshot] {
+            let value = s.value as! JSONDict
+            if let tweetModel = value.decode(ViewTweetModel.self) {
+                tweets.append(tweetModel)
+            }
+        }
+
+        let dispatchGroup = DispatchGroup()
+
+        for tweet in tweets {
+            if tweet.uid == Utils.shared.loggedInUser?.userID {
+                tweet.user = Utils.shared.loggedInUser
+            } else {
+                dispatchGroup.enter()
+
+                fetchUserDetails(userID: tweet.uid) { userModel, error in
+                    tweet.user = userModel
+
+                    dispatchGroup.leave()
+                }
+            }
+        }
+
+        if shouldRemoveLast {
+            tweets.removeLast()
+        }
+
+        dispatchGroup.notify(queue: .main) {
+            callbackHandler(tweets.reversed(), .none)
+        }
+    }
+
     private func continueSave(databaseRef: DatabaseReference,
                               jsonDict: JSONDict,
                               callBackHandler: @escaping CallBack) {
-        print(jsonDict)
-
         databaseRef.updateChildValues(jsonDict) { error, databaseRef in
             callBackHandler(error)
         }

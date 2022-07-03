@@ -19,7 +19,7 @@ struct GoogleSignInManager {
         return GIDSignIn.sharedInstance.handle(url)
     }
 
-    public func restoreuser(callBackHandler: @escaping SignInCallBack) {
+    public func restoreuser(callBackHandler: @escaping UserCallBack) {
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if let error = error {
                 callBackHandler(.none, error)
@@ -31,7 +31,7 @@ struct GoogleSignInManager {
 
     public func siginInWithGoogle(viewController: UIViewController,
                                   didStartAuthCallback: @escaping CallBack,
-                                  callBackHandler: @escaping SignInCallBack) {
+                                  callBackHandler: @escaping UserCallBack) {
         guard let clientID = FirebaseManager.shared.getClientID() else {
             callBackHandler(.none, LoginError.missingClientID)
 
@@ -51,7 +51,7 @@ struct GoogleSignInManager {
     }
 
     // MARK: - Private Methods -
-    private func authenticate(user: GIDGoogleUser, callBackHandler: @escaping SignInCallBack) {
+    private func authenticate(user: GIDGoogleUser, callBackHandler: @escaping UserCallBack) {
         let authentication = user.authentication
 
         guard let idToken = authentication.idToken else {
