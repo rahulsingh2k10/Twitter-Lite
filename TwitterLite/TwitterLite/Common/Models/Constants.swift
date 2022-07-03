@@ -48,6 +48,17 @@ public enum LoginError: Error {
     }
 }
 
+public enum FireBaseError: Error {
+    case missingParameters
+
+    public var errorDescription: String? {
+        switch self {
+        case .missingParameters:
+            return NSLocalizedString("Missing Parameters. Please try again.", comment: "Message")
+        }
+    }
+}
+
 
 typealias UserCallBack = ((UserModel?, Error?) -> ())
 typealias CallBack = ((Error?) -> ())

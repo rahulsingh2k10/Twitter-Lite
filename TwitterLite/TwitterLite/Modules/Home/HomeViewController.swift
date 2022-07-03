@@ -13,6 +13,8 @@ class HomeViewController: BaseViewController<HomeViewModel> {
     @IBOutlet weak private var newTweetButton: UIButton!
     @IBOutlet weak private var tweetsTableView: UITableView!
 
+    let refreshControl = UIRefreshControl()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,7 +22,7 @@ class HomeViewController: BaseViewController<HomeViewModel> {
 
         profileView.setupUI()
 
-        tweetsTableView.register(cell: TweetsTableViewCell.self)
+        configureTableView()
 
         activityView.startAnimating()
         if FirebaseManager.shared.currentUser() == .none {
@@ -66,7 +68,35 @@ class HomeViewController: BaseViewController<HomeViewModel> {
                      alertAction: [yesAction, cancelAction])
     }
 
+    @objc
+    func refresh(_ sender: AnyObject?) {
+        viewModel?.fetchLatestTweets() { [weak self] tweets, error in
+            guard let strongSelf = self else { return }
+
+            strongSelf.refreshControl.endRefreshing()
+
+            if let vm = strongSelf.viewModel,
+               let tweets = tweets, tweets.count > 0 {
+                vm.tweetList.insert(contentsOf: tweets, at: 0)
+
+                let indexpaths = (0 ..< tweets.count).compactMap { IndexPath(row: $0, section: 0) }
+
+                strongSelf.tweetsTableView.beginUpdates()
+                strongSelf.tweetsTableView.insertRows(at: indexpaths, with: .none)
+                strongSelf.tweetsTableView.endUpdates()
+            }
+        }
+    }
+
     // MARK: - Private Methods -
+    private func configureTableView() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+
+        tweetsTableView.register(cell: TweetsTableViewCell.self)
+        tweetsTableView.addSubview(refreshControl)
+    }
+
     private func fetchTweets() {
         if viewModel?.lastCreatedDateTimeStamp == .none {
             activityView.startAnimating()
@@ -135,7 +165,7 @@ extension HomeViewController: LoginDelegate {
 
 extension HomeViewController:  NewTweetDelegate {
     func didFinishTweet() {
-        fetchTweets()
+        refresh(.none)
     }
 }
 

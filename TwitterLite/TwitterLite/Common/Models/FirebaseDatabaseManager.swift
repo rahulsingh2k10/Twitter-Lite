@@ -66,6 +66,18 @@ struct FirebaseDatabaseManager {
             }
     }
 
+    public func fetchTweets(latestTweetTimeStamp: Double, callbackHandler: @escaping TweetsCallBack) {
+        let ref = databaseRef.child(FirebaseDatabaseName.tweets.rawValue).queryOrdered(byChild: "createdTimeStamp")
+
+        ref.queryStarting(atValue: latestTweetTimeStamp)
+            .observeSingleEvent(of: .value) { snapshot in
+                fetchTweetsComplete(snapshot: snapshot,
+                                    shouldRemoveLast: false,
+                                    shouldRemoveFirst: true,
+                                    callbackHandler: callbackHandler)
+            }
+    }
+
     public func fetchTweets(startPoint: Double?,
                             pageSize: UInt,
                             callbackHandler: @escaping TweetsCallBack) {
@@ -127,6 +139,7 @@ struct FirebaseDatabaseManager {
     // MARK: - Private Methods -
     private func fetchTweetsComplete(snapshot: DataSnapshot,
                                      shouldRemoveLast: Bool = true,
+                                     shouldRemoveFirst: Bool = false,
                                      callbackHandler: @escaping TweetsCallBack) {
         var tweets: [ViewTweetModel] = []
 
@@ -157,6 +170,10 @@ struct FirebaseDatabaseManager {
 
         if shouldRemoveLast {
             tweets.removeLast()
+        }
+
+        if shouldRemoveFirst {
+            tweets.removeFirst()
         }
 
         dispatchGroup.notify(queue: .main) {

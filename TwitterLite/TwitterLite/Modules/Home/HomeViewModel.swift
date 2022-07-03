@@ -16,14 +16,23 @@ class HomeViewModel: BaseViewModel {
     private var pageSize: UInt = (UIDevice.current.userInterfaceIdiom == .phone ? 10: 20)
 
     // MAKR: - Public Methods -
-    public func delete(tweetModel: ViewTweetModel, callBackHandler: @escaping CallBack) {
-        FirebaseDatabaseManager.shared.deleteTweet(tweetID: tweetModel.tweetID!, callbackHandler: callBackHandler)
+    public func fetchLatestTweets(callBackHandler: @escaping TweetsCallBack) {
+        if let timeStamp = tweetList.first?.createdTimeStamp {
+            FirebaseDatabaseManager.shared.fetchTweets(latestTweetTimeStamp: timeStamp,
+                                                       callbackHandler: callBackHandler)
+        } else {
+            callBackHandler(.none, FireBaseError.missingParameters)
+        }
     }
 
     public func fetchTweets(callBackHandler: @escaping TweetsCallBack) {
         FirebaseDatabaseManager.shared.fetchTweets(startPoint: lastCreatedDateTimeStamp,
                                                    pageSize: pageSize,
                                                    callbackHandler: callBackHandler)
+    }
+
+    public func delete(tweetModel: ViewTweetModel, callBackHandler: @escaping CallBack) {
+        FirebaseDatabaseManager.shared.deleteTweet(tweetID: tweetModel.tweetID!, callbackHandler: callBackHandler)
     }
 
     public func shouldFetchData(index: Double) -> Bool {
