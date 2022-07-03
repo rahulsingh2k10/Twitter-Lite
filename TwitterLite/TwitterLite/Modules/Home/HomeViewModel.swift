@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 
 class HomeViewModel: BaseViewModel {
     public var tweetList: [ViewTweetModel] = []
     public var lastCreatedDateTimeStamp: Double?
 
-    private var pageSize: UInt = 10
+    private var pageSize: UInt = (UIDevice.current.userInterfaceIdiom == .phone ? 10: 20)
 
     // MAKR: - Public Methods -
     public func delete(tweetModel: ViewTweetModel, callBackHandler: @escaping CallBack) {

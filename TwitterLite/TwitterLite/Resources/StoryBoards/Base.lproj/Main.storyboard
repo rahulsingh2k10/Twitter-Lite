@@ -40,16 +40,16 @@
                                     <constraint firstAttribute="width" secondItem="4lL-SS-yIC" secondAttribute="height" multiplier="1:1" id="vBd-Bc-w7a"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beB-vH-ffO">
-                                <rect key="frame" x="358" y="55.5" width="40" height="33"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" preferredBehavioralStyle="pad" translatesAutoresizingMaskIntoConstraints="NO" id="beB-vH-ffO" customClass="RoundedButton" customModule="TwitterLite" customModuleProvider="target">
+                                <rect key="frame" x="358" y="52" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Uco-4n-P9Q">
                                         <variation key="heightClass=regular-widthClass=regular" constant="80"/>
                                     </constraint>
-                                    <constraint firstAttribute="width" secondItem="beB-vH-ffO" secondAttribute="height" multiplier="27:22" id="vQf-1y-XJt"/>
+                                    <constraint firstAttribute="width" secondItem="beB-vH-ffO" secondAttribute="height" id="vQf-1y-XJt"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" image="Exit"/>
+                                <buttonConfiguration key="configuration" style="filled" image="rectangle.portrait.and.arrow.right" catalog="system"/>
                                 <connections>
                                     <action selector="signOutButtonClicked:" destination="wxO-cT-vRW" eventType="touchUpInside" id="LvW-rv-FWg"/>
                                 </connections>
@@ -349,10 +349,10 @@
         </designable>
     </designables>
     <resources>
-        <image name="Exit" width="30" height="30"/>
         <image name="New_Tweet_Light" width="60" height="60"/>
         <image name="Twitter_Logo_Light" width="320" height="260"/>
         <image name="photo.on.rectangle.angled" catalog="system" width="128" height="100"/>
+        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NpK-g7-Kbo" customClass="ProfileView" customModule="TwitterLite" customModuleProvider="target">
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NpK-g7-Kbo" customClass="ProfileView" customModule="TwitterLite" customModuleProvider="target">
                         <rect key="frame" x="20" y="8" width="40" height="40"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -95,7 +95,7 @@
                 <outlet property="timeStampLabel" destination="5ra-en-zfb" id="pim-RH-gdE"/>
                 <outlet property="userDetailLabel" destination="LKz-Ws-aId" id="Jlp-Y6-TDC"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="156.69642857142856"/>
+            <point key="canvasLocation" x="137.68115942028987" y="156.36160714285714"/>
         </tableViewCell>
     </objects>
     <designables>
