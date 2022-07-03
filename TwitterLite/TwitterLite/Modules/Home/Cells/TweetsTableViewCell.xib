@@ -17,10 +17,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NpK-g7-Kbo" customClass="ProfileView" customModule="TwitterLite" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NpK-g7-Kbo" customClass="ProfileView" customModule="TwitterLite" customModuleProvider="target">
                         <rect key="frame" x="20" y="8" width="40" height="40"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="width" secondItem="NpK-g7-Kbo" secondAttribute="height" multiplier="1:1" id="3ss-SB-IVM"/>
                             <constraint firstAttribute="width" constant="40" id="bsP-LX-uc9">
                                 <variation key="heightClass=regular-widthClass=regular" constant="80"/>
                             </constraint>
@@ -46,13 +47,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ra-en-zfb">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ra-en-zfb">
                                                 <rect key="frame" x="0.0" y="25" width="196" height="17"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <variation key="heightClass=regular-widthClass=regular" axis="horizontal"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYx-Aw-Og6" customClass="RoundedButton" customModule="TwitterLite" customModuleProvider="target">
                                         <rect key="frame" x="208" y="0.0" width="20" height="20"/>
@@ -81,6 +83,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="tbe-zm-mbO" secondAttribute="bottom" constant="8" id="0Kj-Ph-3pA"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NpK-g7-Kbo" secondAttribute="bottom" constant="8" id="89U-8Z-GzQ"/>
                     <constraint firstAttribute="trailing" secondItem="tbe-zm-mbO" secondAttribute="trailing" constant="20" id="Aoc-6o-Cqz"/>
                     <constraint firstItem="NpK-g7-Kbo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="GVK-Wj-glR"/>
                     <constraint firstItem="tbe-zm-mbO" firstAttribute="top" secondItem="NpK-g7-Kbo" secondAttribute="top" id="U6I-i0-R0f"/>

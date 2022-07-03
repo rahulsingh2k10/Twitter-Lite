@@ -126,6 +126,11 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
         alertVC.addAction(libraryAction)
         alertVC.addAction(cancelAction)
 
+        if let popoverPresentationController = alertVC.popoverPresentationController {
+            popoverPresentationController.sourceView = profileView
+            popoverPresentationController.sourceRect = profileView.bounds
+        }
+
         present(alertVC, animated: true)
     }
 
