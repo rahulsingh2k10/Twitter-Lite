@@ -61,9 +61,12 @@
                                             <constraint firstAttribute="width" constant="20" id="rhv-zH-osn"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="tinted" image="ellipsis" catalog="system">
+                                        <buttonConfiguration key="configuration" style="tinted" image="xmark" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="12" scale="small" weight="bold"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="deleteTweet:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7nH-ki-zYA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -97,11 +100,11 @@
     </objects>
     <designables>
         <designable name="sYx-Aw-Og6">
-            <size key="intrinsicContentSize" width="35.5" height="28.5"/>
+            <size key="intrinsicContentSize" width="34" height="28.5"/>
         </designable>
     </designables>
     <resources>
-        <image name="ellipsis" catalog="system" width="128" height="37"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

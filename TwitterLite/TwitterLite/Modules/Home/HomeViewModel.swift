@@ -15,6 +15,10 @@ class HomeViewModel: BaseViewModel {
     private var pageSize: UInt = 10
 
     // MAKR: - Public Methods -
+    public func delete(tweetModel: ViewTweetModel, callBackHandler: @escaping CallBack) {
+        FirebaseDatabaseManager.shared.deleteTweet(tweetID: tweetModel.tweetID!, callbackHandler: callBackHandler)
+    }
+
     public func fetchTweets(callBackHandler: @escaping TweetsCallBack) {
         FirebaseDatabaseManager.shared.fetchTweets(startPoint: lastCreatedDateTimeStamp,
                                                    pageSize: pageSize,

@@ -145,8 +145,35 @@ extension HomeViewController: UITableViewDataSource {
         return viewModel?.tweetList.count ?? 0
     }
 
+    private func delete(tweetModel: ViewTweetModel) {
+        activityView.startAnimating()
+
+        viewModel?.delete(tweetModel: tweetModel, callBackHandler: {[weak self] error in
+            guard let strongSelf = self else { return }
+
+            strongSelf.activityView.stopAnimating()
+
+            if let error = error {
+                strongSelf.presentAlert(message: error.localizedDescription)
+            } else {
+                if let index = strongSelf.viewModel?.tweetList.firstIndex(where: { $0.tweetID == tweetModel.tweetID }) {
+                    strongSelf.viewModel?.tweetList.remove(at: index)
+
+                    strongSelf.tweetsTableView.beginUpdates()
+                    strongSelf.tweetsTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                    strongSelf.tweetsTableView.endUpdates()
+
+                }
+            }
+        })
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(reusableCell: TweetsTableViewCell.self, for: indexPath)
+
+        cell.deleteTweetCallBack = {[unowned self] tweetModel in
+            self.delete(tweetModel: tweetModel)
+        }
 
         if let tweet = viewModel?.tweetList[indexPath.row] {
             cell.loadData(tweetModel: tweet)

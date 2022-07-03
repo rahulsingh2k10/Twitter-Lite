@@ -203,6 +203,15 @@
 			path = "Login Screen";
 			sourceTree = "<group>";
 		};
+		1F39F8BF28722B7300EB8B47 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1F755A732870D5BB00872636 /* TweetsTableViewCell.swift */,
+				1F755A742870D5BB00872636 /* TweetsTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		1F46CA8B28664A76005A0C79 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,8 +236,7 @@
 			children = (
 				1F669E412868973900BED673 /* HomeViewController.swift */,
 				1F755A712870D06800872636 /* HomeViewModel.swift */,
-				1F755A732870D5BB00872636 /* TweetsTableViewCell.swift */,
-				1F755A742870D5BB00872636 /* TweetsTableViewCell.xib */,
+				1F39F8BF28722B7300EB8B47 /* Cells */,
 			);
 			path = Home;
 			sourceTree = "<group>";

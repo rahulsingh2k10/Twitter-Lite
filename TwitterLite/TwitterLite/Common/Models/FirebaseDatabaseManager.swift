@@ -116,6 +116,14 @@ struct FirebaseDatabaseManager {
         }
     }
 
+    public func deleteTweet(tweetID: String, callbackHandler: @escaping CallBack) {
+        let ref = databaseRef.child(FirebaseDatabaseName.tweets.rawValue)
+
+        ref.child(tweetID).removeValue { error, ref in
+            callbackHandler(error)
+        }
+    }
+
     // MARK: - Private Methods -
     private func fetchTweetsComplete(snapshot: DataSnapshot,
                                      shouldRemoveLast: Bool = true,
@@ -125,6 +133,8 @@ struct FirebaseDatabaseManager {
         for s in snapshot.children.allObjects as! [DataSnapshot] {
             let value = s.value as! JSONDict
             if let tweetModel = value.decode(ViewTweetModel.self) {
+                tweetModel.tweetID = s.key
+
                 tweets.append(tweetModel)
             }
         }
