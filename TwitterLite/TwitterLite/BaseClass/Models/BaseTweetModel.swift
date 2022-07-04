@@ -11,12 +11,11 @@ import Foundation
 class BaseTweetModel: Codable {
     var createdTimeStamp: Double!
     var caption: String?
-    var photos: [ImageWrapper]?
 
     public init(jsonDict: JSONDict) { }
 
     public enum CodingKeys: String, CodingKey {
-        case createdTimeStamp, caption, photos
+        case createdTimeStamp, caption
     }
 
     required public init(from decoder: Decoder) throws {
@@ -24,7 +23,6 @@ class BaseTweetModel: Codable {
 
         createdTimeStamp = try? container.decodeIfPresent(Double.self, forKey: .createdTimeStamp)
         caption = try? container.decodeIfPresent(String.self, forKey: .caption)
-        photos = try? container.decodeIfPresent([ImageWrapper].self, forKey: .photos)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -32,6 +30,5 @@ class BaseTweetModel: Codable {
 
         try? container.encodeIfPresent(createdTimeStamp, forKey: .createdTimeStamp)
         try? container.encodeIfPresent(caption, forKey: .caption)
-        try? container.encodeIfPresent(photos, forKey: .photos)
     }
 }

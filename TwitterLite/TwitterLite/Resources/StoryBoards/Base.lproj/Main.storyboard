@@ -221,7 +221,7 @@
                                                     <action selector="showImagePicker:" destination="IjV-C0-t9f" eventType="touchUpInside" id="EXb-y7-K29"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzp-wJ-NYB" customClass="PhotoGalaryView" customModule="TwitterLite" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzp-wJ-NYB" customClass="PhotoGalleryView" customModule="TwitterLite" customModuleProvider="target">
                                                 <rect key="frame" x="91" y="182" width="303" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -229,11 +229,6 @@
                                                         <variation key="heightClass=regular-widthClass=regular" constant="200"/>
                                                     </constraint>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="viewSize">
-                                                        <real key="value" value="100"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5m-dn-Sxi" userLabel="Separator">
                                                 <rect key="frame" x="75" y="16" width="1" height="266"/>
@@ -312,7 +307,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="photoGalaryView" destination="Xzp-wJ-NYB" id="ogo-tv-dR8"/>
+                        <outlet property="photoGalleryView" destination="Xzp-wJ-NYB" id="Nj1-hv-QkO"/>
                         <outlet property="placeholderTextView" destination="PME-Lt-x6b" id="4kO-hg-f2x"/>
                         <outlet property="profileView" destination="if0-mh-59h" id="egD-E2-Ew8"/>
                         <outlet property="ringProgressView" destination="HAo-8w-Q3s" id="YzI-xt-gCy"/>
@@ -344,6 +339,9 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="beB-vH-ffO">
+            <size key="intrinsicContentSize" width="49.5" height="31"/>
+        </designable>
         <designable name="owz-8A-WVC">
             <size key="intrinsicContentSize" width="45" height="31"/>
         </designable>
