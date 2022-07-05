@@ -22,7 +22,7 @@ struct GoogleSignInManager {
     public func siginInWithGoogle(viewController: UIViewController,
                                   didStartAuthCallback: @escaping CallBack,
                                   callBackHandler: @escaping UserCallBack) {
-        guard let clientID = FirebaseManager.shared.getClientID() else {
+        guard let clientID = FirebaseAuthenticationManager.shared.getClientID() else {
             callBackHandler(.none, LoginError.missingClientID)
 
             return
@@ -50,8 +50,8 @@ struct GoogleSignInManager {
             return
         }
 
-        FirebaseManager.shared.authenticateUser(withIDToken: idToken,
-                                                accessToken: authentication.accessToken,
-                                                callBackHandler: callBackHandler)
+        FirebaseAuthenticationManager.shared.authenticateUser(withIDToken: idToken,
+                                                              accessToken: authentication.accessToken,
+                                                              callBackHandler: callBackHandler)
     }
 }

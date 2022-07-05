@@ -1,5 +1,5 @@
 //
-//  FirebaseManager.swift
+//  FirebaseAuthenticationManager.swift
 //  TwitterLite
 //
 //  Created by Rahul Singh on 26/06/22.
@@ -10,14 +10,22 @@ import FirebaseCore
 import FirebaseAuth
 
 
-struct FirebaseManager {
-    static var shared: FirebaseManager = FirebaseManager()
+struct FirebaseAuthenticationManager {
+    static var shared: FirebaseAuthenticationManager = FirebaseAuthenticationManager()
 
     private init() {
         FirebaseApp.configure()
     }
 
     // MARK: - Public Methods -
+    public func currentUser() -> User? {
+        return Auth.auth().currentUser
+    }
+
+    public func getClientID() -> String? {
+        return FirebaseApp.app()?.options.clientID
+    }
+
     public func signOut(callBack: CallBack) {
         do {
             try Auth.auth().signOut()
@@ -28,15 +36,7 @@ struct FirebaseManager {
         }
     }
 
-    public func currentUser() -> User? {
-        return Auth.auth().currentUser
-    }
-
-    public func getClientID() -> String? {
-        return FirebaseApp.app()?.options.clientID
-    }
-
-    public func signin(userDetail: UserModel, callBackHandler: @escaping UserCallBack) {
+    public func signIn(userDetail: UserModel, callBackHandler: @escaping UserCallBack) {
         guard let emailAddress = userDetail.emailAddress,
               let password = userDetail.password else {
             callBackHandler(.none, LoginError.missingParameters)

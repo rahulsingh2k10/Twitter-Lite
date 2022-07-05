@@ -25,7 +25,7 @@ class HomeViewController: BaseViewController<HomeViewModel> {
         configureTableView()
 
         activityView.startAnimating()
-        if FirebaseManager.shared.currentUser() == .none {
+        if FirebaseAuthenticationManager.shared.currentUser() == .none {
             activityView.stopAnimating()
 
             openLoginViewController()

@@ -16,7 +16,7 @@ enum UserEndPoint: FirebaseDatabaseEndPoint {
     var path: String {
         switch self {
         case .getLoggedInUserDetail:
-            guard let userID = FirebaseManager.shared.currentUser()?.uid else { return String() }
+            guard let userID = FirebaseAuthenticationManager.shared.currentUser()?.uid else { return String() }
 
             return "\(FirebaseDatabaseName.users.rawValue)/\(userID)"
         case .getUserDetails(let userID), .postUserDetails(let userID):

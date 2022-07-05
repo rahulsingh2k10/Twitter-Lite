@@ -37,7 +37,7 @@
 		1F46CA8D28664A96005A0C79 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46CA8C28664A96005A0C79 /* BaseViewModel.swift */; };
 		1F669E3C2867A74D00BED673 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F669E3B2867A74D00BED673 /* GoogleService-Info.plist */; };
 		1F669E3E2868810100BED673 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F669E3D2868810100BED673 /* UserModel.swift */; };
-		1F669E40286883AF00BED673 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F669E3F286883AF00BED673 /* FirebaseManager.swift */; };
+		1F669E40286883AF00BED673 /* FirebaseAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F669E3F286883AF00BED673 /* FirebaseAuthenticationManager.swift */; };
 		1F669E422868973900BED673 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F669E412868973900BED673 /* HomeViewController.swift */; };
 		1F669E442868994300BED673 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F669E432868994300BED673 /* Utils.swift */; };
 		1F669E4728689DFD00BED673 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F669E4628689DFD00BED673 /* Login.storyboard */; };
@@ -127,7 +127,7 @@
 		1F46CA8C28664A96005A0C79 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		1F669E3B2867A74D00BED673 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F669E3D2868810100BED673 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		1F669E3F286883AF00BED673 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		1F669E3F286883AF00BED673 /* FirebaseAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationManager.swift; sourceTree = "<group>"; };
 		1F669E412868973900BED673 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1F669E432868994300BED673 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1F669E4628689DFD00BED673 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -284,9 +284,9 @@
 		1FA37EBF2874B51D00638AF5 /* EndPoints */ = {
 			isa = PBXGroup;
 			children = (
-				1F1C685F28733ACC00F348C2 /* UserEndPoint.swift */,
-				1FA37EBC2874B4EB00638AF5 /* PhotoEndPoint.swift */,
 				1F1C68612873529E00F348C2 /* TweetEndPoint.swift */,
+				1FA37EBC2874B4EB00638AF5 /* PhotoEndPoint.swift */,
+				1F1C685F28733ACC00F348C2 /* UserEndPoint.swift */,
 			);
 			path = EndPoints;
 			sourceTree = "<group>";
@@ -294,10 +294,10 @@
 		1FA37EC02874B53500638AF5 /* FirebaseManagers */ = {
 			isa = PBXGroup;
 			children = (
-				1FBC74DD286783700086604B /* GoogleSignInManager.swift */,
-				1F669E3F286883AF00BED673 /* FirebaseManager.swift */,
-				1F281B6E286A268F0050365F /* FirebaseDatabaseManager.swift */,
+				1F669E3F286883AF00BED673 /* FirebaseAuthenticationManager.swift */,
 				1F39F8C02873273300EB8B47 /* FirebaseDatabaseEndPoint.swift */,
+				1F281B6E286A268F0050365F /* FirebaseDatabaseManager.swift */,
+				1FBC74DD286783700086604B /* GoogleSignInManager.swift */,
 			);
 			path = FirebaseManagers;
 			sourceTree = "<group>";
@@ -316,10 +316,10 @@
 			children = (
 				1FA37EBE2874B50900638AF5 /* Nework */,
 				1F669E432868994300BED673 /* Utils.swift */,
-				1FB928802864F678005967E3 /* LoadableNib.swift */,
-				1FB928742864E0A1005967E3 /* ReachabilityManager.swift */,
 				1F669E3D2868810100BED673 /* UserModel.swift */,
+				1FB928802864F678005967E3 /* LoadableNib.swift */,
 				1F0FFC7828705B7A00B54A00 /* ImageWrapper.swift */,
+				1FB928742864E0A1005967E3 /* ReachabilityManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -762,7 +762,7 @@
 				1FB9287A2864E71E005967E3 /* BaseViewController.swift in Sources */,
 				1F083DD7286F694600B98D69 /* PhotoGalleryView.swift in Sources */,
 				1F46CA8D28664A96005A0C79 /* BaseViewModel.swift in Sources */,
-				1F669E40286883AF00BED673 /* FirebaseManager.swift in Sources */,
+				1F669E40286883AF00BED673 /* FirebaseAuthenticationManager.swift in Sources */,
 				1FA37EC42874C88900638AF5 /* UIAlertActionExtension.swift in Sources */,
 				1F39F8C12873273300EB8B47 /* FirebaseDatabaseEndPoint.swift in Sources */,
 				1FA4A69F286E35FF00F321D1 /* TextViewWithPlaceholder.swift in Sources */,

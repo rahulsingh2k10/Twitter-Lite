@@ -38,6 +38,7 @@ class CreateAccountViewModel: BaseViewModel {
     }
 
     public func createUser(callBackHandler: @escaping UserCallBack) {
-        FirebaseManager.shared.createAccount(userDetail: userModel, callBackHandler: callBackHandler)
+        FirebaseAuthenticationManager.shared.createAccount(userDetail: userModel,
+                                                           callBackHandler: callBackHandler)
     }
 }

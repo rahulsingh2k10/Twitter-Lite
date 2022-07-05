@@ -14,17 +14,18 @@ class HomeViewModel: BaseViewModel {
     public var lastCreatedDateTimeStamp: Double?
 
     private var pageSize: UInt = (UIDevice.current.userInterfaceIdiom == .phone ? 10: 20)
+    private var sortKey = "createdTimeStamp"
 
     // MAKR: - Public Methods -
     public func signOutUser(callBackHandlder: @escaping CallBack) {
-        FirebaseManager.shared.signOut(callBack: callBackHandlder)
+        FirebaseAuthenticationManager.shared.signOut(callBack: callBackHandlder)
     }
 
     public func getloggedInUserDetail(callBackHandler: @escaping CallBack) {
         UserEndPoint.getLoggedInUserDetail.fetchWithoutObserving() {(result: Result<UserModel, Error>) in
             switch result {
             case .success(let userModel):
-                userModel.userID = FirebaseManager.shared.currentUser()?.uid
+                userModel.userID = FirebaseAuthenticationManager.shared.currentUser()?.uid
                 Utils.shared.loggedInUser = userModel
 
                 callBackHandler(.none)
@@ -37,7 +38,7 @@ class HomeViewModel: BaseViewModel {
     public func fetchLatestTweets(callBackHandler: @escaping TweetsCallBack) {
         if let timeStamp = tweetList.first?.createdTimeStamp {
             TweetEndPoint.getTweets
-                .fetchWithoutObserving(queryKey: "createdTimeStamp",
+                .fetchWithoutObserving(queryKey: sortKey,
                                        queryStarting: timeStamp) {[weak self] (result: Result<[ViewTweetModel], Error>) in
                     guard let strongSelf = self else { return }
 
@@ -60,7 +61,7 @@ class HomeViewModel: BaseViewModel {
     public func fetchTweets(callBackHandler: @escaping TweetsCallBack) {
         TweetEndPoint.getTweets
             .fetchWithoutObserving(pageSize: (lastCreatedDateTimeStamp == . none) ? pageSize : pageSize + 1,
-                                   queryKey: "createdTimeStamp",
+                                   queryKey: sortKey,
                                    queryEnding: lastCreatedDateTimeStamp) {[weak self] (result: Result<[ViewTweetModel], Error>) in
                 guard let strongSelf = self else { return }
 
