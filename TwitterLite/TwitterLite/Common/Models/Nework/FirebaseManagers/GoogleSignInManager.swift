@@ -19,16 +19,6 @@ struct GoogleSignInManager {
         return GIDSignIn.sharedInstance.handle(url)
     }
 
-    public func restoreuser(callBackHandler: @escaping UserCallBack) {
-        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-            if let error = error {
-                callBackHandler(.none, error)
-            } else if let user = user {
-                authenticate(user: user, callBackHandler: callBackHandler)
-            }
-        }
-    }
-
     public func siginInWithGoogle(viewController: UIViewController,
                                   didStartAuthCallback: @escaping CallBack,
                                   callBackHandler: @escaping UserCallBack) {

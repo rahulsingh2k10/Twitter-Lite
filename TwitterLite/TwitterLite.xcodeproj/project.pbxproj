@@ -55,7 +55,6 @@
 		1FB143B42870CE6D00A8C33F /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB143B32870CE6D00A8C33F /* UITableViewExtension.swift */; };
 		1FB928752864E0A1005967E3 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB928742864E0A1005967E3 /* ReachabilityManager.swift */; };
 		1FB9287A2864E71E005967E3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB928792864E71E005967E3 /* BaseViewController.swift */; };
-		1FB9287C2864E7F1005967E3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9287B2864E7F1005967E3 /* Constants.swift */; };
 		1FB9287F2864F4B7005967E3 /* UIStoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9287E2864F4B7005967E3 /* UIStoryboardExtension.swift */; };
 		1FB928812864F678005967E3 /* LoadableNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB928802864F678005967E3 /* LoadableNib.swift */; };
 		1FB928842864F764005967E3 /* NetworkStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB928832864F764005967E3 /* NetworkStatusView.swift */; };
@@ -146,7 +145,6 @@
 		1FB143B32870CE6D00A8C33F /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		1FB928742864E0A1005967E3 /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		1FB928792864E71E005967E3 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		1FB9287B2864E7F1005967E3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1FB9287E2864F4B7005967E3 /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtension.swift; sourceTree = "<group>"; };
 		1FB928802864F678005967E3 /* LoadableNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableNib.swift; sourceTree = "<group>"; };
 		1FB928832864F764005967E3 /* NetworkStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusView.swift; sourceTree = "<group>"; };
@@ -249,6 +247,8 @@
 			children = (
 				1F669E412868973900BED673 /* HomeViewController.swift */,
 				1F755A712870D06800872636 /* HomeViewModel.swift */,
+				1F39F8B928720EDB00EB8B47 /* PostTweetModel.swift */,
+				1F39F8BB28720EF100EB8B47 /* ViewTweetModel.swift */,
 				1F39F8BF28722B7300EB8B47 /* Cells */,
 			);
 			path = Home;
@@ -316,14 +316,10 @@
 			children = (
 				1FA37EBE2874B50900638AF5 /* Nework */,
 				1F669E432868994300BED673 /* Utils.swift */,
-				1FB9287B2864E7F1005967E3 /* Constants.swift */,
-				1F39F8B72871ECCB00EB8B47 /* DateExtension.swift */,
 				1FB928802864F678005967E3 /* LoadableNib.swift */,
 				1FB928742864E0A1005967E3 /* ReachabilityManager.swift */,
 				1F669E3D2868810100BED673 /* UserModel.swift */,
 				1F0FFC7828705B7A00B54A00 /* ImageWrapper.swift */,
-				1F39F8B928720EDB00EB8B47 /* PostTweetModel.swift */,
-				1F39F8BB28720EF100EB8B47 /* ViewTweetModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -340,16 +336,17 @@
 		1FB9287D2864F49D005967E3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1FB9287E2864F4B7005967E3 /* UIStoryboardExtension.swift */,
 				1F45E9EC2868F16500F20C2D /* UIViewControllerExtension.swift */,
 				1F083DDE286F6EED00B98D69 /* UICollectionViewExtension.swift */,
-				1FB143B32870CE6D00A8C33F /* UITableViewExtension.swift */,
-				1F45E9EE2868F93300F20C2D /* StringExtension.swift */,
-				1F447C94286B60130017EA9C /* DictionaryExtension.swift */,
-				1F39F8BD2872261400EB8B47 /* FloatingPointExtension.swift */,
-				1F447C96286B604C0017EA9C /* ArrayExtension.swift */,
 				1FA37EC32874C88900638AF5 /* UIAlertActionExtension.swift */,
+				1FB9287E2864F4B7005967E3 /* UIStoryboardExtension.swift */,
+				1F39F8BD2872261400EB8B47 /* FloatingPointExtension.swift */,
+				1FB143B32870CE6D00A8C33F /* UITableViewExtension.swift */,
 				1FDD542228709AFD0001ABCD /* EncodableExtensions.swift */,
+				1F447C94286B60130017EA9C /* DictionaryExtension.swift */,
+				1F45E9EE2868F93300F20C2D /* StringExtension.swift */,
+				1F447C96286B604C0017EA9C /* ArrayExtension.swift */,
+				1F39F8B72871ECCB00EB8B47 /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -806,7 +803,6 @@
 				1F447C97286B604C0017EA9C /* ArrayExtension.swift in Sources */,
 				1FB928892864F7A2005967E3 /* BaseView.swift in Sources */,
 				1FA37EC22874C21400638AF5 /* FirebaseModel.swift in Sources */,
-				1FB9287C2864E7F1005967E3 /* Constants.swift in Sources */,
 				1F0FFC75287032F000B54A00 /* RoundedButton.swift in Sources */,
 				1F39F8B82871ECCB00EB8B47 /* DateExtension.swift in Sources */,
 				1F669E3E2868810100BED673 /* UserModel.swift in Sources */,

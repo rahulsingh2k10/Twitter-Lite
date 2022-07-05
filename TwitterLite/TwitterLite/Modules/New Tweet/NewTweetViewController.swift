@@ -36,7 +36,7 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
         config.hidesStatusBar = false
 
         config.library.defaultMultipleSelection = true
-        config.library.maxNumberOfItems = 10
+        config.library.maxNumberOfItems = 4
 
         picker = YPImagePicker(configuration: config)
         picker.didFinishPicking {[unowned picker, unowned self] (items, cancelled) in
@@ -131,7 +131,7 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
 
 extension NewTweetViewController: PlaceholderTextViewDelegate {
     func placeholderTextViewDidChangeText(_ text: String) {
-        let toValue: CGFloat = CGFloat(text.count)/CGFloat(Constants.maxCharacter)
+        let toValue: CGFloat = CGFloat(text.count)/CGFloat(Utils.maxCharacter)
         ringProgressView.animateCircle(toValue: toValue)
 
         viewModel?.tweetModel.caption = text
@@ -140,7 +140,7 @@ extension NewTweetViewController: PlaceholderTextViewDelegate {
 
     func placeholderTextViewShouldReplace(_ text: String) -> Bool {
         if(text.count > 0 &&
-           ( text == "\n" || placeholderTextView.text.count > Constants.maxCharacter - 2)) {
+           ( text == "\n" || placeholderTextView.text.count > Utils.maxCharacter - 2)) {
             return false
         } else {
             return true
