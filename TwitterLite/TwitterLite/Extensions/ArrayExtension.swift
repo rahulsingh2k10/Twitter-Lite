@@ -8,14 +8,21 @@
 import Foundation
 
 
-extension NSArray {
+extension Array {
     func decode<T>(_ type: T.Type) -> T? where T: Decodable {
-        let jsonData = (try? JSONSerialization.data(withJSONObject: self, options: [])) ?? Data.init()
-        return try? JSONDecoder().decode(type, from: jsonData)
+        if let jsonData = (try? JSONSerialization.data(withJSONObject: self, options: [])) {
+            return try? JSONDecoder().decode(type, from: jsonData)
+        } else {
+            return .none
+        }
     }
 
     func encode<T>(_ value: T) -> Any? where T: Encodable {
-        let jsonData = try? JSONEncoder().encode(value)
-        return try? JSONSerialization.jsonObject(with: jsonData ?? Data.init(), options: .allowFragments)
+        if let jsonData = try? JSONEncoder().encode(value),
+           let value = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) {
+            return value
+        } else {
+            return .none
+        }
     }
 }

@@ -57,11 +57,7 @@ class LoginViewController: BaseViewController<LoginViewModel> {
             strongSelf.activityView.stopAnimating()
 
             if let error = error {
-                let okAction = (UIAlertAction(title: StringValue.okTitle.rawValue,
-                                              style: .default,
-                                              handler: .none))
-
-                strongSelf.presentAlert(message: error.localizedDescription, alertAction: [okAction])
+                strongSelf.presentAlert(message: error.localizedDescription)
             } else if let user = user {
                 Utils.shared.loggedInUser = user
 
