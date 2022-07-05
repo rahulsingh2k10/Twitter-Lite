@@ -50,19 +50,27 @@ public enum LoginError: Error {
 
 public enum FireBaseError: Error {
     case missingParameters
+    case failedToFetch
 
     public var errorDescription: String? {
         switch self {
         case .missingParameters:
             return NSLocalizedString("Missing Parameters. Please try again.", comment: "Message")
+        case .failedToFetch:
+            return NSLocalizedString("Failed to fetch the data. Please try again.", comment: "Message")
         }
     }
 }
 
 
-typealias UserCallBack = ((UserModel?, Error?) -> ())
 typealias CallBack = ((Error?) -> ())
-typealias URLCallBack = (([URL]?, Error?) -> ())
+typealias PostCallBack<T> = ((Result<T, Error>) -> ())
+
+
+typealias UserCallBack = ((UserModel?, Error?) -> ())
+typealias URLCallBack = ((URL?, Error?) -> ())
+
+typealias MultipleURLCallBack = (([URL]?, Error?) -> ())
 typealias TweetsCallBack = (([ViewTweetModel]?, Error?) -> ())
 
 
@@ -97,8 +105,8 @@ public enum Mode {
 public enum FirebaseDatabaseName: String {
     case users = "Users"
     case tweets = "Tweets"
-    case profileImages = "Profile_Images"
-    case tweetImages = "Tweet_Images"
+    case profileImage = "Profile_Images"
+    case tweetImage = "Tweet_Images"
 }
 
 

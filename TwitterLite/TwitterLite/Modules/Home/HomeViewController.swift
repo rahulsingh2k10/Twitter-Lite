@@ -51,7 +51,7 @@ class HomeViewController: BaseViewController<HomeViewModel> {
 
             strongSelf.activityView.startAnimating(title: StringValue.signingOut.rawValue)
 
-            FirebaseManager.shared.signOut() { [weak self] error in
+            strongSelf.viewModel?.signOutUser() { [weak self] error in
                 guard let strongSelf = self else { return }
 
                 strongSelf.activityView.stopAnimating()
@@ -60,12 +60,8 @@ class HomeViewController: BaseViewController<HomeViewModel> {
             }
         }
 
-        let cancelAction = UIAlertAction(title: StringValue.cancelTitle.rawValue,
-                                         style: .default,
-                                         handler: .none)
-
         presentAlert(message: StringValue.signOutConfirmation.rawValue,
-                     alertAction: [yesAction, cancelAction])
+                     alertAction: [yesAction, .cancelAction])
     }
 
     @objc
@@ -134,11 +130,15 @@ class HomeViewController: BaseViewController<HomeViewModel> {
     }
 
     private func fetchLoggedInUserDetails() {
-        FirebaseDatabaseManager.shared.fetchLoggedInUserDetails() { [weak self] error in
+        viewModel?.getloggedInUserDetail() {[weak self] error in
             guard let strongSelf = self else { return }
 
-            strongSelf.profileView.loadImage(url: Utils.shared.loggedInUser?.photoURL)
-            strongSelf.newTweetButton.isHidden = false
+            if let error = error {
+                strongSelf.presentAlert(message: error.localizedDescription)
+            } else {
+                strongSelf.profileView.loadImage(url: Utils.shared.loggedInUser?.photoURL)
+                strongSelf.newTweetButton.isHidden = false
+            }
         }
     }
 
@@ -183,7 +183,9 @@ extension HomeViewController: UITableViewDataSource {
 
             strongSelf.activityView.stopAnimating()
 
-            if let error = error {
+            if let error = error as? FireBaseError {
+                strongSelf.presentAlert(message: error.errorDescription ?? String())
+            } else if let error = error {
                 strongSelf.presentAlert(message: error.localizedDescription)
             } else {
                 if let index = strongSelf.viewModel?.tweetList.firstIndex(where: { $0.tweetID == tweetModel.tweetID }) {

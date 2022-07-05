@@ -10,8 +10,8 @@
 		148E0F77C373DA294A0C3032 /* Pods_TwitterLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A4BE888675F76C033505F2 /* Pods_TwitterLite.framework */; };
 		1F083DD1286E3EEB00B98D69 /* RingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F083DD0286E3EEB00B98D69 /* RingProgressView.swift */; };
 		1F083DD3286E4CFD00B98D69 /* NewTweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F083DD2286E4CFD00B98D69 /* NewTweetViewModel.swift */; };
-		1F083DD7286F694600B98D69 /* PhotoGalaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F083DD6286F694600B98D69 /* PhotoGalaryView.swift */; };
-		1F083DD9286F695000B98D69 /* PhotoGalaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F083DD8286F695000B98D69 /* PhotoGalaryView.xib */; };
+		1F083DD7286F694600B98D69 /* PhotoGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F083DD6286F694600B98D69 /* PhotoGalleryView.swift */; };
+		1F083DD9286F695000B98D69 /* PhotoGalleryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F083DD8286F695000B98D69 /* PhotoGalleryView.xib */; };
 		1F083DDC286F6CEC00B98D69 /* PhotoFrameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F083DDA286F6CEC00B98D69 /* PhotoFrameCollectionViewCell.swift */; };
 		1F083DDD286F6CEC00B98D69 /* PhotoFrameCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F083DDB286F6CEC00B98D69 /* PhotoFrameCollectionViewCell.xib */; };
 		1F083DDF286F6EED00B98D69 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F083DDE286F6EED00B98D69 /* UICollectionViewExtension.swift */; };
@@ -20,11 +20,14 @@
 		1F0FFC75287032F000B54A00 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FFC74287032F000B54A00 /* RoundedButton.swift */; };
 		1F0FFC772870530600B54A00 /* BaseTweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FFC762870530600B54A00 /* BaseTweetModel.swift */; };
 		1F0FFC7928705B7A00B54A00 /* ImageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FFC7828705B7A00B54A00 /* ImageWrapper.swift */; };
+		1F1C686028733ACC00F348C2 /* UserEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1C685F28733ACC00F348C2 /* UserEndPoint.swift */; };
+		1F1C68622873529E00F348C2 /* TweetEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1C68612873529E00F348C2 /* TweetEndPoint.swift */; };
 		1F281B6F286A268F0050365F /* FirebaseDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F281B6E286A268F0050365F /* FirebaseDatabaseManager.swift */; };
 		1F39F8B82871ECCB00EB8B47 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39F8B72871ECCB00EB8B47 /* DateExtension.swift */; };
 		1F39F8BA28720EDB00EB8B47 /* PostTweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39F8B928720EDB00EB8B47 /* PostTweetModel.swift */; };
 		1F39F8BC28720EF100EB8B47 /* ViewTweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39F8BB28720EF100EB8B47 /* ViewTweetModel.swift */; };
 		1F39F8BE2872261400EB8B47 /* FloatingPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39F8BD2872261400EB8B47 /* FloatingPointExtension.swift */; };
+		1F39F8C12873273300EB8B47 /* FirebaseDatabaseEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39F8C02873273300EB8B47 /* FirebaseDatabaseEndPoint.swift */; };
 		1F447C95286B60130017EA9C /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F447C94286B60130017EA9C /* DictionaryExtension.swift */; };
 		1F447C97286B604C0017EA9C /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F447C96286B604C0017EA9C /* ArrayExtension.swift */; };
 		1F45E9E92868E4DF00F20C2D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F45E9E82868E4DF00F20C2D /* ProfileView.swift */; };
@@ -45,6 +48,9 @@
 		1F755A752870D5BB00872636 /* TweetsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F755A732870D5BB00872636 /* TweetsTableViewCell.swift */; };
 		1F755A762870D5BB00872636 /* TweetsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F755A742870D5BB00872636 /* TweetsTableViewCell.xib */; };
 		1F9802E3286E19F000D870FB /* NewTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9802E2286E19F000D870FB /* NewTweetViewController.swift */; };
+		1FA37EBD2874B4EB00638AF5 /* PhotoEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA37EBC2874B4EB00638AF5 /* PhotoEndPoint.swift */; };
+		1FA37EC22874C21400638AF5 /* FirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA37EC12874C21400638AF5 /* FirebaseModel.swift */; };
+		1FA37EC42874C88900638AF5 /* UIAlertActionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA37EC32874C88900638AF5 /* UIAlertActionExtension.swift */; };
 		1FA4A69F286E35FF00F321D1 /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4A69E286E35FF00F321D1 /* TextViewWithPlaceholder.swift */; };
 		1FB143B42870CE6D00A8C33F /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB143B32870CE6D00A8C33F /* UITableViewExtension.swift */; };
 		1FB928752864E0A1005967E3 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB928742864E0A1005967E3 /* ReachabilityManager.swift */; };
@@ -95,8 +101,8 @@
 		140CE69C205E3CE5B827FAFC /* Pods-TwitterLiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterLiteTests.debug.xcconfig"; path = "Target Support Files/Pods-TwitterLiteTests/Pods-TwitterLiteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1F083DD0286E3EEB00B98D69 /* RingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingProgressView.swift; sourceTree = "<group>"; };
 		1F083DD2286E4CFD00B98D69 /* NewTweetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTweetViewModel.swift; sourceTree = "<group>"; };
-		1F083DD6286F694600B98D69 /* PhotoGalaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalaryView.swift; sourceTree = "<group>"; };
-		1F083DD8286F695000B98D69 /* PhotoGalaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoGalaryView.xib; sourceTree = "<group>"; };
+		1F083DD6286F694600B98D69 /* PhotoGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryView.swift; sourceTree = "<group>"; };
+		1F083DD8286F695000B98D69 /* PhotoGalleryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoGalleryView.xib; sourceTree = "<group>"; };
 		1F083DDA286F6CEC00B98D69 /* PhotoFrameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFrameCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F083DDB286F6CEC00B98D69 /* PhotoFrameCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoFrameCollectionViewCell.xib; sourceTree = "<group>"; };
 		1F083DDE286F6EED00B98D69 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
@@ -105,11 +111,14 @@
 		1F0FFC74287032F000B54A00 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		1F0FFC762870530600B54A00 /* BaseTweetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTweetModel.swift; sourceTree = "<group>"; };
 		1F0FFC7828705B7A00B54A00 /* ImageWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWrapper.swift; sourceTree = "<group>"; };
+		1F1C685F28733ACC00F348C2 /* UserEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndPoint.swift; sourceTree = "<group>"; };
+		1F1C68612873529E00F348C2 /* TweetEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetEndPoint.swift; sourceTree = "<group>"; };
 		1F281B6E286A268F0050365F /* FirebaseDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseManager.swift; sourceTree = "<group>"; };
 		1F39F8B72871ECCB00EB8B47 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		1F39F8B928720EDB00EB8B47 /* PostTweetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTweetModel.swift; sourceTree = "<group>"; };
 		1F39F8BB28720EF100EB8B47 /* ViewTweetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTweetModel.swift; sourceTree = "<group>"; };
 		1F39F8BD2872261400EB8B47 /* FloatingPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPointExtension.swift; sourceTree = "<group>"; };
+		1F39F8C02873273300EB8B47 /* FirebaseDatabaseEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseEndPoint.swift; sourceTree = "<group>"; };
 		1F447C94286B60130017EA9C /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		1F447C96286B604C0017EA9C /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		1F45E9E82868E4DF00F20C2D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -130,6 +139,9 @@
 		1F755A732870D5BB00872636 /* TweetsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsTableViewCell.swift; sourceTree = "<group>"; };
 		1F755A742870D5BB00872636 /* TweetsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetsTableViewCell.xib; sourceTree = "<group>"; };
 		1F9802E2286E19F000D870FB /* NewTweetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTweetViewController.swift; sourceTree = "<group>"; };
+		1FA37EBC2874B4EB00638AF5 /* PhotoEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEndPoint.swift; sourceTree = "<group>"; };
+		1FA37EC12874C21400638AF5 /* FirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
+		1FA37EC32874C88900638AF5 /* UIAlertActionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertActionExtension.swift; sourceTree = "<group>"; };
 		1FA4A69E286E35FF00F321D1 /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		1FB143B32870CE6D00A8C33F /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		1FB928742864E0A1005967E3 /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
@@ -215,6 +227,7 @@
 		1F46CA8B28664A76005A0C79 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1FA37EC12874C21400638AF5 /* FirebaseModel.swift */,
 				1F0FFC762870530600B54A00 /* BaseTweetModel.swift */,
 				1F46CA8C28664A96005A0C79 /* BaseViewModel.swift */,
 			);
@@ -259,6 +272,36 @@
 			path = "New Tweet";
 			sourceTree = "<group>";
 		};
+		1FA37EBE2874B50900638AF5 /* Nework */ = {
+			isa = PBXGroup;
+			children = (
+				1FA37EC02874B53500638AF5 /* FirebaseManagers */,
+				1FA37EBF2874B51D00638AF5 /* EndPoints */,
+			);
+			path = Nework;
+			sourceTree = "<group>";
+		};
+		1FA37EBF2874B51D00638AF5 /* EndPoints */ = {
+			isa = PBXGroup;
+			children = (
+				1F1C685F28733ACC00F348C2 /* UserEndPoint.swift */,
+				1FA37EBC2874B4EB00638AF5 /* PhotoEndPoint.swift */,
+				1F1C68612873529E00F348C2 /* TweetEndPoint.swift */,
+			);
+			path = EndPoints;
+			sourceTree = "<group>";
+		};
+		1FA37EC02874B53500638AF5 /* FirebaseManagers */ = {
+			isa = PBXGroup;
+			children = (
+				1FBC74DD286783700086604B /* GoogleSignInManager.swift */,
+				1F669E3F286883AF00BED673 /* FirebaseManager.swift */,
+				1F281B6E286A268F0050365F /* FirebaseDatabaseManager.swift */,
+				1F39F8C02873273300EB8B47 /* FirebaseDatabaseEndPoint.swift */,
+			);
+			path = FirebaseManagers;
+			sourceTree = "<group>";
+		};
 		1FB928722864E05B005967E3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,14 +314,12 @@
 		1FB928732864E06E005967E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1FA37EBE2874B50900638AF5 /* Nework */,
 				1F669E432868994300BED673 /* Utils.swift */,
 				1FB9287B2864E7F1005967E3 /* Constants.swift */,
 				1F39F8B72871ECCB00EB8B47 /* DateExtension.swift */,
 				1FB928802864F678005967E3 /* LoadableNib.swift */,
 				1FB928742864E0A1005967E3 /* ReachabilityManager.swift */,
-				1FBC74DD286783700086604B /* GoogleSignInManager.swift */,
-				1F669E3F286883AF00BED673 /* FirebaseManager.swift */,
-				1F281B6E286A268F0050365F /* FirebaseDatabaseManager.swift */,
 				1F669E3D2868810100BED673 /* UserModel.swift */,
 				1F0FFC7828705B7A00B54A00 /* ImageWrapper.swift */,
 				1F39F8B928720EDB00EB8B47 /* PostTweetModel.swift */,
@@ -307,6 +348,7 @@
 				1F447C94286B60130017EA9C /* DictionaryExtension.swift */,
 				1F39F8BD2872261400EB8B47 /* FloatingPointExtension.swift */,
 				1F447C96286B604C0017EA9C /* ArrayExtension.swift */,
+				1FA37EC32874C88900638AF5 /* UIAlertActionExtension.swift */,
 				1FDD542228709AFD0001ABCD /* EncodableExtensions.swift */,
 			);
 			path = Extensions;
@@ -324,8 +366,8 @@
 				1F084846286B783800ABC599 /* ActivityIndicatorView.swift */,
 				1F084848286B783F00ABC599 /* ActivityIndicatorView.xib */,
 				1F083DD0286E3EEB00B98D69 /* RingProgressView.swift */,
-				1F083DD6286F694600B98D69 /* PhotoGalaryView.swift */,
-				1F083DD8286F695000B98D69 /* PhotoGalaryView.xib */,
+				1F083DD6286F694600B98D69 /* PhotoGalleryView.swift */,
+				1F083DD8286F695000B98D69 /* PhotoGalleryView.xib */,
 				1F083DDA286F6CEC00B98D69 /* PhotoFrameCollectionViewCell.swift */,
 				1F083DDB286F6CEC00B98D69 /* PhotoFrameCollectionViewCell.xib */,
 			);
@@ -403,13 +445,12 @@
 		1FECC9AB2864CF220056CCE7 /* TwitterLite */ = {
 			isa = PBXGroup;
 			children = (
-				1F669E3B2867A74D00BED673 /* GoogleService-Info.plist */,
 				1FECC9E32864D1210056CCE7 /* AppDelegate */,
 				1FBC74DB286777100086604B /* Modules */,
 				1FB928722864E05B005967E3 /* Common */,
-				1FECC9DC2864D1210056CCE7 /* Resources */,
-				1FB9287D2864F49D005967E3 /* Extensions */,
 				1FB928872864F78D005967E3 /* BaseClass */,
+				1FB9287D2864F49D005967E3 /* Extensions */,
+				1FECC9DC2864D1210056CCE7 /* Resources */,
 			);
 			path = TwitterLite;
 			sourceTree = "<group>";
@@ -436,6 +477,7 @@
 			children = (
 				1F669E4528689DCE00BED673 /* StoryBoards */,
 				1FECC9E22864D1210056CCE7 /* Info.plist */,
+				1F669E3B2867A74D00BED673 /* GoogleService-Info.plist */,
 				1FECC9DD2864D1210056CCE7 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -592,7 +634,7 @@
 				1FECC9E62864D1210056CCE7 /* Assets.xcassets in Resources */,
 				1FECC9E82864D1210056CCE7 /* Main.storyboard in Resources */,
 				1F084849286B783F00ABC599 /* ActivityIndicatorView.xib in Resources */,
-				1F083DD9286F695000B98D69 /* PhotoGalaryView.xib in Resources */,
+				1F083DD9286F695000B98D69 /* PhotoGalleryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,9 +763,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FB9287A2864E71E005967E3 /* BaseViewController.swift in Sources */,
-				1F083DD7286F694600B98D69 /* PhotoGalaryView.swift in Sources */,
+				1F083DD7286F694600B98D69 /* PhotoGalleryView.swift in Sources */,
 				1F46CA8D28664A96005A0C79 /* BaseViewModel.swift in Sources */,
 				1F669E40286883AF00BED673 /* FirebaseManager.swift in Sources */,
+				1FA37EC42874C88900638AF5 /* UIAlertActionExtension.swift in Sources */,
+				1F39F8C12873273300EB8B47 /* FirebaseDatabaseEndPoint.swift in Sources */,
 				1FA4A69F286E35FF00F321D1 /* TextViewWithPlaceholder.swift in Sources */,
 				1FB928812864F678005967E3 /* LoadableNib.swift in Sources */,
 				1FB928752864E0A1005967E3 /* ReachabilityManager.swift in Sources */,
@@ -744,11 +788,13 @@
 				1F0FFC7928705B7A00B54A00 /* ImageWrapper.swift in Sources */,
 				1F9802E3286E19F000D870FB /* NewTweetViewController.swift in Sources */,
 				1FECC9B12864CF220056CCE7 /* LoginViewController.swift in Sources */,
+				1FA37EBD2874B4EB00638AF5 /* PhotoEndPoint.swift in Sources */,
 				1FB928842864F764005967E3 /* NetworkStatusView.swift in Sources */,
 				1F755A722870D06800872636 /* HomeViewModel.swift in Sources */,
 				1FBE39B82869DA1000E2E233 /* SigninViewModel.swift in Sources */,
 				1F083DD3286E4CFD00B98D69 /* NewTweetViewModel.swift in Sources */,
 				1F39F8BE2872261400EB8B47 /* FloatingPointExtension.swift in Sources */,
+				1F1C68622873529E00F348C2 /* TweetEndPoint.swift in Sources */,
 				1F669E4A2868B75400BED673 /* LoginViewModel.swift in Sources */,
 				1FBE39B62869D9F800E2E233 /* SigninViewController.swift in Sources */,
 				1F45E9E92868E4DF00F20C2D /* ProfileView.swift in Sources */,
@@ -759,11 +805,13 @@
 				1F669E4E2868C7DC00BED673 /* CreateAccountViewModel.swift in Sources */,
 				1F447C97286B604C0017EA9C /* ArrayExtension.swift in Sources */,
 				1FB928892864F7A2005967E3 /* BaseView.swift in Sources */,
+				1FA37EC22874C21400638AF5 /* FirebaseModel.swift in Sources */,
 				1FB9287C2864E7F1005967E3 /* Constants.swift in Sources */,
 				1F0FFC75287032F000B54A00 /* RoundedButton.swift in Sources */,
 				1F39F8B82871ECCB00EB8B47 /* DateExtension.swift in Sources */,
 				1F669E3E2868810100BED673 /* UserModel.swift in Sources */,
 				1F45E9EF2868F93300F20C2D /* StringExtension.swift in Sources */,
+				1F1C686028733ACC00F348C2 /* UserEndPoint.swift in Sources */,
 				1FB9287F2864F4B7005967E3 /* UIStoryboardExtension.swift in Sources */,
 				1F084847286B783800ABC599 /* ActivityIndicatorView.swift in Sources */,
 			);
@@ -946,6 +994,8 @@
 				DEVELOPMENT_TEAM = GR8XVNGUB7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TwitterLite/Resources/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To take photos for Profile";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To take photos for Profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -975,6 +1025,8 @@
 				DEVELOPMENT_TEAM = GR8XVNGUB7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TwitterLite/Resources/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To take photos for Profile";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To take photos for Profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

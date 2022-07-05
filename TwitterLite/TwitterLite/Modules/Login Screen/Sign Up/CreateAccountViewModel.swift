@@ -9,7 +9,7 @@ import Foundation
 
 
 class CreateAccountViewModel: BaseViewModel {
-    public var userModel: UserModel = UserModel()
+    public var userModel: UserModel = UserModel(jsonDict: JSONDict())
 
     // MARK: - Public Methods -
     public func isModelValid() -> Bool {

@@ -16,23 +16,78 @@ class HomeViewModel: BaseViewModel {
     private var pageSize: UInt = (UIDevice.current.userInterfaceIdiom == .phone ? 10: 20)
 
     // MAKR: - Public Methods -
+    public func signOutUser(callBackHandlder: @escaping CallBack) {
+        FirebaseManager.shared.signOut(callBack: callBackHandlder)
+    }
+
+    public func getloggedInUserDetail(callBackHandler: @escaping CallBack) {
+        UserEndPoint.getLoggedInUserDetail.fetchWithoutObserving() {(result: Result<UserModel, Error>) in
+            switch result {
+            case .success(let userModel):
+                userModel.userID = FirebaseManager.shared.currentUser()?.uid
+                Utils.shared.loggedInUser = userModel
+
+                callBackHandler(.none)
+            case .failure(let error):
+                callBackHandler(error)
+            }
+        }
+    }
+
     public func fetchLatestTweets(callBackHandler: @escaping TweetsCallBack) {
         if let timeStamp = tweetList.first?.createdTimeStamp {
-            FirebaseDatabaseManager.shared.fetchTweets(latestTweetTimeStamp: timeStamp,
-                                                       callbackHandler: callBackHandler)
+            TweetEndPoint.getTweets
+                .fetchWithoutObserving(queryKey: "createdTimeStamp",
+                                       queryStarting: timeStamp) {[weak self] (result: Result<[ViewTweetModel], Error>) in
+                    guard let strongSelf = self else { return }
+
+                    strongSelf.fetchUserDetails(result: result) { tweetModelList, error in
+                        if let tweetModelList = tweetModelList, !tweetModelList.isEmpty {
+                            var sortedTweets = tweetModelList.sorted { $0.createdTimeStamp > $1.createdTimeStamp }
+                            sortedTweets.removeLast()
+
+                            callBackHandler(sortedTweets, error)
+                        } else {
+                            callBackHandler(.none, error)
+                        }
+                    }
+                }
         } else {
             callBackHandler(.none, FireBaseError.missingParameters)
         }
     }
 
     public func fetchTweets(callBackHandler: @escaping TweetsCallBack) {
-        FirebaseDatabaseManager.shared.fetchTweets(startPoint: lastCreatedDateTimeStamp,
-                                                   pageSize: pageSize,
-                                                   callbackHandler: callBackHandler)
+        TweetEndPoint.getTweets
+            .fetchWithoutObserving(pageSize: (lastCreatedDateTimeStamp == . none) ? pageSize : pageSize + 1,
+                                   queryKey: "createdTimeStamp",
+                                   queryEnding: lastCreatedDateTimeStamp) {[weak self] (result: Result<[ViewTweetModel], Error>) in
+                guard let strongSelf = self else { return }
+
+                strongSelf.fetchUserDetails(result: result) { tweetModelList, error in
+                    if let tweetModelList = tweetModelList, !tweetModelList.isEmpty {
+                        var sortedTweets = tweetModelList.sorted { $0.createdTimeStamp > $1.createdTimeStamp }
+
+                        if strongSelf.lastCreatedDateTimeStamp != .none {
+                            sortedTweets.removeFirst()
+                        }
+
+                        callBackHandler(sortedTweets, error)
+                    } else {
+                        callBackHandler(.none, error)
+                    }
+                }
+            }
     }
 
     public func delete(tweetModel: ViewTweetModel, callBackHandler: @escaping CallBack) {
-        FirebaseDatabaseManager.shared.deleteTweet(tweetID: tweetModel.tweetID!, callbackHandler: callBackHandler)
+        guard let tweetID = tweetModel.tweetID else {
+            callBackHandler(FireBaseError.missingParameters)
+
+            return
+        }
+
+        TweetEndPoint.deleteTweet(id: tweetID).delete(callBackHandler: callBackHandler)
     }
 
     public func shouldFetchData(index: Double) -> Bool {
@@ -48,6 +103,39 @@ class HomeViewModel: BaseViewModel {
             return true
         } else {
             return false
+        }
+    }
+
+    // MARK: - Private Methods -
+    private func fetchUserDetails(result: Result<[ViewTweetModel], Error>,
+                                  callBackHandler: @escaping TweetsCallBack) {
+        switch result {
+        case .success(let tweetModelList):
+            let dispatchGroup = DispatchGroup()
+
+            for tweet in tweetModelList {
+                if tweet.uid == Utils.shared.loggedInUser?.userID {
+                    tweet.user = Utils.shared.loggedInUser
+                } else {
+                    dispatchGroup.enter()
+
+                    UserEndPoint.getUserDetails(id: tweet.uid).fetchWithoutObserving() { (result: Result<UserModel, Error>) in
+                        switch result {
+                        case .success(let userModel):
+                            tweet.user = userModel
+                        default: break
+                        }
+
+                        dispatchGroup.leave()
+                    }
+                }
+            }
+
+            dispatchGroup.notify(queue: .main) {
+                callBackHandler(tweetModelList, .none)
+            }
+        case .failure(let error):
+            callBackHandler(.none, error)
         }
     }
 }

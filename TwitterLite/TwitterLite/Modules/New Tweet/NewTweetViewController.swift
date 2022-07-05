@@ -23,7 +23,7 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
 
     @IBOutlet weak private var placeholderTextView: PlaceholderTextView!
     @IBOutlet weak private var ringProgressView: RingProgressView!
-    @IBOutlet weak private var photoGalaryView: PhotoGalaryView!
+    @IBOutlet weak private var photoGalleryView: PhotoGalleryView!
     @IBOutlet weak private var profileView: ProfileView!
     @IBOutlet weak private var tweetButton: UIButton!
 
@@ -33,9 +33,10 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
         config.showsPhotoFilters = false
         config.shouldSaveNewPicturesToAlbum = false
         config.startOnScreen = YPPickerScreen.library
+        config.hidesStatusBar = false
 
         config.library.defaultMultipleSelection = true
-        config.library.maxNumberOfItems = 4
+        config.library.maxNumberOfItems = 10
 
         picker = YPImagePicker(configuration: config)
         picker.didFinishPicking {[unowned picker, unowned self] (items, cancelled) in
@@ -50,9 +51,9 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
             }
 
             self.viewModel?.tweetModel.photos = photos
-            self.photoGalaryView.loadData(imageList: photos)
+            self.photoGalleryView.loadData(imageList: photos)
             self.enableDisableTweetButton()
-            
+
             picker.dismiss(animated: true)
         }
 
@@ -116,9 +117,9 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
 
         ringProgressView.animateCircle(toValue: 0)
 
-        photoGalaryView.viewSize = (UIDevice.current.userInterfaceIdiom == .phone) ? 100 : 200
+        photoGalleryView.viewSize = (UIDevice.current.userInterfaceIdiom == .phone) ? 100 : 200
 
-        photoGalaryView.didRemoveItem = {[unowned self] item in
+        photoGalleryView.didRemoveItem = {[unowned self] item in
             if let index = self.viewModel?.tweetModel.photos?.firstIndex (where: { $0.image == (item as! ImageWrapper).image }) {
                 self.viewModel?.tweetModel.photos?.remove(at: index)
                 self.enableDisableTweetButton()
@@ -132,11 +133,11 @@ extension NewTweetViewController: PlaceholderTextViewDelegate {
     func placeholderTextViewDidChangeText(_ text: String) {
         let toValue: CGFloat = CGFloat(text.count)/CGFloat(Constants.maxCharacter)
         ringProgressView.animateCircle(toValue: toValue)
-        
+
         viewModel?.tweetModel.caption = text
         enableDisableTweetButton()
     }
-    
+
     func placeholderTextViewShouldReplace(_ text: String) -> Bool {
         if(text.count > 0 &&
            ( text == "\n" || placeholderTextView.text.count > Constants.maxCharacter - 2)) {

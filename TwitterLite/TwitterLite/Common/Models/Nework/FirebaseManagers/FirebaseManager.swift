@@ -74,21 +74,51 @@ struct FirebaseManager {
                 callBackHandler(.none, error)
             } else if let authResult = authResult {
                 let user = authResult.user
-                var loggedInUser = userDetail
+                let loggedInUser = userDetail
                 loggedInUser.userID = user.uid
 
-                update(user: loggedInUser, callBackHandler: callBackHandler)
+                addUpdate(user: loggedInUser, callBackHandler: callBackHandler)
             }
         }
     }
 
     // MARK: - Private Methods -
-    private func update(user: UserModel, callBackHandler: @escaping UserCallBack) {
-        FirebaseDatabaseManager.shared.updateUser(user: user) { error in
-            if let error = error {
+    private func addUpdate(user: UserModel, callBackHandler: @escaping UserCallBack) {
+        if let url = user.photoURL,
+           let data = try? Data(contentsOf: url),
+           let fileName = user.userID {
+            PhotoEndPoint.uploadUserProfileImage(fileName: fileName).uploadAttachment(data: data) { url, error in
+                if let error = error {
+                    callBackHandler(.none, error)
+                } else if let url = url {
+                    continueAddUpdate(user: user,
+                                      url: url,
+                                      callBackHandler: callBackHandler)
+                }
+            }
+        } else {
+            callBackHandler(.none, FireBaseError.missingParameters)
+        }
+    }
+
+    private func continueAddUpdate(user: UserModel, url: URL, callBackHandler: @escaping UserCallBack) {
+        guard let userID = user.userID else {
+            callBackHandler(.none, FireBaseError.missingParameters)
+
+            return
+        }
+
+        let userModel = user
+        userModel.photoURL = url
+        userModel.password = .none
+        userModel.userID = .none
+
+        UserEndPoint.postUserDetails(id: userID).post(data: userModel) { (result: Result<UserModel, Error>) in
+            switch result {
+            case .success(let userModel):
+                callBackHandler(userModel, .none)
+            case .failure(let error):
                 callBackHandler(.none, error)
-            } else {
-                callBackHandler(user, .none)
             }
         }
     }
@@ -105,14 +135,15 @@ struct FirebaseManager {
                 username.removeSubrange(dotRange.lowerBound..<username.endIndex)
             }
 
-            let loggedInUser = UserModel(userID: user.uid,
-                                                 photoURL: user.photoURL as URL?,
-                                                 displayName: user.displayName,
-                                                 emailAddress: user.email,
-                                                 userName: username,
-                                                 password: .none)
+            let loggedInUser = UserModel(jsonDict: JSONDict())
+            loggedInUser.userID = user.uid
+            loggedInUser.photoURL = user.photoURL
+            loggedInUser.displayName = user.uid
+            loggedInUser.emailAddress = user.email
+            loggedInUser.userName = username
+            loggedInUser.emailAddress = user.email
 
-            update(user: loggedInUser, callBackHandler: callBackHandler)
+            addUpdate(user: loggedInUser, callBackHandler: callBackHandler)
         }
     }
 }

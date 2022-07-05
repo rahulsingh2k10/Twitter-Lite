@@ -15,7 +15,7 @@ extension UITableView {
 
         register(nib, forCellReuseIdentifier: cell.identifier)
     }
-    
+
     public func dequeue<T: UITableViewCell>(reusableCell: T.Type,
                                             for indexPath: IndexPath) -> T where T: Reusable {
         guard let cell = dequeueReusableCell(withIdentifier: reusableCell.identifier,
