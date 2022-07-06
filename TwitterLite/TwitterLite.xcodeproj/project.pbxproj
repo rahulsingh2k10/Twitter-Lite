@@ -226,8 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				1FA37EC12874C21400638AF5 /* FirebaseModel.swift */,
-				1F0FFC762870530600B54A00 /* BaseTweetModel.swift */,
 				1F46CA8C28664A96005A0C79 /* BaseViewModel.swift */,
+				1F0FFC762870530600B54A00 /* BaseTweetModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -392,9 +392,9 @@
 		1FBC74DB286777100086604B /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				1F9802E1286E196500D870FB /* New Tweet */,
 				1F281B6D286A1B8A0050365F /* Login Screen */,
 				1F669E482868B73500BED673 /* Home */,
+				1F9802E1286E196500D870FB /* New Tweet */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
