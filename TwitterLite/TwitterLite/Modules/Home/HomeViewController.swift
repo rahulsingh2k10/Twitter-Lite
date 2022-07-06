@@ -44,6 +44,7 @@ class HomeViewController: BaseViewController<HomeViewModel> {
         present(newTweetVC, animated: true)
     }
 
+    // MARK: - Action Methods -
     @IBAction private func signOutButtonClicked(_ sender: Any) {
         let yesAction = UIAlertAction(title: StringValue.yesTitle.rawValue,
                                       style: .default) { [weak self] _ in
@@ -65,7 +66,7 @@ class HomeViewController: BaseViewController<HomeViewModel> {
     }
 
     @objc
-    func refresh(_ sender: AnyObject?) {
+    private func refresh(_ sender: AnyObject?) {
         viewModel?.fetchLatestTweets() { [weak self] tweets, error in
             guard let strongSelf = self else { return }
 
@@ -153,7 +154,33 @@ class HomeViewController: BaseViewController<HomeViewModel> {
             strongSelf.present(loginVC, animated: animated)
         }
     }
+
+    private func delete(tweetModel: ViewTweetModel) {
+        activityView.startAnimating()
+
+        viewModel?.delete(tweetModel: tweetModel) {[weak self] error in
+            guard let strongSelf = self else { return }
+
+            strongSelf.activityView.stopAnimating()
+
+            if let error = error as? FireBaseError {
+                strongSelf.presentAlert(message: error.errorDescription ?? String())
+            } else if let error = error {
+                strongSelf.presentAlert(message: error.localizedDescription)
+            } else {
+                if let index = strongSelf.viewModel?.tweetList.firstIndex(where: { $0.tweetID == tweetModel.tweetID }) {
+                    strongSelf.viewModel?.tweetList.remove(at: index)
+
+                    strongSelf.tweetsTableView.beginUpdates()
+                    strongSelf.tweetsTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                    strongSelf.tweetsTableView.endUpdates()
+                    
+                }
+            }
+        }
+    }
 }
+
 
 extension HomeViewController: LoginDelegate {
     func loginDidComplete() {
@@ -173,31 +200,6 @@ extension HomeViewController:  NewTweetDelegate {
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.tweetList.count ?? 0
-    }
-
-    private func delete(tweetModel: ViewTweetModel) {
-        activityView.startAnimating()
-
-        viewModel?.delete(tweetModel: tweetModel, callBackHandler: {[weak self] error in
-            guard let strongSelf = self else { return }
-
-            strongSelf.activityView.stopAnimating()
-
-            if let error = error as? FireBaseError {
-                strongSelf.presentAlert(message: error.errorDescription ?? String())
-            } else if let error = error {
-                strongSelf.presentAlert(message: error.localizedDescription)
-            } else {
-                if let index = strongSelf.viewModel?.tweetList.firstIndex(where: { $0.tweetID == tweetModel.tweetID }) {
-                    strongSelf.viewModel?.tweetList.remove(at: index)
-
-                    strongSelf.tweetsTableView.beginUpdates()
-                    strongSelf.tweetsTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
-                    strongSelf.tweetsTableView.endUpdates()
-
-                }
-            }
-        })
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

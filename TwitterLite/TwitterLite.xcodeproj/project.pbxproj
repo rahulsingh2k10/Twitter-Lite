@@ -23,6 +23,7 @@
 		1F1C686028733ACC00F348C2 /* UserEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1C685F28733ACC00F348C2 /* UserEndPoint.swift */; };
 		1F1C68622873529E00F348C2 /* TweetEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1C68612873529E00F348C2 /* TweetEndPoint.swift */; };
 		1F281B6F286A268F0050365F /* FirebaseDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F281B6E286A268F0050365F /* FirebaseDatabaseManager.swift */; };
+		1F35531428762D5D00106AC7 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F35531328762D5D00106AC7 /* UIDeviceExtension.swift */; };
 		1F39F8B82871ECCB00EB8B47 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39F8B72871ECCB00EB8B47 /* DateExtension.swift */; };
 		1F39F8BA28720EDB00EB8B47 /* PostTweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39F8B928720EDB00EB8B47 /* PostTweetModel.swift */; };
 		1F39F8BC28720EF100EB8B47 /* ViewTweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39F8BB28720EF100EB8B47 /* ViewTweetModel.swift */; };
@@ -113,6 +114,7 @@
 		1F1C685F28733ACC00F348C2 /* UserEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndPoint.swift; sourceTree = "<group>"; };
 		1F1C68612873529E00F348C2 /* TweetEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetEndPoint.swift; sourceTree = "<group>"; };
 		1F281B6E286A268F0050365F /* FirebaseDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseManager.swift; sourceTree = "<group>"; };
+		1F35531328762D5D00106AC7 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		1F39F8B72871ECCB00EB8B47 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		1F39F8B928720EDB00EB8B47 /* PostTweetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTweetModel.swift; sourceTree = "<group>"; };
 		1F39F8BB28720EF100EB8B47 /* ViewTweetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTweetModel.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				1FB143B32870CE6D00A8C33F /* UITableViewExtension.swift */,
 				1FDD542228709AFD0001ABCD /* EncodableExtensions.swift */,
 				1F447C94286B60130017EA9C /* DictionaryExtension.swift */,
+				1F35531328762D5D00106AC7 /* UIDeviceExtension.swift */,
 				1F45E9EE2868F93300F20C2D /* StringExtension.swift */,
 				1F447C96286B604C0017EA9C /* ArrayExtension.swift */,
 				1F39F8B72871ECCB00EB8B47 /* DateExtension.swift */,
@@ -760,6 +763,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FB9287A2864E71E005967E3 /* BaseViewController.swift in Sources */,
+				1F35531428762D5D00106AC7 /* UIDeviceExtension.swift in Sources */,
 				1F083DD7286F694600B98D69 /* PhotoGalleryView.swift in Sources */,
 				1F46CA8D28664A96005A0C79 /* BaseViewModel.swift in Sources */,
 				1F669E40286883AF00BED673 /* FirebaseAuthenticationManager.swift in Sources */,

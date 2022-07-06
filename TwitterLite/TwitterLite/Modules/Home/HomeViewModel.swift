@@ -13,7 +13,7 @@ class HomeViewModel: BaseViewModel {
     public var tweetList: [ViewTweetModel] = []
     public var lastCreatedDateTimeStamp: Double?
 
-    private var pageSize: UInt = (UIDevice.current.userInterfaceIdiom == .phone ? 10: 20)
+    private var pageSize: UInt = (UIDevice.isiPhone ? 10: 20)
     private var sortKey = "createdTimeStamp"
 
     // MAKR: - Public Methods -
