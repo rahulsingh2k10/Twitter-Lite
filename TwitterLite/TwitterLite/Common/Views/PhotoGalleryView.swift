@@ -1,5 +1,5 @@
 //
-//  PhotoGalaryView.swift
+//  PhotoGalleryView.swift
 //  TwitterLite
 //
 //  Created by Rahul Singh on 01/07/22.
@@ -9,22 +9,20 @@ import UIKit
 
 
 @IBDesignable
-class PhotoGalaryView: BaseView {
+class PhotoGalleryView: BaseView {
     public var didRemoveItem: ((Any) -> ())?
-
-    @IBInspectable var viewSize: CGFloat = 0.0
 
     @IBOutlet weak private var photoCollectionView: UICollectionView!
 
     private var imageList: [Any]?
+    private var hideDeleteButton: Bool = false
 
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
+    private let sectionInsets = UIEdgeInsets(top: 0.0, left: 10, bottom: 10.0, right: 0.0)
 
+    public func loadData(imageList: [Any], hideDeleteButton: Bool = false) {
         photoCollectionView.register(cell: PhotoFrameCollectionViewCell.self)
-    }
 
-    public func loadData(imageList: [Any]) {
+        self.hideDeleteButton = hideDeleteButton
         self.imageList = imageList
 
         photoCollectionView.reloadData()
@@ -42,7 +40,7 @@ class PhotoGalaryView: BaseView {
 }
 
 
-extension PhotoGalaryView: UICollectionViewDataSource {
+extension PhotoGalleryView: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -56,7 +54,7 @@ extension PhotoGalaryView: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(reusableCell: PhotoFrameCollectionViewCell.self,
                                           for: indexPath)
-        cell.loadImage(imageData: imageList![indexPath.row])
+        cell.loadImage(imageData: imageList![indexPath.row], hideDeleteButton: hideDeleteButton)
         cell.deleteButtonCallback = {[unowned self] passedCell in
             self.deleteItem(cell: passedCell)
         }
@@ -66,22 +64,22 @@ extension PhotoGalaryView: UICollectionViewDataSource {
 }
 
 
-extension PhotoGalaryView: UICollectionViewDelegateFlowLayout {
+extension PhotoGalleryView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: viewSize - 20, height: viewSize - 20)
+        return CGSize(width: frame.height - 10, height: frame.height - 10)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8.0
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout
-                        collectionViewLayout: UICollectionViewLayout,
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8.0
+        return sectionInsets.left
     }
 }

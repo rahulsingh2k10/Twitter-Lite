@@ -117,8 +117,6 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
 
         ringProgressView.animateCircle(toValue: 0)
 
-        photoGalleryView.viewSize = (UIDevice.current.userInterfaceIdiom == .phone) ? 100 : 200
-
         photoGalleryView.didRemoveItem = {[unowned self] item in
             if let index = self.viewModel?.tweetModel.photos?.firstIndex (where: { $0.image == (item as! ImageWrapper).image }) {
                 self.viewModel?.tweetModel.photos?.remove(at: index)
