@@ -20,7 +20,7 @@
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="71x-pH-jKe">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZMN-1A-6dc">
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZMN-1A-6dc">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -34,10 +34,10 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemRedColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="71x-pH-jKe" secondAttribute="bottom" id="6uP-IX-DKY"/>
-                <constraint firstItem="71x-pH-jKe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VQQ-aJ-Z9g"/>
-                <constraint firstAttribute="trailing" secondItem="71x-pH-jKe" secondAttribute="trailing" id="ibu-gA-28n"/>
-                <constraint firstItem="71x-pH-jKe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mZ2-CB-sSz"/>
+                <constraint firstItem="71x-pH-jKe" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="21b-kK-uBC"/>
+                <constraint firstItem="71x-pH-jKe" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Qar-pw-eY2"/>
+                <constraint firstItem="71x-pH-jKe" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="Xp7-5s-CVi"/>
+                <constraint firstItem="71x-pH-jKe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ecj-b6-YfI"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

@@ -19,15 +19,21 @@ class PhotoGalleryView: BaseView {
 
     private let sectionInsets = UIEdgeInsets(top: 0.0, left: 10, bottom: 10.0, right: 0.0)
 
-    public func loadData(imageList: [Any], hideDeleteButton: Bool = false) {
-        photoCollectionView.register(cell: PhotoFrameCollectionViewCell.self)
+    override func awakeFromNib() {
+        super.awakeFromNib()
 
+        photoCollectionView.register(cell: PhotoFrameCollectionViewCell.self)
+    }
+
+    //MARK: - Public Methods -
+    public func loadData(imageList: [Any], hideDeleteButton: Bool = false) {
         self.hideDeleteButton = hideDeleteButton
         self.imageList = imageList
 
         photoCollectionView.reloadData()
     }
 
+    //MARK: - Private Methods -
     private func deleteItem(cell: UICollectionViewCell) {
         if let indexPath = photoCollectionView.indexPath(for: cell) {
             didRemoveItem?(imageList![indexPath.row])
