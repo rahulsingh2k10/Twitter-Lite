@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,20 +41,6 @@
                                     <constraint firstAttribute="width" secondItem="4lL-SS-yIC" secondAttribute="height" multiplier="1:1" id="vBd-Bc-w7a"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" preferredBehavioralStyle="pad" translatesAutoresizingMaskIntoConstraints="NO" id="beB-vH-ffO" customClass="RoundedButton" customModule="TwitterLite" customModuleProvider="target">
-                                <rect key="frame" x="358" y="52" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="Uco-4n-P9Q">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="80"/>
-                                    </constraint>
-                                    <constraint firstAttribute="width" secondItem="beB-vH-ffO" secondAttribute="height" id="vQf-1y-XJt"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="rectangle.portrait.and.arrow.right" catalog="system"/>
-                                <connections>
-                                    <action selector="signOutButtonClicked:" destination="wxO-cT-vRW" eventType="touchUpInside" id="LvW-rv-FWg"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yM7-vx-Uht" userLabel="Separator">
                                 <rect key="frame" x="0.0" y="100" width="414" height="1"/>
                                 <color key="backgroundColor" systemColor="placeholderTextColor"/>
@@ -73,32 +60,47 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loj-tp-6S1">
-                                <rect key="frame" x="334" y="782" width="60" height="60"/>
+                                <rect key="frame" x="354" y="802" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="loj-tp-6S1" secondAttribute="height" multiplier="1:1" id="cG3-vb-aIf"/>
+                                    <constraint firstAttribute="width" constant="40" id="fVn-Xv-zRQ">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                    </constraint>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="New_Tweet_Light">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="bold"/>
-                                </state>
+                                <state key="normal" image="New_Tweet_Light"/>
                                 <connections>
                                     <action selector="newTweetClicked:" destination="wxO-cT-vRW" eventType="touchUpInside" id="pKZ-T7-ySK"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruZ-bW-T5v" customClass="RoundedButton" customModule="TwitterLite" customModuleProvider="target">
+                                <rect key="frame" x="354" y="52" width="40" height="40"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <imageReference key="image" image="rectangle.portrait.and.arrow.right" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                </buttonConfiguration>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="w3S-lc-Mlr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="59K-B0-OgC" firstAttribute="leading" secondItem="w3S-lc-Mlr" secondAttribute="leading" constant="20" id="1K9-0N-7mZ"/>
+                            <constraint firstItem="ruZ-bW-T5v" firstAttribute="height" secondItem="59K-B0-OgC" secondAttribute="height" id="1xY-yX-MGW"/>
                             <constraint firstItem="w3S-lc-Mlr" firstAttribute="bottom" secondItem="loj-tp-6S1" secondAttribute="bottom" constant="20" id="3B6-jG-Jy3"/>
+                            <constraint firstItem="ruZ-bW-T5v" firstAttribute="centerY" secondItem="4lL-SS-yIC" secondAttribute="centerY" id="7wv-zJ-tYN"/>
                             <constraint firstItem="4lL-SS-yIC" firstAttribute="top" secondItem="w3S-lc-Mlr" secondAttribute="top" constant="8" id="8de-ae-B4x"/>
                             <constraint firstItem="HTr-Pt-fTc" firstAttribute="top" secondItem="yM7-vx-Uht" secondAttribute="bottom" id="AbV-tn-czW"/>
+                            <constraint firstItem="ruZ-bW-T5v" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4lL-SS-yIC" secondAttribute="trailing" constant="16" id="D5h-hg-4Ci"/>
                             <constraint firstItem="yM7-vx-Uht" firstAttribute="top" secondItem="4lL-SS-yIC" secondAttribute="bottom" constant="8" id="GGj-iG-Jaq"/>
                             <constraint firstItem="w3S-lc-Mlr" firstAttribute="trailing" secondItem="HTr-Pt-fTc" secondAttribute="trailing" id="ItP-3j-dbq"/>
                             <constraint firstItem="w3S-lc-Mlr" firstAttribute="trailing" secondItem="yM7-vx-Uht" secondAttribute="trailing" id="J87-nC-ZQZ"/>
+                            <constraint firstItem="w3S-lc-Mlr" firstAttribute="trailing" secondItem="ruZ-bW-T5v" secondAttribute="trailing" constant="20" id="Klb-yt-PXV"/>
                             <constraint firstItem="4lL-SS-yIC" firstAttribute="centerX" secondItem="w3S-lc-Mlr" secondAttribute="centerX" id="RVD-ye-GnF"/>
-                            <constraint firstItem="w3S-lc-Mlr" firstAttribute="trailing" secondItem="beB-vH-ffO" secondAttribute="trailing" constant="16" id="Tpd-Bk-yyg"/>
                             <constraint firstItem="yM7-vx-Uht" firstAttribute="leading" secondItem="w3S-lc-Mlr" secondAttribute="leading" id="fH4-5c-6Ah"/>
                             <constraint firstItem="59K-B0-OgC" firstAttribute="centerY" secondItem="4lL-SS-yIC" secondAttribute="centerY" id="gJC-69-ams"/>
-                            <constraint firstItem="beB-vH-ffO" firstAttribute="centerY" secondItem="4lL-SS-yIC" secondAttribute="centerY" id="gz3-Ag-Kr0"/>
                             <constraint firstItem="w3S-lc-Mlr" firstAttribute="trailing" secondItem="loj-tp-6S1" secondAttribute="trailing" constant="20" id="hQn-Jh-HLh"/>
+                            <constraint firstItem="ruZ-bW-T5v" firstAttribute="width" secondItem="59K-B0-OgC" secondAttribute="width" id="jSq-2e-WU6"/>
                             <constraint firstItem="w3S-lc-Mlr" firstAttribute="bottom" secondItem="HTr-Pt-fTc" secondAttribute="bottom" id="kVO-KB-Lw1"/>
                             <constraint firstItem="HTr-Pt-fTc" firstAttribute="leading" secondItem="w3S-lc-Mlr" secondAttribute="leading" id="mqd-ha-MBb"/>
                         </constraints>
@@ -184,7 +186,6 @@
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="What's happening?"/>
                                                 </userDefinedRuntimeAttributes>
@@ -208,9 +209,6 @@
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" preferredBehavioralStyle="pad" translatesAutoresizingMaskIntoConstraints="NO" id="owz-8A-WVC" customClass="RoundedButton" customModule="TwitterLite" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="232" width="40" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="2YL-Qx-Fjd">
-                                                        <variation key="heightClass=regular-widthClass=regular" constant="60"/>
-                                                    </constraint>
                                                     <constraint firstAttribute="width" secondItem="owz-8A-WVC" secondAttribute="height" multiplier="1:1" id="syX-4e-QWP"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
@@ -234,7 +232,7 @@
                                                 <rect key="frame" x="75" y="16" width="1" height="266"/>
                                                 <color key="backgroundColor" systemColor="placeholderTextColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="1" id="yWC-UJ-7fI"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="1" id="yWC-UJ-7fI"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -273,6 +271,7 @@
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="owz-8A-WVC" firstAttribute="leading" secondItem="if0-mh-59h" secondAttribute="leading" id="1dX-iM-PEm"/>
                                     <constraint firstItem="PWe-0D-A4J" firstAttribute="width" secondItem="RCr-ZC-rne" secondAttribute="width" id="5p2-QI-hcz"/>
                                     <constraint firstItem="HAo-8w-Q3s" firstAttribute="trailing" secondItem="if0-mh-59h" secondAttribute="trailing" id="8GG-tJ-0Db"/>
                                     <constraint firstItem="PWe-0D-A4J" firstAttribute="top" secondItem="RCr-ZC-rne" secondAttribute="top" id="BoC-qE-0Nh"/>
@@ -339,11 +338,11 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="beB-vH-ffO">
-            <size key="intrinsicContentSize" width="49.5" height="31"/>
-        </designable>
         <designable name="owz-8A-WVC">
             <size key="intrinsicContentSize" width="45" height="31"/>
+        </designable>
+        <designable name="ruZ-bW-T5v">
+            <size key="intrinsicContentSize" width="49.5" height="31"/>
         </designable>
     </designables>
     <resources>
