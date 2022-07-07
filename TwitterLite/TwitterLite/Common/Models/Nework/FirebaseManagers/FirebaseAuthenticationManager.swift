@@ -138,10 +138,9 @@ struct FirebaseAuthenticationManager {
             let loggedInUser = UserModel(jsonDict: JSONDict())
             loggedInUser.userID = user.uid
             loggedInUser.photoURL = user.photoURL
-            loggedInUser.displayName = user.uid
+            loggedInUser.displayName = user.displayName
             loggedInUser.emailAddress = user.email
             loggedInUser.userName = username
-            loggedInUser.emailAddress = user.email
 
             addUpdate(user: loggedInUser, callBackHandler: callBackHandler)
         }

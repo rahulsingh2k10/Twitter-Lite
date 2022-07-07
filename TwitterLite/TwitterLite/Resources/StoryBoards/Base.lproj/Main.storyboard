@@ -80,6 +80,9 @@
                                     <imageReference key="image" image="rectangle.portrait.and.arrow.right" catalog="system" symbolScale="large"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="signOutButtonClicked:" destination="wxO-cT-vRW" eventType="touchUpInside" id="n2N-kQ-7Tg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="w3S-lc-Mlr"/>
