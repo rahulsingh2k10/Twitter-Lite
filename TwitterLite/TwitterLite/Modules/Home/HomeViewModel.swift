@@ -82,6 +82,38 @@ class HomeViewModel: BaseViewModel {
     }
 
     public func delete(tweetModel: ViewTweetModel, callBackHandler: @escaping CallBack) {
+        if let photoURLs = tweetModel.photoURL {
+            let dispatchGroup = DispatchGroup()
+
+            var anError: Error?
+
+            for photoURL in photoURLs {
+                dispatchGroup.enter()
+
+                PhotoEndPoint.deleteImage.deleteAttachment(urlString: photoURL) { error in
+                    anError = error
+
+                    dispatchGroup.leave()
+                }
+            }
+
+            dispatchGroup.notify(queue: .main) { [weak self] in
+                guard let strongSelf = self else { return }
+
+                if let anError = anError {
+                    callBackHandler(anError)
+                } else {
+                    strongSelf.continueDeleteTweet(tweetModel: tweetModel,
+                                                   callBackHandler: callBackHandler)
+                }
+            }
+        } else {
+            continueDeleteTweet(tweetModel: tweetModel, callBackHandler: callBackHandler)
+        }
+    }
+
+    public func continueDeleteTweet(tweetModel: ViewTweetModel,
+                                    callBackHandler: @escaping CallBack) {
         guard let tweetID = tweetModel.tweetID else {
             callBackHandler(FireBaseError.missingParameters)
 

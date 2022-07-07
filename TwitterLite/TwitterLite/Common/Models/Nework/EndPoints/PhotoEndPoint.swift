@@ -11,6 +11,7 @@ import Foundation
 enum PhotoEndPoint: FirebaseDatabaseEndPoint {
     case uploadUserProfileImage(fileName: String)
     case uploadImage(fileName: String)
+    case deleteImage
 
     var path: String {
         switch self {
@@ -18,6 +19,8 @@ enum PhotoEndPoint: FirebaseDatabaseEndPoint {
             return "\(FirebaseDatabaseName.profileImage.rawValue)/\(fileName)"
         case .uploadImage(let fileName):
             return "\(FirebaseDatabaseName.tweetImage.rawValue)/\(fileName)"
+        case .deleteImage:
+            return "\(FirebaseDatabaseName.tweetImage.rawValue)"
         }
     }
 }

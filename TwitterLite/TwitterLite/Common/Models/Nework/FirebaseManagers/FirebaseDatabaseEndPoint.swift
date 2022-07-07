@@ -44,4 +44,11 @@ extension FirebaseDatabaseEndPoint {
                                                    data: data,
                                                    callBackHandler: callBackHandler)
     }
+
+    public func deleteAttachment(urlString: String,
+                                 callBackHandler: @escaping CallBack) {
+        FirebaseDatabaseManager.shared.deleteImage(endpoint: self,
+                                                   imageURL: urlString,
+                                                   callBackHandler: callBackHandler)
+    }
 }

@@ -108,13 +108,15 @@ struct FirebaseDatabaseManager {
         let ref = storageRef.child(endpoint.path)
 
         ref.putData(data, metadata: .none) { metadata, error in
-            ref.downloadURL { aURL, anError in
-                if let anError = anError {
-                    callBackHandler(.none, anError)
-                } else if let aURL = aURL {
-                    callBackHandler(aURL, .none)
-                }
-            }
+            ref.downloadURL(completion: callBackHandler)
         }
+    }
+
+    public func deleteImage(endpoint: FirebaseDatabaseEndPoint,
+                            imageURL: String,
+                            callBackHandler: @escaping CallBack) {
+        let ref = storageRef.child(endpoint.path).storage.reference(forURL: imageURL)
+
+        ref.delete(completion: callBackHandler)
     }
 }
