@@ -12,15 +12,22 @@ class NewTweetViewModel: BaseViewModel {
     public var tweetModel = PostTweetModel(jsonDict: JSONDict())
 
     // MARK: - Public Methods -
+    public func shouldEnableSendingTweet() -> Bool {
+        let isTextAvailable = !(tweetModel.caption?.isEmpty ?? true)
+        let isPhotosAvailable = !(tweetModel.photos?.isEmpty ?? true)
+
+        return isTextAvailable || isPhotosAvailable
+    }
+
     public func addTweet(callBackHandler: @escaping CallBack) {
         let tweetID = FirebaseDatabaseManager.shared.generateKey()
         tweetModel.tweetID = tweetID
 
         if let photos = tweetModel.photos {
             let dispatchQueue = DispatchGroup()
-            
+
             tweetModel.photoURL = []
-            
+
             for (index, photo) in photos.enumerated() {
                 dispatchQueue.enter()
 

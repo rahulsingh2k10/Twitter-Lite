@@ -36,6 +36,10 @@
 		1F45E9ED2868F16500F20C2D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F45E9EC2868F16500F20C2D /* UIViewControllerExtension.swift */; };
 		1F45E9EF2868F93300F20C2D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F45E9EE2868F93300F20C2D /* StringExtension.swift */; };
 		1F46CA8D28664A96005A0C79 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46CA8C28664A96005A0C79 /* BaseViewModel.swift */; };
+		1F6252B52877551C0010E581 /* CreateAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6252B42877551C0010E581 /* CreateAccountTests.swift */; };
+		1F6252B7287755F60010E581 /* SigninTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6252B6287755F60010E581 /* SigninTests.swift */; };
+		1F6252B9287756BF0010E581 /* HomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6252B8287756BF0010E581 /* HomeTests.swift */; };
+		1F6252BB28775B890010E581 /* NewTweetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6252BA28775B890010E581 /* NewTweetTests.swift */; };
 		1F669E3C2867A74D00BED673 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F669E3B2867A74D00BED673 /* GoogleService-Info.plist */; };
 		1F669E3E2868810100BED673 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F669E3D2868810100BED673 /* UserModel.swift */; };
 		1F669E40286883AF00BED673 /* FirebaseAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F669E3F286883AF00BED673 /* FirebaseAuthenticationManager.swift */; };
@@ -127,6 +131,10 @@
 		1F45E9EC2868F16500F20C2D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		1F45E9EE2868F93300F20C2D /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		1F46CA8C28664A96005A0C79 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		1F6252B42877551C0010E581 /* CreateAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountTests.swift; sourceTree = "<group>"; };
+		1F6252B6287755F60010E581 /* SigninTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninTests.swift; sourceTree = "<group>"; };
+		1F6252B8287756BF0010E581 /* HomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTests.swift; sourceTree = "<group>"; };
+		1F6252BA28775B890010E581 /* NewTweetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTweetTests.swift; sourceTree = "<group>"; };
 		1F669E3B2867A74D00BED673 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F669E3D2868810100BED673 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		1F669E3F286883AF00BED673 /* FirebaseAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationManager.swift; sourceTree = "<group>"; };
@@ -459,6 +467,10 @@
 			isa = PBXGroup;
 			children = (
 				1FECC9C32864CF250056CCE7 /* TwitterLiteTests.swift */,
+				1F6252B42877551C0010E581 /* CreateAccountTests.swift */,
+				1F6252B6287755F60010E581 /* SigninTests.swift */,
+				1F6252B8287756BF0010E581 /* HomeTests.swift */,
+				1F6252BA28775B890010E581 /* NewTweetTests.swift */,
 			);
 			path = TwitterLiteTests;
 			sourceTree = "<group>";
@@ -822,6 +834,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FECC9C42864CF250056CCE7 /* TwitterLiteTests.swift in Sources */,
+				1F6252BB28775B890010E581 /* NewTweetTests.swift in Sources */,
+				1F6252B52877551C0010E581 /* CreateAccountTests.swift in Sources */,
+				1F6252B9287756BF0010E581 /* HomeTests.swift in Sources */,
+				1F6252B7287755F60010E581 /* SigninTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

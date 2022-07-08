@@ -130,7 +130,8 @@ class HomeViewModel: BaseViewModel {
         let tweetCount = actualTweetCount.rounded(to: pageSize, roundingRule: .down)
         let nextIndexToCall = Double(floor(tweetCount - pageSize + center))
 
-        if ((index != 0) &&
+        if (((index == actualTweetCount - 1.0) && (actualTweetCount < pageSize)) ||
+            (index != 0) &&
             ((index.truncatingRemainder(dividingBy: center)) == 0) &&
             (nextIndexToCall == index)) {
             return true

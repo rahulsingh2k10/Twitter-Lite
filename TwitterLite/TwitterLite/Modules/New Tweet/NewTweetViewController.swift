@@ -52,7 +52,7 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
 
             self.viewModel?.tweetModel.photos = photos
             self.photoGalleryView.loadData(imageList: photos)
-            self.enableDisableTweetButton()
+            self.tweetButton.isEnabled = viewModel?.shouldEnableSendingTweet() ?? false
 
             picker.dismiss(animated: true)
         }
@@ -101,15 +101,8 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
     }
 
     // MARK: - Private Methods -
-    private func enableDisableTweetButton() {
-        let isTextAvailable = ((viewModel?.tweetModel.caption?.count ?? 0) > 0)
-        let isPhotosAvailable = ((viewModel?.tweetModel.photos?.count ?? 0) >= 1)
-
-        tweetButton.isEnabled = (isTextAvailable || isPhotosAvailable)
-    }
-
     private func setupUI() {
-        enableDisableTweetButton()
+        tweetButton.isEnabled = viewModel?.shouldEnableSendingTweet() ?? false
 
         profileView.setupUI()
 
@@ -120,7 +113,7 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
         photoGalleryView.didRemoveItem = {[unowned self] item in
             if let index = self.viewModel?.tweetModel.photos?.firstIndex (where: { $0.image == (item as! ImageWrapper).image }) {
                 self.viewModel?.tweetModel.photos?.remove(at: index)
-                self.enableDisableTweetButton()
+                self.tweetButton.isEnabled = viewModel?.shouldEnableSendingTweet() ?? false
             }
         }
     }
@@ -133,7 +126,7 @@ extension NewTweetViewController: PlaceholderTextViewDelegate {
         ringProgressView.animateCircle(toValue: toValue)
 
         viewModel?.tweetModel.caption = text
-        enableDisableTweetButton()
+        tweetButton.isEnabled = viewModel?.shouldEnableSendingTweet() ?? false
     }
 
     func placeholderTextViewShouldReplace(_ text: String) -> Bool {

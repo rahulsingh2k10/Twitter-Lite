@@ -46,14 +46,18 @@ struct FirebaseAuthenticationManager {
 
         Auth.auth().signIn(withEmail: emailAddress,
                            password: password) { authResult, error in
-            UserEndPoint.getLoggedInUserDetail.fetchWithoutObserving { (result: Result<UserModel, Error>) in
-                switch result {
-                case .success(let userModel):
-                    userModel.userID = FirebaseAuthenticationManager.shared.currentUser()?.uid
+            if let error = error {
+                callBackHandler(.none, error)
+            } else {
+                UserEndPoint.getLoggedInUserDetail.fetchWithoutObserving { (result: Result<UserModel, Error>) in
+                    switch result {
+                    case .success(let userModel):
+                        userModel.userID = FirebaseAuthenticationManager.shared.currentUser()?.uid
 
-                    callBackHandler(userModel, .none)
-                case .failure(let error):
-                    callBackHandler(.none, error)
+                        callBackHandler(userModel, .none)
+                    case .failure(let error):
+                        callBackHandler(.none, error)
+                    }
                 }
             }
         }
