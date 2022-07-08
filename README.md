@@ -12,8 +12,6 @@ TwitterLite is an light version of Twitter for iOS developed in Swift. This shou
 - Post/Timeline view page.
 ## Demo
 
-Insert gif or link to demo
-
 https://raw.githubusercontent.com/rahulsingh2k10/Twitter-Lite/main/Demo/Demo.mp4
 ## 🛠 Skills
 Swift, Firebase, Google SignIn, MVVM, Generics, Multi-Threading, XCTest.
