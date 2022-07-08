@@ -92,6 +92,9 @@ class HomeViewController: BaseViewController<HomeViewModel> {
 
         tweetsTableView.register(cell: TweetsTableViewCell.self)
         tweetsTableView.addSubview(refreshControl)
+
+        tweetsTableView.estimatedRowHeight = 168
+        tweetsTableView.rowHeight = UITableView.automaticDimension
     }
 
     private func fetchTweets() {
