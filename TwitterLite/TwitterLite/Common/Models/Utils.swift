@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import PhotosUI
 
 struct Utils {
     static var shared: Utils = Utils()
@@ -15,6 +15,14 @@ struct Utils {
     static let maxCharacter = 280
 
     public var loggedInUser: UserModel?
+
+    public func showCameraPermissionPopup(callbackHandler: @escaping ((PHAuthorizationStatus) -> ())) {
+        PHPhotoLibrary.requestAuthorization() { status in
+            DispatchQueue.main.async {
+                callbackHandler(status)
+            }
+        }
+    }
 }
 
 
@@ -117,6 +125,7 @@ public enum StringValue: String {
     case signingOut = "Signing Out..."
     case loggingIn = "Logging In..."
     case posting = "Posting..."
+    case checkPhotoPermissions = "Please check if you have provided access to Camera/Photo."
 }
 
 

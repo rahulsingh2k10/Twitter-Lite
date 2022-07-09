@@ -97,7 +97,16 @@ class NewTweetViewController: BaseViewController<NewTweetViewModel> {
     }
 
     @IBAction func showImagePicker(_ sender: UIButton) {
-        present(picker, animated: true)
+        Utils.shared.showCameraPermissionPopup() { [weak self] status in
+            guard let strongSelf = self else { return }
+
+            switch status {
+            case .authorized:
+                strongSelf.present(strongSelf.picker, animated: true)
+            default:
+                strongSelf.presentAlert(message: StringValue.checkPhotoPermissions.rawValue)
+            }
+        }
     }
 
     // MARK: - Private Methods -

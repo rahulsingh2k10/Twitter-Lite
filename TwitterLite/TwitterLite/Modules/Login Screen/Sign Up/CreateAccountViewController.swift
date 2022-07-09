@@ -86,6 +86,19 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
     private func imageButtonClicked() {
         view.endEditing(true)
 
+        Utils.shared.showCameraPermissionPopup() { [weak self] status in
+            guard let strongSelf = self else { return }
+
+            switch status {
+            case .authorized:
+                strongSelf.continueImageButtonClicked()
+            default:
+                strongSelf.presentAlert(message: StringValue.checkPhotoPermissions.rawValue)
+            }
+        }
+    }
+
+    private func continueImageButtonClicked() {
         let alertVC = UIAlertController(title: StringValue.pickPhoto.rawValue,
                                         message: StringValue.choosePicture.rawValue,
                                         preferredStyle: .actionSheet)
@@ -130,6 +143,7 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
 
 
 extension CreateAccountViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         defer {
