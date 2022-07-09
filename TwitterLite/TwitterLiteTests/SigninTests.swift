@@ -28,7 +28,9 @@ class SigninTests: XCTestCase {
         let userModel = UserModel(jsonDict: JSONDict())
         signinVM.userModel = userModel
 
-        XCTAssertFalse(signinVM.isModelValid())
+        XCTAssertThrowsError(try signinVM.validateSiginUserModel()) { error in
+            XCTAssertEqual(error as! LoginError, LoginError.emailAddressMissing)
+         }
     }
 
     func testValidCreateAccountModel() {
@@ -38,7 +40,8 @@ class SigninTests: XCTestCase {
         signinVM.userModel = userModel
 
         XCTAssertNotNil(userModel.emailAddress, FireBaseError.missingParameters.errorDescription!)
-        XCTAssertTrue(signinVM.isModelValid())
+
+        XCTAssertNoThrow(try signinVM.validateSiginUserModel())
     }
 
     func testInvalidCreateAccountModel() {
@@ -47,7 +50,9 @@ class SigninTests: XCTestCase {
         userModel.password = "Testuser"
         signinVM.userModel = userModel
 
-        XCTAssertFalse(signinVM.isModelValid())
+        XCTAssertThrowsError(try signinVM.validateSiginUserModel()) {error in
+            XCTAssertNotNil(error)
+        }
     }
 
     func testPerformanceExample() throws {

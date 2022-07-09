@@ -369,7 +369,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="createAccountButton" destination="KH9-uP-eqH" id="adM-mb-tun"/>
                         <outlet property="nameTextField" destination="zSS-9r-O3R" id="PTV-mB-yuo"/>
                         <outlet property="profileView" destination="u0X-EE-cDB" id="bth-pK-BJ2"/>
                         <outlet property="scrollViewContentHeightConstraint" destination="uQV-Zg-Yih" id="Iiy-R4-uWj"/>
@@ -415,7 +414,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PdW-0c-DGp">
                                                         <rect key="frame" x="0.0" y="0.0" width="350" height="28.5"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fML-9e-1mS">
+                                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fML-9e-1mS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="18.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
@@ -439,7 +438,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ei8-Qs-H9t">
                                                         <rect key="frame" x="0.0" y="78.5" width="350" height="27"/>
                                                         <subviews>
-                                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vHX-p6-PJb">
+                                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vHX-p6-PJb">
                                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
@@ -517,7 +516,6 @@
                     <connections>
                         <outlet property="emailAddressTextField" destination="fML-9e-1mS" id="vd3-Ox-nJd"/>
                         <outlet property="scrollViewContentHeightConstraint" destination="nPg-DE-Gwd" id="r4W-UE-eHm"/>
-                        <outlet property="signinButton" destination="OOY-Q5-zWT" id="75y-mC-agd"/>
                         <outlet property="theScrollView" destination="eGw-hk-y01" id="frf-Aw-RJV"/>
                     </connections>
                 </viewController>

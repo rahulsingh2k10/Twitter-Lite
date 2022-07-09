@@ -12,11 +12,11 @@ class SigninViewModel: BaseViewModel {
     public var userModel: UserModel = UserModel(jsonDict: JSONDict())
 
     // MARK: - Public Methods -
-    public func isModelValid() -> Bool {
+    public func validateSiginUserModel() throws {
         guard let emailAddress = userModel.emailAddress,
-              emailAddress.isValidEmail() else { return false }
+              emailAddress.isValidEmail() else { throw LoginError.emailAddressMissing }
         guard let password = userModel.password?.trimmingCharacters(in: .whitespacesAndNewlines),
-              !password.isEmpty else { return false }
+              !password.isEmpty else { throw LoginError.passwordMissing }
 
         /*
          * At least 8 characters
@@ -27,9 +27,9 @@ class SigninViewModel: BaseViewModel {
          */
         let passwordPattern = "(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[ !$%&?.@_-])"
         let result = password.range(of: passwordPattern, options: .regularExpression)
-        let validPassword = (result != .none)
-
-        return validPassword
+        if (result == .none) {
+            throw LoginError.passwordCriteriaMissing
+        }
     }
 
     public func signInUser(callBackHandler: @escaping UserCallBack) {

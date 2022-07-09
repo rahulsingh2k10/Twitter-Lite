@@ -15,7 +15,6 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
 
     @IBOutlet weak private var nameTextField: UITextField!
     @IBOutlet weak private var profileView: ProfileView!
-    @IBOutlet weak private var createAccountButton: UIButton!
 
     public weak var loginDelegate: LoginDelegate?
 
@@ -24,8 +23,6 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        createAccountButton.isEnabled = false
 
         profileView.setupUI(mode: .add)
         profileView.load(image: UIImage(systemName: "plus"))
@@ -42,56 +39,50 @@ class CreateAccountViewController: BaseViewController<CreateAccountViewModel> {
 
     // MARK: - Action Methods -
     @IBAction private func textFieldChanged(_ sender: UITextField) {
-        switch sender.tag {
-        case 0:
-            viewModel?.userModel.displayName = sender.text
-        case 1:
-            viewModel?.userModel.emailAddress = sender.text
-        case 2:
-            viewModel?.userModel.userName = sender.text
-        case 3:
-            viewModel?.userModel.password = sender.text
-        default: break
-        }
-
-        enableDisableCreateButton()
-    }
-
-    @IBAction private func createAccountClicked(_ sender: Any?) {
-        view.endEditing(true)
-        activityView.startAnimating(title: StringValue.signingIn.rawValue)
-
-        viewModel?.createUser() { [weak self] (user, error) in
-            guard let strongSelf = self else { return }
-
-            strongSelf.activityView.stopAnimating()
-
-            if let error = error {
-                strongSelf.presentAlert(message: error.localizedDescription)
-            } else if let user = user {
-                Utils.shared.loggedInUser = user
-                strongSelf.loginDelegate?.loginDidComplete()
-                strongSelf.presentingViewController?.presentingViewController?.dismiss(animated: true)
+        if let loginField = LoginField(rawValue: sender.tag) {
+            switch loginField {
+            case .displayName:
+                viewModel?.userModel.displayName = sender.text
+            case .emailAddress:
+                viewModel?.userModel.emailAddress = sender.text
+            case .userName:
+                viewModel?.userModel.userName = sender.text
+            case .password:
+                viewModel?.userModel.password = sender.text
+            default: break
             }
         }
     }
 
-    // MARK: - Private Methods -
-    @discardableResult
-    private func enableDisableCreateButton()  -> Bool {
-        var shouldEnable = false
+    @IBAction private func createAccountClicked(_ sender: Any?) {
+        do {
+            try viewModel?.validateCreateUserModel()
 
-        if let vm = viewModel, vm.isModelValid() {
-            shouldEnable = true
-        } else {
-            shouldEnable = false
+            view.endEditing(true)
+
+            activityView.startAnimating(title: StringValue.signingIn.rawValue)
+
+            viewModel?.createUser() { [weak self] (user, error) in
+                guard let strongSelf = self else { return }
+
+                strongSelf.activityView.stopAnimating()
+
+                if let error = error {
+                    strongSelf.presentAlert(message: error.localizedDescription)
+                } else if let user = user {
+                    Utils.shared.loggedInUser = user
+                    strongSelf.loginDelegate?.loginDidComplete()
+                    strongSelf.presentingViewController?.presentingViewController?.dismiss(animated: true)
+                }
+            }
+        } catch (let error as LoginError) {
+            presentAlert(message: error.errorDescription)
+        } catch {
+            presentAlert(message: error.localizedDescription)
         }
-
-        createAccountButton.isEnabled = shouldEnable
-
-        return shouldEnable
     }
 
+    // MARK: - Private Methods -
     private func imageButtonClicked() {
         view.endEditing(true)
 
@@ -151,7 +142,6 @@ extension CreateAccountViewController: UIImagePickerControllerDelegate, UINaviga
 
         viewModel?.userModel.photoURL = imageURL
         profileView.loadImage(url: imageURL)
-        enableDisableCreateButton()
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -170,14 +160,10 @@ extension CreateAccountViewController: UITextFieldDelegate {
                 // TODO: Scroll View above Keyboard
                 nextTextField.becomeFirstResponder()
             }
-
-            return true
         } else {
-            if enableDisableCreateButton() {
-                createAccountClicked(.none)
-            }
-
-            return enableDisableCreateButton()
+            createAccountClicked(.none)
         }
+
+        return true
     }
 }

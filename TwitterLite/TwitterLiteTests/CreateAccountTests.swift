@@ -28,18 +28,22 @@ class CreateAccountTests: XCTestCase {
         let userModel = UserModel(jsonDict: JSONDict())
         createAccountVM.userModel = userModel
 
-        XCTAssertFalse(createAccountVM.isModelValid())
+        XCTAssertThrowsError(try createAccountVM.validateCreateUserModel()) { error in
+            XCTAssertEqual(error as! LoginError, LoginError.photoMissing)
+         }
     }
 
     func testCreateAccountModelWithOnlyImage() {
         let userModel = UserModel(jsonDict: JSONDict())
         userModel.photoURL = URL(string: "https://media.istockphoto.com/photos/twitter-3d-logo-3d-render-image-illustration-picture-id1383510053?s=612x612")
 
-        
         createAccountVM.userModel = userModel
 
         XCTAssertNil(userModel.userName)
-        XCTAssertFalse(createAccountVM.isModelValid())
+
+        XCTAssertThrowsError(try createAccountVM.validateCreateUserModel()) { error in
+            XCTAssertEqual(error as! LoginError, LoginError.displayNameMisssing)
+         }
     }
 
     func testValidCreateAccountModel() {
@@ -52,7 +56,8 @@ class CreateAccountTests: XCTestCase {
         createAccountVM.userModel = userModel
 
         XCTAssertNotNil(userModel.userName)
-        XCTAssertTrue(createAccountVM.isModelValid())
+
+        XCTAssertNoThrow(try createAccountVM.validateCreateUserModel())
     }
 
     func testSuccessUserLogin() {

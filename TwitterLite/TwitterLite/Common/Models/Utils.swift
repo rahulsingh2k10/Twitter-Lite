@@ -41,12 +41,27 @@ public enum EncodingeError: Error {
 }
 
 
+public enum LoginField: Int {
+    case displayName
+    case emailAddress
+    case userName
+    case password
+    case photo
+}
+
+
 public enum LoginError: Error {
     case missingClientID
     case invalidTokenID
     case missingParameters
+    case photoMissing
+    case displayNameMisssing
+    case emailAddressMissing
+    case userNameMissing
+    case passwordMissing
+    case passwordCriteriaMissing
 
-    public var errorDescription: String? {
+    public var errorDescription: String {
         switch self {
         case .missingClientID:
             return NSLocalizedString("Missing Client ID. Please try again.", comment: "Message")
@@ -54,6 +69,18 @@ public enum LoginError: Error {
             return NSLocalizedString("Invalid Token ID. Please try again.", comment: "Message")
         case .missingParameters:
             return NSLocalizedString("Please enter valid email address and password.", comment: "Message")
+        case .photoMissing:
+            return NSLocalizedString("Please select a Photo.", comment: "Message")
+        case .displayNameMisssing:
+            return NSLocalizedString("Please enter your Full Name", comment: "Message")
+        case .emailAddressMissing:
+            return NSLocalizedString("Please enter email address", comment: "Message")
+        case .userNameMissing:
+            return NSLocalizedString("Please enter userName", comment: "Message")
+        case .passwordMissing:
+            return NSLocalizedString("Please enter password", comment: "Message")
+        case .passwordCriteriaMissing:
+            return NSLocalizedString("Please enter valid password", comment: "Message")
         }
     }
 }
