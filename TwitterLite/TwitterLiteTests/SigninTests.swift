@@ -24,7 +24,7 @@ class SigninTests: XCTestCase {
         try? super.tearDownWithError()
     }
 
-    func testEmptyCreateAccountModel() {
+    func testEmptySigInModel() {
         let userModel = UserModel(jsonDict: JSONDict())
         signinVM.userModel = userModel
 
@@ -33,7 +33,7 @@ class SigninTests: XCTestCase {
          }
     }
 
-    func testValidCreateAccountModel() {
+    func testValidSignInModel() {
         let userModel = UserModel(jsonDict: JSONDict())
         userModel.emailAddress = "testuser4@gmail.com"
         userModel.password = "Testuser4@123"
@@ -44,7 +44,7 @@ class SigninTests: XCTestCase {
         XCTAssertNoThrow(try signinVM.validateSiginUserModel())
     }
 
-    func testInvalidCreateAccountModel() {
+    func testInvalidSignInModel() {
         let userModel = UserModel(jsonDict: JSONDict())
         userModel.emailAddress = "testuser4@gmail.com"
         userModel.password = "Testuser"
